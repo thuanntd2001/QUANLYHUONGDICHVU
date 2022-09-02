@@ -121,7 +121,7 @@
 											</form:form>
 										</div>
 
-										<div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+										<%-- <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 											<!-- Profile Edit Form -->
 											<form:form modelAttribute="nv" method="post"
 												action="admin-user.htm" id="form1">
@@ -244,9 +244,9 @@ UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶ�
 											</form:form>
 											<!-- End Profile Edit Form -->
 
-										</div>
+										</div> --%>
 
-										<div class="tab-pane fade pt-3" id="profile-change-password">
+										<%-- <div class="tab-pane fade pt-3" id="profile-change-password">
 											<!-- Change Password Form -->
 											<form:form modelAttribute="changePW" action="user.htm"
 												method="post">
@@ -322,7 +322,7 @@ UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶ�
 									</div>
 									<!-- End ICON Tabs -->
 
-								</div>
+								</div> --%>
 							</div>
 
 						</div>

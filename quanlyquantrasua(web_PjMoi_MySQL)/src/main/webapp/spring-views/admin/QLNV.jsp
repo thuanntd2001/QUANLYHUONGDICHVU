@@ -54,8 +54,8 @@
 
 
 			</div>
-			<jsp:useBean id="pagedListHolder" scope="request"
-				type="org.springframework.beans.support.PagedListHolder" />
+		<%-- 	<jsp:useBean id="pagedListHolder" scope="request"
+				type="org.springframework.beans.support.PagedListHolder" /> --%>
 			<c:url value="index.htm" var="pagedLink">
 				<c:param name="p" value="~" />
 			</c:url>

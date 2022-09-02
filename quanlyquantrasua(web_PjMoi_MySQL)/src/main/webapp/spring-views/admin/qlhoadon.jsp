@@ -17,8 +17,8 @@
 		<div class="container">
 			<div class="header-content d-flex justify-content-center">QUẢN
 				LÍ HÓA ĐƠN</div>
-			<jsp:useBean id="pagedListHolder" scope="request"
-				type="org.springframework.beans.support.PagedListHolder" />
+		<%-- 	<jsp:useBean id="pagedListHolder" scope="request"
+				type="org.springframework.beans.support.PagedListHolder" /> --%>
 			<c:url value="admin-hoadon.htm" var="pagedLink">
 				<c:param name="p" value="~" />
 			</c:url>

@@ -141,11 +141,12 @@
 			<version>${jstl.version}</version>
 		</dependency>
 
-		<!-- jdbc-sqlserver -->
+		<!-- jdbc-mysql -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>mssql-jdbc</artifactId>
-			<version>8.4.1.jre8</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.30</version>
 		</dependency>
 		<!-- inject -->
 		<dependency>
@@ -171,7 +172,7 @@
 
 
 		<!-- hibernate -->
-		<dependency>
+	<!--	<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
@@ -196,9 +197,10 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency>
+		</dependency>-->
+<!-- end hibernate -->
 	</dependencies>
-	<!-- end hibernate -->
+	
 	<build>
 		<plugins>
 			<plugin>
