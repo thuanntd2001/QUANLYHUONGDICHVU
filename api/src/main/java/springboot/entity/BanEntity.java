@@ -27,11 +27,11 @@ public class BanEntity {
 	@JoinColumn(name = "LOAI")
 	private LoaiBanEntity loaiBan;
 
-	@OneToMany(mappedBy="ban", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="ban", fetch = FetchType.LAZY)
 	private Collection<HoaDonEntity> hoaDon;
 	
 
-	@OneToMany(mappedBy="ban", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="ban", fetch = FetchType.LAZY)
 	private Collection<DatBanEntity> datBan;
 
 	
@@ -61,9 +61,6 @@ public class BanEntity {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Integer getSoGhe() {
 		return soGhe;

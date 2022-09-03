@@ -21,7 +21,7 @@ public class ChucVuEntity {
 	@Column(name="TENCHUCVU")
 	private String tenChucVu;
 	
-	@OneToMany(mappedBy="chucVu", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="chucVu", fetch = FetchType.LAZY)
 	private Collection<UserTBEntity> userTB;
 
 	public Long getId() {

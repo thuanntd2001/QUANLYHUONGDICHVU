@@ -36,7 +36,7 @@ public class HoaDonEntity {
 	@JoinColumn(name = "BAN")
 	private BanEntity ban;
 
-	@OneToMany(mappedBy = "hoaDon", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "hoaDon", fetch = FetchType.LAZY)
 	private Collection<ChiTietHDEntity> chiTietHD;
 
 

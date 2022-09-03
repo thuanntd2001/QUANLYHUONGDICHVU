@@ -18,7 +18,7 @@ public class ThucDonEntity {
 	@Id
 	@Column(name="ID")
 	private String id;
-	@OneToMany(mappedBy="thucDon", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="thucDon", fetch=FetchType.LAZY)
 	private Collection<ChiTietHDEntity> chiTietHD;
 	@Column(name="TEN")
 	private String ten;

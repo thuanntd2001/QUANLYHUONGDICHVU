@@ -22,7 +22,7 @@ public class LoaiBanEntity {
 	@Column(name = "GIADAT")
 	private int giaDat;
 	
-	@OneToMany(mappedBy = "loaiBan", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "loaiBan", fetch = FetchType.LAZY)
 	private Collection<BanEntity> ban;
 
 	public Long getId() {

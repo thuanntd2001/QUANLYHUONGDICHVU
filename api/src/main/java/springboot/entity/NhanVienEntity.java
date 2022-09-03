@@ -55,16 +55,16 @@ public class NhanVienEntity {
 	@Column(name="DANGHI")
 	private Boolean daNghi;
 	
-	@OneToMany(mappedBy="hdnv", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="hdnv", fetch = FetchType.LAZY)
 	private Collection<HoaDonEntity> hoadon;
 	
-	@OneToMany(mappedBy="dbnv", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="dbnv", fetch = FetchType.LAZY)
 	private Collection<DatBanEntity> datBan;
 	
-	@OneToMany(mappedBy="cpnv", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="cpnv", fetch = FetchType.LAZY)
 	private Collection<ChiPhiEntity> chiPhi;
 	
-	@OneToMany(mappedBy="usernv", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="usernv", fetch = FetchType.LAZY)
 	private Collection<UserTBEntity> userTB;
 	
 	
