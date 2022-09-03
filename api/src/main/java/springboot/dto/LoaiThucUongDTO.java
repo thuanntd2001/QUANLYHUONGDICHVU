@@ -1,18 +1,18 @@
-package springboot.DTO;
+package springboot.dto;
 
-public class LoaiThucUongModel {
+public class LoaiThucUongDTO {
 	private Long iD1;
 	private String iD;
 	private String tenLoai;
 	private String donVi;
-	public LoaiThucUongModel(Long iD1, String iD, String tenLoai, String donVi) {
+	public LoaiThucUongDTO(Long iD1, String iD, String tenLoai, String donVi) {
 		super();
 		this.iD1 = iD1;
 		this.iD = iD;
 		this.tenLoai = tenLoai;
 		this.donVi = donVi;
 	}
-	public LoaiThucUongModel() {}
+	public LoaiThucUongDTO() {}
 	public Long getiD1() {
 		return iD1;
 	}

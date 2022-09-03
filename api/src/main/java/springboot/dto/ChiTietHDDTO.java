@@ -1,6 +1,6 @@
-package springboot.DTO;
+package springboot.dto;
 
-public class ChiTietHDModel {
+public class ChiTietHDDTO {
 	private Long maHD;
 	private String maSP;
 	private int soLuong;

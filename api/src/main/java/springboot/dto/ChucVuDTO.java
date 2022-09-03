@@ -1,14 +1,14 @@
-package springboot.DTO;
+package springboot.dto;
 
-public class ChucVuModel {
+public class ChucVuDTO {
 	private int iD;
 	private String tenChucVu;
-	public ChucVuModel(int iD, String tenChucVu) {
+	public ChucVuDTO(int iD, String tenChucVu) {
 		super();
 		this.iD = iD;
 		this.tenChucVu = tenChucVu;
 	}
-	public ChucVuModel() {}
+	public ChucVuDTO() {}
 	public int getiD() {
 		return iD;
 	}

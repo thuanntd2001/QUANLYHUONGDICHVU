@@ -1,14 +1,14 @@
-package springboot.DTO;
+package springboot.dto;
 
-public class LoaiBanModel {
-	public LoaiBanModel() {
+public class LoaiBanDTO {
+	public LoaiBanDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	private Long iD;
 	private String tenLoai;
 	private int giaDat;
-	public LoaiBanModel(Long iD, String tenLoai, int giaDat) {
+	public LoaiBanDTO(Long iD, String tenLoai, int giaDat) {
 		super();
 		this.iD = iD;
 		this.tenLoai = tenLoai;

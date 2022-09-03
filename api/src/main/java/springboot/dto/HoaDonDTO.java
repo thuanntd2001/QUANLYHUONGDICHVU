@@ -1,18 +1,18 @@
-package springboot.DTO;
+package springboot.dto;
 
 import java.sql.Timestamp;
 
-public class HoaDonModel {
+public class HoaDonDTO {
 	private Long iD;
 	private Timestamp ngayThucHien;
 	private Long nVThuchien;
-	public HoaDonModel(Long iD, Timestamp ngayThucHien, Long nVThuchien) {
+	public HoaDonDTO(Long iD, Timestamp ngayThucHien, Long nVThuchien) {
 		super();
 		this.iD = iD;
 		this.ngayThucHien = ngayThucHien;
 		this.nVThuchien = nVThuchien;
 	}
-	public HoaDonModel() {}
+	public HoaDonDTO() {}
 	public Long getiD() {
 		return iD;
 	}

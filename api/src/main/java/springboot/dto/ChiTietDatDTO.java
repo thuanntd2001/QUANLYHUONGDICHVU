@@ -1,14 +1,14 @@
-package springboot.DTO;
+package springboot.dto;
 
-public class ChiTietDatModel {
+public class ChiTietDatDTO {
 	private Long iD;
 	private Long maDat;
-	public ChiTietDatModel(Long iD, Long maDat) {
+	public ChiTietDatDTO(Long iD, Long maDat) {
 		super();
 		this.iD = iD;
 		this.maDat = maDat;
 	}
-	public ChiTietDatModel() {}
+	public ChiTietDatDTO() {}
 	public Long getiD() {
 		return iD;
 	}

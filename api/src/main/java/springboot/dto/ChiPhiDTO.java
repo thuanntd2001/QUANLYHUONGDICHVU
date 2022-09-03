@@ -1,8 +1,8 @@
-package springboot.DTO;
+package springboot.dto;
 
 import java.sql.Timestamp;
 
-public class ChiPhiModel {
+public class ChiPhiDTO {
 	private Long iD;
 	private String tenNL;
 	private Timestamp ngayNhap;
@@ -14,7 +14,7 @@ public class ChiPhiModel {
 	private String ghiChu;
 	private Long nVTao;
 
-	public ChiPhiModel(Long iD, String tenNL, Timestamp ngayNhap, int soLuong, int giaMoiDV, String loai, String dV,
+	public ChiPhiDTO(Long iD, String tenNL, Timestamp ngayNhap, int soLuong, int giaMoiDV, String loai, String dV,
 			String nhaCungCap, String ghiChu, Long nVTao) {
 		super();
 		this.iD = iD;
@@ -29,7 +29,7 @@ public class ChiPhiModel {
 		this.nVTao = nVTao;
 	}
 
-	public ChiPhiModel() {}
+	public ChiPhiDTO() {}
 
 	public Long getiD() {
 		return iD;

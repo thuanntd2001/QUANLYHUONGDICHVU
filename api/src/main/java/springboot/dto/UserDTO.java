@@ -1,6 +1,6 @@
-package springboot.DTO;
+package springboot.dto;
 
-public class UserModel {
+public class UserDTO {
 
 	private String userName;
 

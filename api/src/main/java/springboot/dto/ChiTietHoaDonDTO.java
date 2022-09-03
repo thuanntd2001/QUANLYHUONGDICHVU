@@ -1,16 +1,16 @@
-package springboot.DTO;
+package springboot.dto;
 
-public class ChiTietHoaDonModel {
+public class ChiTietHoaDonDTO {
 	private Long maHD;
 	private String maSP;
 	private int soLuong;
-	public ChiTietHoaDonModel(Long maHD, String maSP, int soLuong) {
+	public ChiTietHoaDonDTO(Long maHD, String maSP, int soLuong) {
 		super();
 		this.maHD = maHD;
 		this.maSP = maSP;
 		this.soLuong = soLuong;
 	}
-	public ChiTietHoaDonModel() {}
+	public ChiTietHoaDonDTO() {}
 	public Long getMaHD() {
 		return maHD;
 	}

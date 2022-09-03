@@ -1,12 +1,12 @@
-package springboot.DTO;
+package springboot.dto;
 
-public class ThucDonModel {
+public class ThucDonDTO {
 	private Long iD1;
 	private String iD;
 	private String ten;
 	private String loai;
 	private int gia;
-	public ThucDonModel(Long iD1, String iD, String ten, String loai, int gia) {
+	public ThucDonDTO(Long iD1, String iD, String ten, String loai, int gia) {
 		super();
 		this.iD1 = iD1;
 		this.iD = iD;
@@ -14,7 +14,7 @@ public class ThucDonModel {
 		this.loai = loai;
 		this.gia = gia;
 	}
-	public ThucDonModel() {}
+	public ThucDonDTO() {}
 	public Long getiD1() {
 		return iD1;
 	}

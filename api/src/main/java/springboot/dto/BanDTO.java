@@ -1,16 +1,16 @@
-package springboot.DTO;
+package springboot.dto;
 
-public class BanModel {
+public class BanDTO {
 	private int soGhe;
 	private Long iD;
 	private Long loai;
-	public BanModel(int soGhe, Long iD, Long loai) {
+	public BanDTO(int soGhe, Long iD, Long loai) {
 		
 		this.soGhe = soGhe;
 		this.iD = iD;
 		this.loai = loai;
 	}
-	public BanModel() {
+	public BanDTO() {
 		// TODO Auto-generated constructor stub
 	}
 	public int getSoGhe() {

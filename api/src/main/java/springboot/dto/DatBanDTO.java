@@ -1,9 +1,9 @@
-package springboot.DTO;
+package springboot.dto;
 
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class DatBanModel {
+public class DatBanDTO {
 	private Long iD;
 	private String hoTen;
 	private String sDT;
@@ -11,7 +11,7 @@ public class DatBanModel {
 	private Date ngayDat;
 	private Timestamp tGDuKien;
 	private Long nVThucHien;
-	public DatBanModel(Long iD, String hoTen, String sDT, int tienCoc, Date ngayDat, Timestamp tGDuKien,
+	public DatBanDTO(Long iD, String hoTen, String sDT, int tienCoc, Date ngayDat, Timestamp tGDuKien,
 			Long nVThucHien) {
 		super();
 		this.iD = iD;
@@ -22,7 +22,7 @@ public class DatBanModel {
 		this.tGDuKien = tGDuKien;
 		this.nVThucHien = nVThucHien;
 	}
-	public DatBanModel() {}
+	public DatBanDTO() {}
 	public Long getiD() {
 		return iD;
 	}

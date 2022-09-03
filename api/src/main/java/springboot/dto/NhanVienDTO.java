@@ -1,8 +1,8 @@
-package springboot.DTO;
+package springboot.dto;
 
 import java.sql.Date;
 
-public class NhanVienModel {
+public class NhanVienDTO {
 	private Long maNV;
 	private String hoTen;
 	private Date ngaySinh;
@@ -14,7 +14,7 @@ public class NhanVienModel {
 	private Date ngayVaoLam;
 	private boolean daNghi;
 	
-	public NhanVienModel(Long maNV, String hoTen, Date ngaySinh, String gioiTinh, int luong, String sDT, String cMND,
+	public NhanVienDTO(Long maNV, String hoTen, Date ngaySinh, String gioiTinh, int luong, String sDT, String cMND,
 			String diaChi, Date ngayVaoLam, boolean daNghi) {
 		super();
 		this.maNV = maNV;
@@ -28,7 +28,7 @@ public class NhanVienModel {
 		this.ngayVaoLam = ngayVaoLam;
 		this.daNghi = daNghi;
 	}
-	public NhanVienModel() {}
+	public NhanVienDTO() {}
 	public Long getMaNV() {
 		return maNV;
 	}
