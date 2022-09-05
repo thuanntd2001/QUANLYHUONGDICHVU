@@ -12,28 +12,28 @@ import springboot.dto.UserDTO;
 @RestController
 public class UserAPI {
 
-	@GetMapping("/test")
+	@GetMapping("/user")
 	public String testAPI() {
 
 		return "success";
 
 	}
 
-	@PostMapping(value="/users")
+	@PostMapping(value="/user")
 	public UserDTO createUser(@RequestBody UserDTO model) {
 
 		return model;
 
 	}
 	
-	@PutMapping(value="/users")
+	@PutMapping(value="/user")
 	public UserDTO updateUser(@RequestBody UserDTO model) {
 
 		return model;
 
 	}
 	
-	@DeleteMapping(value="/users")
+	@DeleteMapping(value="/user")
 	public void deleteUser(@RequestBody Long[] ids) {
 
 		

@@ -6,6 +6,7 @@ springMVC framework
 eclise
 maven
 tomcat 8.5
+mysql user:root  password: password (phải để như v mới chạy)
 
 để chạy demo mình cần sửa thông tin của sql server 2 chỗ
 1. src/main/webapp/WEB-INF/configs/spring-config-hibernate.xml dòng 23,24 
