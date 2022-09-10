@@ -56,4 +56,19 @@ public class LoaiBanEntity {
 	public void setBan(Collection<BanEntity> ban) {
 		this.ban = ban;
 	}
+
+	public LoaiBanEntity(Long id, String tenLoai, int giaDat, Collection<BanEntity> ban) {
+		super();
+		this.id = id;
+		this.tenLoai = tenLoai;
+		this.giaDat = giaDat;
+		this.ban = ban;
+	}
+
+	public LoaiBanEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 }

@@ -12,45 +12,44 @@ import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.UserDTO;
 
-import springboot.entity.UserTBEntity;
-import springboot.repository.UserTBRepository;
+import springboot.entity.ChiPhiEntity;
+import springboot.repository.ChiPhiRepository;
 
 @RestController
-public class UserAPI {
+public class ChiPhiAPI {
 	@Autowired
-	UserTBRepository repo;
+	ChiPhiRepository repo;
 
 
-	@GetMapping("/user")
-	public List<UserTBEntity> getUser() {
+	@GetMapping("/chiphi")
+	public List<ChiPhiEntity> getUser() {
 
-		 List<UserTBEntity> list= repo.findAll();
-		 for (UserTBEntity item:list)
+		 List<ChiPhiEntity> list= repo.findAll();
+		 for (ChiPhiEntity item:list)
 		 {
-			 item.setUsernv(null);
-			item.setChucVu(null);
-			 
+			 item.setCpnv(null);
+			
 		 }
 		 System.out.print(list.size());
 		return list;
 
 	}
 
-	@PostMapping(value="/user")
+	@PostMapping(value="/chiphi")
 	public UserDTO createUser(@RequestBody UserDTO model) {
 
 		return model;
 
 	}
 	
-	@PutMapping(value="/user")
+	@PutMapping(value="/chiphi")
 	public UserDTO updateUser(@RequestBody UserDTO model) {
 
 		return model;
 
 	}
 	
-	@DeleteMapping(value="/user")
+	@DeleteMapping(value="/chiphi")
 	public void deleteUser(@RequestBody Long[] ids) {
 
 		

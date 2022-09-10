@@ -140,6 +140,26 @@ public class DatBanEntity {
 		this.dbnv = dbnv;
 	}
 
+	public DatBanEntity(Long id, @NotNull @NotBlank(message = "Không để trống họ tên") String hoTen,
+			@Size(min = 10, max = 12, message = "SDT không đúng") String sdt, Integer tienCoc, Date ngayDat,
+			Timestamp tgDuKien, BanEntity ban, NhanVienEntity dbnv, int trangThai) {
+		super();
+		this.id = id;
+		this.hoTen = hoTen;
+		this.sdt = sdt;
+		this.tienCoc = tienCoc;
+		this.ngayDat = ngayDat;
+		this.tgDuKien = tgDuKien;
+		this.ban = ban;
+		this.dbnv = dbnv;
+		this.trangThai = trangThai;
+	}
+
+	public DatBanEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 
 	
 	

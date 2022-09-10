@@ -47,6 +47,18 @@ public class ChucVuEntity {
 	public void setUserTB(Collection<UserTBEntity> userTB) {
 		this.userTB = userTB;
 	}
+
+	public ChucVuEntity(Long id, String tenChucVu, Collection<UserTBEntity> userTB) {
+		super();
+		this.id = id;
+		this.tenChucVu = tenChucVu;
+		this.userTB = userTB;
+	}
+
+	public ChucVuEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 }

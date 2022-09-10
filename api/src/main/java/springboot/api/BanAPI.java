@@ -22,9 +22,13 @@ public class BanAPI {
 	@GetMapping("/ban")
 	public List<BanEntity> getBan() {
 		 List<BanEntity> list=banrepo.findAll();
+		 for (BanEntity item:list)
+		 {
+			 item.setDatBan(null);
+			 item.setHoaDon(null);
+		 }
 		 System.out.print(list.size());
 		return list;
-
 	}
 
 	@PostMapping(value="/ban")

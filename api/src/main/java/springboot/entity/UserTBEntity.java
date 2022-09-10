@@ -93,5 +93,22 @@ public class UserTBEntity {
 		this.status = status;
 	}
 
+	public UserTBEntity(String userName, NhanVienEntity usernv, String passwd, ChucVuEntity chucVu, Integer status,
+			String email, String icon) {
+		super();
+		this.userName = userName;
+		this.usernv = usernv;
+		this.passwd = passwd;
+		this.chucVu = chucVu;
+		this.status = status;
+		this.email = email;
+		this.icon = icon;
+	}
+
+	public UserTBEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
 }

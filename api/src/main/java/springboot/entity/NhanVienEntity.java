@@ -68,9 +68,7 @@ public class NhanVienEntity {
 	private Collection<UserTBEntity> userTB;
 	
 	
-	public NhanVienEntity() {
-		super();
-	}
+
 
 	public Long getMaNV() {
 		return maNV;
@@ -183,6 +181,28 @@ public class NhanVienEntity {
 	public void setUserTB(Collection<UserTBEntity> userTB) {
 		this.userTB = userTB;
 	}
+
+	public NhanVienEntity(Long maNV, String hoTen, Date ngaySinh, Boolean gioiTinh, Integer luong, String sdt,
+			String cmnd, String diaChi, Date ngayVaoLam, Boolean daNghi, Collection<HoaDonEntity> hoadon,
+			Collection<DatBanEntity> datBan, Collection<ChiPhiEntity> chiPhi, Collection<UserTBEntity> userTB) {
+		super();
+		this.maNV = maNV;
+		this.hoTen = hoTen;
+		this.ngaySinh = ngaySinh;
+		this.gioiTinh = gioiTinh;
+		this.luong = luong;
+		this.sdt = sdt;
+		this.cmnd = cmnd;
+		this.diaChi = diaChi;
+		this.ngayVaoLam = ngayVaoLam;
+		this.daNghi = daNghi;
+		this.hoadon = hoadon;
+		this.datBan = datBan;
+		this.chiPhi = chiPhi;
+		this.userTB = userTB;
+	}
 	
-	
+	public NhanVienEntity() {
+		super();
+	}
 }

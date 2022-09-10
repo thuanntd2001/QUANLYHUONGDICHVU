@@ -71,5 +71,20 @@ public class ThucDonEntity {
 	public void setChiTietHD(Collection<ChiTietHDEntity> chiTietHD) {
 		this.chiTietHD = chiTietHD;
 	}
+
+	public ThucDonEntity(String id, Collection<ChiTietHDEntity> chiTietHD, String ten, LoaiThucUongEntity loaiThucUong,
+			Integer gia) {
+		super();
+		this.id = id;
+		this.chiTietHD = chiTietHD;
+		this.ten = ten;
+		this.loaiThucUong = loaiThucUong;
+		this.gia = gia;
+	}
+
+	public ThucDonEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }

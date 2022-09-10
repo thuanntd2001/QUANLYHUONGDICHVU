@@ -35,6 +35,9 @@ public class BanEntity {
 	private Collection<DatBanEntity> datBan;
 
 	
+
+	
+
 	public Collection<DatBanEntity> getDatBan() {
 		return datBan;
 	}
@@ -87,6 +90,23 @@ public class BanEntity {
 	}
 
 
+
+	public BanEntity(Long id, Integer soGhe, LoaiBanEntity loaiBan, Collection<HoaDonEntity> hoaDon,
+			Collection<DatBanEntity> datBan, int tinhTrang) {
+		super();
+		this.id = id;
+		this.soGhe = soGhe;
+		this.loaiBan = loaiBan;
+		this.hoaDon = hoaDon;
+		this.datBan = datBan;
+		this.tinhTrang = tinhTrang;
+	}
+
+
+	public BanEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 
 	

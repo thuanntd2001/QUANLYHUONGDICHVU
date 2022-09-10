@@ -24,27 +24,34 @@ public class NhanVienAPI {
 	@GetMapping("/nhanvien")
 	public List<NhanVienEntity> getNV() {
 		 List<NhanVienEntity> list=repo.findAll();
+		 for (NhanVienEntity item:list)
+		 {
+			 item.setDatBan(null);
+			 item.setChiPhi(null);
+			 item.setHoadon(null);
+			 item.setUserTB(null);
+		 }
 		 System.out.print(list.size());
 		return list;
 
 	}
 
 	@PostMapping(value="/nhanvien")
-	public UserDTO createBan(@RequestBody UserDTO model) {
+	public UserDTO createNV(@RequestBody UserDTO model) {
 
 		return model;
 
 	}
 	
 	@PutMapping(value="/nhanvien")
-	public UserDTO updateBan(@RequestBody UserDTO model) {
+	public UserDTO updateNV(@RequestBody UserDTO model) {
 
 		return model;
 
 	}
 	
 	@DeleteMapping(value="/nhanvien")
-	public void deleteNhanvien(@RequestBody Long[] ids) {
+	public void deleteNV(@RequestBody Long[] ids) {
 
 		
 

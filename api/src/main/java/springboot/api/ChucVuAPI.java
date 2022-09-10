@@ -11,47 +11,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.UserDTO;
-
+import springboot.entity.ChucVuEntity;
 import springboot.entity.UserTBEntity;
-import springboot.repository.UserTBRepository;
+import springboot.repository.ChucVuRepository;
 
 @RestController
-public class UserAPI {
+public class ChucVuAPI {
 	@Autowired
-	UserTBRepository repo;
+	ChucVuRepository repo;
 
 
-	@GetMapping("/user")
-	public List<UserTBEntity> getUser() {
+	@GetMapping("/chucvu")
+	public List<ChucVuEntity> getChucVu() {
 
-		 List<UserTBEntity> list= repo.findAll();
-		 for (UserTBEntity item:list)
+		 List<ChucVuEntity> list= repo.findAll();
+		 for (ChucVuEntity item:list)
 		 {
-			 item.setUsernv(null);
-			item.setChucVu(null);
-			 
+			item.setUserTB(null);
 		 }
 		 System.out.print(list.size());
 		return list;
 
 	}
 
-	@PostMapping(value="/user")
-	public UserDTO createUser(@RequestBody UserDTO model) {
+	@PostMapping(value="/chucvu")
+	public UserDTO createChucVu(@RequestBody UserDTO model) {
 
 		return model;
 
 	}
 	
-	@PutMapping(value="/user")
-	public UserDTO updateUser(@RequestBody UserDTO model) {
+	@PutMapping(value="/chucvu")
+	public UserDTO updateChucVu(@RequestBody UserDTO model) {
 
 		return model;
 
 	}
 	
-	@DeleteMapping(value="/user")
-	public void deleteUser(@RequestBody Long[] ids) {
+	@DeleteMapping(value="/chucvu")
+	public void deleteChucVu(@RequestBody Long[] ids) {
 
 		
 

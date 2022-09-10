@@ -48,5 +48,16 @@ public class LoaiThucUongEntity {
 	public void setThucDon(Collection<ThucDonEntity> thucDon) {
 		this.thucDon = thucDon;
 	}
+	public LoaiThucUongEntity(String id, String tenLoai, String donVi, Collection<ThucDonEntity> thucDon) {
+		super();
+		this.id = id;
+		this.tenLoai = tenLoai;
+		this.donVi = donVi;
+		this.thucDon = thucDon;
+	}
+	public LoaiThucUongEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }

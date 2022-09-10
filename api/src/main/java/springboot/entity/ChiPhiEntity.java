@@ -137,6 +137,21 @@ public class ChiPhiEntity {
 	public ChiPhiEntity() {
 		super();
 	}
+
+	public ChiPhiEntity(Long id, String tenNL, Date ngayNhap, Integer soLuong, Integer giaMoiDV, String loai, String dv,
+			String nhaCungCap, String ghiChu, NhanVienEntity cpnv) {
+		super();
+		this.id = id;
+		this.tenNL = tenNL;
+		this.ngayNhap = ngayNhap;
+		this.soLuong = soLuong;
+		this.giaMoiDV = giaMoiDV;
+		this.loai = loai;
+		this.dv = dv;
+		this.nhaCungCap = nhaCungCap;
+		this.ghiChu = ghiChu;
+		this.cpnv = cpnv;
+	}
 	
 	
 	

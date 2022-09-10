@@ -96,5 +96,21 @@ public class HoaDonEntity {
 		this.hdnv = hdnv;
 	}
 
+	public HoaDonEntity(Long id, Date ngayThucHien, BanEntity ban, Collection<ChiTietHDEntity> chiTietHD,
+			NhanVienEntity hdnv, Integer tinhTrang) {
+		super();
+		this.id = id;
+		this.ngayThucHien = ngayThucHien;
+		this.ban = ban;
+		this.chiTietHD = chiTietHD;
+		this.hdnv = hdnv;
+		this.tinhTrang = tinhTrang;
+	}
+
+	public HoaDonEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 
 }
