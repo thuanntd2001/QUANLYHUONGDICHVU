@@ -26,6 +26,7 @@ public class BanAPI {
 		 {
 			 item.setDatBan(null);
 			 item.setHoaDon(null);
+			 item.setLoaiBan(null);
 		 }
 		 System.out.print(list.size());
 		return list;
