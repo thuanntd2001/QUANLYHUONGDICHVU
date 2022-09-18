@@ -1,19 +1,19 @@
 package springboot.dto;
 
 public class ChucVuDTO {
-	private int iD;
+	private int id;
 	private String tenChucVu;
-	public ChucVuDTO(int iD, String tenChucVu) {
+	public ChucVuDTO(int id, String tenChucVu) {
 		super();
-		this.iD = iD;
+		this.id = id;
 		this.tenChucVu = tenChucVu;
 	}
 	public ChucVuDTO() {}
-	public int getiD() {
-		return iD;
+	public int getid() {
+		return id;
 	}
-	public void setiD(int iD) {
-		this.iD = iD;
+	public void setid(int id) {
+		this.id = id;
 	}
 	public String getTenChucVu() {
 		return tenChucVu;

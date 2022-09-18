@@ -5,20 +5,20 @@ public class LoaiBanDTO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	private Long iD;
+	private Long id;
 	private String tenLoai;
 	private int giaDat;
-	public LoaiBanDTO(Long iD, String tenLoai, int giaDat) {
+	public LoaiBanDTO(Long id, String tenLoai, int giaDat) {
 		super();
-		this.iD = iD;
+		this.id = id;
 		this.tenLoai = tenLoai;
 		this.giaDat = giaDat;
 	}
-	public Long getiD() {
-		return iD;
+	public Long getid() {
+		return id;
 	}
-	public void setiD(Long iD) {
-		this.iD = iD;
+	public void setid(Long id) {
+		this.id = id;
 	}
 	public String getTenLoai() {
 		return tenLoai;

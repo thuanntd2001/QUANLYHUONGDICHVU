@@ -60,8 +60,8 @@ public class UserDTO {
 		return ID;
 	}
 
-	public void setID(Long iD) {
-		this.ID = iD;
+	public void setID(Long id) {
+		this.ID = id;
 	}
 
 	public Long getRoleID() {

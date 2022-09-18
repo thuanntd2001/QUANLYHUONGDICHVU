@@ -3,25 +3,25 @@ package springboot.dto;
 import java.sql.Timestamp;
 
 public class ChiPhiDTO {
-	private Long iD;
+	private Long id;
 	private String tenNL;
 	private Timestamp ngayNhap;
 	private int soLuong;
-	private int giaMoiDV;
+	private int giaMoidV;
 	private String loai;
 	private String dV;
 	private String nhaCungCap;
 	private String ghiChu;
 	private Long nVTao;
 
-	public ChiPhiDTO(Long iD, String tenNL, Timestamp ngayNhap, int soLuong, int giaMoiDV, String loai, String dV,
+	public ChiPhiDTO(Long id, String tenNL, Timestamp ngayNhap, int soLuong, int giaMoidV, String loai, String dV,
 			String nhaCungCap, String ghiChu, Long nVTao) {
 		super();
-		this.iD = iD;
+		this.id = id;
 		this.tenNL = tenNL;
 		this.ngayNhap = ngayNhap;
 		this.soLuong = soLuong;
-		this.giaMoiDV = giaMoiDV;
+		this.giaMoidV = giaMoidV;
 		this.loai = loai;
 		this.dV = dV;
 		this.nhaCungCap = nhaCungCap;
@@ -31,12 +31,12 @@ public class ChiPhiDTO {
 
 	public ChiPhiDTO() {}
 
-	public Long getiD() {
-		return iD;
+	public Long getid() {
+		return id;
 	}
 
-	public void setiD(Long iD) {
-		this.iD = iD;
+	public void setid(Long id) {
+		this.id = id;
 	}
 
 	public String getTenNL() {
@@ -63,12 +63,12 @@ public class ChiPhiDTO {
 		this.soLuong = soLuong;
 	}
 
-	public int getGiaMoiDV() {
-		return giaMoiDV;
+	public int getGiaMoidV() {
+		return giaMoidV;
 	}
 
-	public void setGiaMoiDV(int giaMoiDV) {
-		this.giaMoiDV = giaMoiDV;
+	public void setGiaMoidV(int giaMoidV) {
+		this.giaMoidV = giaMoidV;
 	}
 
 	public String getLoai() {

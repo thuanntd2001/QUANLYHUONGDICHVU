@@ -58,8 +58,7 @@ public class NhanVienEntity {
 	@OneToMany(mappedBy="hdnv", fetch = FetchType.LAZY)
 	private Collection<HoaDonEntity> hoadon;
 	
-	@OneToMany(mappedBy="dbnv", fetch = FetchType.LAZY)
-	private Collection<DatBanEntity> datBan;
+
 	
 	@OneToMany(mappedBy="cpnv", fetch = FetchType.LAZY)
 	private Collection<ChiPhiEntity> chiPhi;
@@ -158,13 +157,7 @@ public class NhanVienEntity {
 		this.hoadon = hoadon;
 	}
 
-	public Collection<DatBanEntity> getDatBan() {
-		return datBan;
-	}
 
-	public void setDatBan(Collection<DatBanEntity> datBan) {
-		this.datBan = datBan;
-	}
 
 	public Collection<ChiPhiEntity> getChiPhi() {
 		return chiPhi;
@@ -183,8 +176,7 @@ public class NhanVienEntity {
 	}
 
 	public NhanVienEntity(Long maNV, String hoTen, Date ngaySinh, Boolean gioiTinh, Integer luong, String sdt,
-			String cmnd, String diaChi, Date ngayVaoLam, Boolean daNghi, Collection<HoaDonEntity> hoadon,
-			Collection<DatBanEntity> datBan, Collection<ChiPhiEntity> chiPhi, Collection<UserTBEntity> userTB) {
+			String cmnd, String diaChi, Date ngayVaoLam, Boolean daNghi, Collection<HoaDonEntity> hoadon, Collection<ChiPhiEntity> chiPhi, Collection<UserTBEntity> userTB) {
 		super();
 		this.maNV = maNV;
 		this.hoTen = hoTen;
@@ -197,7 +189,7 @@ public class NhanVienEntity {
 		this.ngayVaoLam = ngayVaoLam;
 		this.daNghi = daNghi;
 		this.hoadon = hoadon;
-		this.datBan = datBan;
+
 		this.chiPhi = chiPhi;
 		this.userTB = userTB;
 	}

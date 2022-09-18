@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import springboot.dto.BanDTO;
+
 @Entity
 @Table(name="BAN")
 public class BanEntity {
@@ -31,20 +33,7 @@ public class BanEntity {
 	private Collection<HoaDonEntity> hoaDon;
 	
 
-	@OneToMany(mappedBy="ban", fetch = FetchType.LAZY)
-	private Collection<DatBanEntity> datBan;
 
-	
-
-	
-
-	public Collection<DatBanEntity> getDatBan() {
-		return datBan;
-	}
-
-	public void setDatBan(Collection<DatBanEntity> datBan) {
-		this.datBan = datBan;
-	}
 
 	@Column(name = "TINHTRANG")
 	private int tinhTrang;
@@ -91,14 +80,13 @@ public class BanEntity {
 
 
 
-	public BanEntity(Long id, Integer soGhe, LoaiBanEntity loaiBan, Collection<HoaDonEntity> hoaDon,
-			Collection<DatBanEntity> datBan, int tinhTrang) {
+	public BanEntity(Long id, Integer soGhe, LoaiBanEntity loaiBan, Collection<HoaDonEntity> hoaDon, int tinhTrang) {
 		super();
 		this.id = id;
 		this.soGhe = soGhe;
 		this.loaiBan = loaiBan;
 		this.hoaDon = hoaDon;
-		this.datBan = datBan;
+
 		this.tinhTrang = tinhTrang;
 	}
 

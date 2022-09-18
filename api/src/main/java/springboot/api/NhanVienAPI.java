@@ -26,7 +26,7 @@ public class NhanVienAPI {
 		 List<NhanVienEntity> list=repo.findAll();
 		 for (NhanVienEntity item:list)
 		 {
-			 item.setDatBan(null);
+			
 			 item.setChiPhi(null);
 			 item.setHoadon(null);
 			 item.setUserTB(null);

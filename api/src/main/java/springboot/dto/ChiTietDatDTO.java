@@ -1,19 +1,19 @@
 package springboot.dto;
 
 public class ChiTietDatDTO {
-	private Long iD;
+	private Long id;
 	private Long maDat;
-	public ChiTietDatDTO(Long iD, Long maDat) {
+	public ChiTietDatDTO(Long id, Long maDat) {
 		super();
-		this.iD = iD;
+		this.id = id;
 		this.maDat = maDat;
 	}
 	public ChiTietDatDTO() {}
-	public Long getiD() {
-		return iD;
+	public Long getid() {
+		return id;
 	}
-	public void setiD(Long iD) {
-		this.iD = iD;
+	public void setid(Long id) {
+		this.id = id;
 	}
 	public Long getMaDat() {
 		return maDat;

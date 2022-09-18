@@ -24,7 +24,7 @@ public class BanAPI {
 		 List<BanEntity> list=banrepo.findAll();
 		 for (BanEntity item:list)
 		 {
-			 item.setDatBan(null);
+		
 			 item.setHoaDon(null);
 			 item.setLoaiBan(null);
 		 }
