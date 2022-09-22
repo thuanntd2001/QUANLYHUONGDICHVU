@@ -1,0 +1,41 @@
+return : 
+00 suscess
+01 bad request
+02 server error
+
+
+
+1/create nhanvien:
+url:localhost:8081/nhanvien 
+method: post
+
+ex json:
+{
+   
+    "hoTen": "Bad boy",
+    "ngaySinh": "1999-02-01",
+    "gioiTinh": 1,
+    "luong": 9000000,
+    "cmnd":"12345678910",
+    "ngayVaoLam":"2022-02-01",
+    "sdt":"0909232323",
+    "diaChi":"123 nguyen tu q2"
+}
+
+
+1/update nhanvien:
+url:localhost:8081/nhanvien 
+method: put
+
+ex json:
+{
+    "maNV": 999,
+    "hoTen": "Bad boy",
+    "ngaySinh": "1999-02-01",
+    "gioiTinh": 1,
+    "luong": 9000000,
+    "cmnd":"12345678910",
+    "ngayVaoLam":"2022-02-01",
+    "sdt":"0909232323",
+    "diaChi":"123 nguyen tu q2"
+}
