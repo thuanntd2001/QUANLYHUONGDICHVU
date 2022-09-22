@@ -12,7 +12,7 @@ return :
 url:localhost:8081/nhanvien 
 method: get
 
-return a list json format Nhanvien
+return a list json format Nhanvien have DaNghi=0
 
 2/create nhanvien:
 url:localhost:8081/nhanvien 
@@ -56,7 +56,7 @@ url:localhost:8081/nhanvien
 method: delete
 ex json:
 {
-    "ids"=[1,3,5]
+    "maNV": 999
 }
 change Danghi  rows in nhanvien table have id in ids to 1
 
