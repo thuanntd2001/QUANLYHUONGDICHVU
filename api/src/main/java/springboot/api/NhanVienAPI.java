@@ -2,6 +2,7 @@ package springboot.api;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,9 +41,7 @@ public class NhanVienAPI {
 
 	@PostMapping(value="/nhanvien")
 	public String createNV(@RequestBody NhanVienDTO model) {
-//		if (repo.findById(model.getMaNV()) == null) {
-//			NhanVienEntity esave = null;
-//			UserModel user = (UserModel) session.getAttribute("USERMODEL");
+
 		NhanVienEntity save= new NhanVienEntity();
 		NhanVienEntity check = null;
 			try {
@@ -75,9 +74,43 @@ public class NhanVienAPI {
 
 	
 	@PutMapping(value="/nhanvien")
-	public UserDTO updateNV(@RequestBody UserDTO model) {
+	public String updateNV(@RequestBody NhanVienDTO model) {
 
-		return model;
+		Optional<NhanVienEntity> nvoption = repo.findById(model.getMaNV());
+		if (nvoption.isEmpty()) {
+			
+			System.out.print("ko tồn tại nv");
+			return "404";
+		}
+
+		else {
+			System.out.print("tồn tại nv");
+			NhanVienEntity save = nvoption.get();
+			NhanVienEntity check=null;
+			try {
+				
+				save.setCmnd(model.getCmnd());
+				save.setDaNghi(model.getDaNghi());
+				save.setDiaChi(model.getDiaChi());
+				save.setGioiTinh(model.getGioiTinh());
+				save.setHoTen(model.getHoTen());
+				save.setNgaySinh(model.getNgaySinh());
+				save.setLuong(model.getLuong());
+				save.setNgayVaoLam(model.getNgayVaoLam());
+				save.setSdt(model.getSdt());
+				check=repo.save(save);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "01";
+			}
+
+			
+			if (check == null) {
+				return "02";
+			}
+			return "00";
+		}
+		
 
 	}
 	
