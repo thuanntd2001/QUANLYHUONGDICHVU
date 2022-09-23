@@ -3,21 +3,21 @@ package springboot.dto;
 import java.sql.Timestamp;
 
 public class HoaDonDTO {
-	private Long iD;
+	private Long id;
 	private Timestamp ngayThucHien;
 	private Long nVThuchien;
-	public HoaDonDTO(Long iD, Timestamp ngayThucHien, Long nVThuchien) {
+	public HoaDonDTO(Long id, Timestamp ngayThucHien, Long nVThuchien) {
 		super();
-		this.iD = iD;
+		this.id = id;
 		this.ngayThucHien = ngayThucHien;
 		this.nVThuchien = nVThuchien;
 	}
 	public HoaDonDTO() {}
-	public Long getiD() {
-		return iD;
+	public Long getid() {
+		return id;
 	}
-	public void setiD(Long iD) {
-		this.iD = iD;
+	public void setid(Long id) {
+		this.id = id;
 	}
 	public Timestamp getNgayThucHien() {
 		return ngayThucHien;

@@ -6,15 +6,15 @@ public class NhanVienDTO {
 	private Long maNV;
 	private String hoTen;
 	private Date ngaySinh;
-	private String gioiTinh;
+	private boolean gioiTinh;
 	private int luong;
-	private String SDT;
-	private String CMND;
+	private String sdt;
+	private String cmnd;
 	private String diaChi;
 	private Date ngayVaoLam;
 	private boolean daNghi;
 	
-	public NhanVienDTO(Long maNV, String hoTen, Date ngaySinh, String gioiTinh, int luong, String sDT, String cMND,
+	public NhanVienDTO(Long maNV, String hoTen, Date ngaySinh, boolean gioiTinh, int luong, String sdt, String cmnd,
 			String diaChi, Date ngayVaoLam, boolean daNghi) {
 		super();
 		this.maNV = maNV;
@@ -22,8 +22,8 @@ public class NhanVienDTO {
 		this.ngaySinh = ngaySinh;
 		this.gioiTinh = gioiTinh;
 		this.luong = luong;
-		this.SDT = sDT;
-		this.CMND = cMND;
+		this.sdt = sdt;
+		this.cmnd = cmnd;
 		this.diaChi = diaChi;
 		this.ngayVaoLam = ngayVaoLam;
 		this.daNghi = daNghi;
@@ -47,10 +47,10 @@ public class NhanVienDTO {
 	public void setNgaySinh(Date ngaySinh) {
 		this.ngaySinh = ngaySinh;
 	}
-	public String getGioiTinh() {
+	public boolean getGioiTinh() {
 		return gioiTinh;
 	}
-	public void setGioiTinh(String gioiTinh) {
+	public void setGioiTinh(boolean gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 	public int getLuong() {
@@ -59,17 +59,17 @@ public class NhanVienDTO {
 	public void setLuong(int luong) {
 		this.luong = luong;
 	}
-	public String getSDT() {
-		return SDT;
+	public String getSdt() {
+		return sdt;
 	}
-	public void setSDT(String sDT) {
-		SDT = sDT;
+	public void setSdt(String sdt) {
+		this.sdt = sdt;
 	}
-	public String getCMND() {
-		return CMND;
+	public String getCmnd() {
+		return cmnd;
 	}
-	public void setCMND(String cMND) {
-		CMND = cMND;
+	public void setCmnd(String cmnd) {
+		this.cmnd = cmnd;
 	}
 	public String getDiaChi() {
 		return diaChi;

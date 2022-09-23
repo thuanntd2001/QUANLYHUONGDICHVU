@@ -1,31 +1,31 @@
 package springboot.dto;
 
 public class ThucDonDTO {
-	private Long iD1;
-	private String iD;
+	private Long id1;
+	private String id;
 	private String ten;
 	private String loai;
 	private int gia;
-	public ThucDonDTO(Long iD1, String iD, String ten, String loai, int gia) {
+	public ThucDonDTO(Long id1, String id, String ten, String loai, int gia) {
 		super();
-		this.iD1 = iD1;
-		this.iD = iD;
+		this.id1 = id1;
+		this.id = id;
 		this.ten = ten;
 		this.loai = loai;
 		this.gia = gia;
 	}
 	public ThucDonDTO() {}
-	public Long getiD1() {
-		return iD1;
+	public Long getid1() {
+		return id1;
 	}
-	public void setiD1(Long iD1) {
-		this.iD1 = iD1;
+	public void setid1(Long id1) {
+		this.id1 = id1;
 	}
-	public String getiD() {
-		return iD;
+	public String getid() {
+		return id;
 	}
-	public void setiD(String iD) {
-		this.iD = iD;
+	public void setid(String id) {
+		this.id = id;
 	}
 	public String getTen() {
 		return ten;

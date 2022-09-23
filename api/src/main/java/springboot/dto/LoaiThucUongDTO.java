@@ -1,29 +1,29 @@
 package springboot.dto;
 
 public class LoaiThucUongDTO {
-	private Long iD1;
-	private String iD;
+	private Long id1;
+	private String id;
 	private String tenLoai;
 	private String donVi;
-	public LoaiThucUongDTO(Long iD1, String iD, String tenLoai, String donVi) {
+	public LoaiThucUongDTO(Long id1, String id, String tenLoai, String donVi) {
 		super();
-		this.iD1 = iD1;
-		this.iD = iD;
+		this.id1 = id1;
+		this.id = id;
 		this.tenLoai = tenLoai;
 		this.donVi = donVi;
 	}
 	public LoaiThucUongDTO() {}
-	public Long getiD1() {
-		return iD1;
+	public Long getid1() {
+		return id1;
 	}
-	public void setiD1(Long iD1) {
-		this.iD1 = iD1;
+	public void setid1(Long id1) {
+		this.id1 = id1;
 	}
-	public String getiD() {
-		return iD;
+	public String getid() {
+		return id;
 	}
-	public void setiD(String iD) {
-		this.iD = iD;
+	public void setid(String id) {
+		this.id = id;
 	}
 	public String getTenLoai() {
 		return tenLoai;

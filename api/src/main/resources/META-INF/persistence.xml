@@ -10,7 +10,6 @@
 		<class>springboot.entity.ChiTietHDEntity</class>
 		<class>springboot.entity.ChucVuEntity</class>
 		<class>springboot.entity.HoaDonEntity</class>
-		<class>springboot.entity.DatBanEntity</class>
 		<class>springboot.entity.LoaiBanEntity</class>
 		<class>springboot.entity.ThucDonEntity</class>
 		<class>springboot.entity.UserTBEntity</class>

@@ -1,6 +1,5 @@
 package springboot.entity;
 
-
 import java.util.Collection;
 import java.util.Date;
 
@@ -8,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -17,58 +17,52 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="NHANVIEN")
+@Table(name = "NHANVIEN")
 public class NhanVienEntity {
 	@Id
-	@GeneratedValue
-	@Column(name="MANV")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "MANV")
 	private Long maNV;
-	
-	@Column(name="HOTEN")
-	private String hoTen;
-	
-	@Column(name="NGAYSINH")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="dd-MMM-yyyy")
-	private Date ngaySinh;
-	
-	@Column(name="GIOITINH")
-	private Boolean gioiTinh;
-	
-	@Column(name="LUONG")
-	private Integer luong;
-	
-	@Column(name="SDT")
-	private String sdt;
-	
-	@Column(name="CMND")
-	private String cmnd;
-	
-	@Column(name="DIACHI")
-	private String diaChi;
-	
-	@Column(name="NGAYVAOLAM")
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="dd-MMM-yyyy")
-	private Date ngayVaoLam;
-	
-	@Column(name="DANGHI")
-	private Boolean daNghi;
-	
-	@OneToMany(mappedBy="hdnv", fetch = FetchType.LAZY)
-	private Collection<HoaDonEntity> hoadon;
-	
-	@OneToMany(mappedBy="dbnv", fetch = FetchType.LAZY)
-	private Collection<DatBanEntity> datBan;
-	
-	@OneToMany(mappedBy="cpnv", fetch = FetchType.LAZY)
-	private Collection<ChiPhiEntity> chiPhi;
-	
-	@OneToMany(mappedBy="usernv", fetch = FetchType.LAZY)
-	private Collection<UserTBEntity> userTB;
-	
-	
 
+	@Column(name = "HOTEN")
+	private String hoTen;
+
+	@Column(name = "NGAYSINH")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd-MMM-yyyy")
+	private Date ngaySinh;
+
+	@Column(name = "GIOITINH")
+	private Boolean gioiTinh;
+
+	@Column(name = "LUONG")
+	private Integer luong;
+
+	@Column(name = "SDT")
+	private String sdt;
+
+	@Column(name = "CMND")
+	private String cmnd;
+
+	@Column(name = "DIACHI")
+	private String diaChi;
+
+	@Column(name = "NGAYVAOLAM")
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd-MMM-yyyy")
+	private Date ngayVaoLam;
+
+	@Column(name = "DANGHI")
+	private Boolean daNghi;
+
+	@OneToMany(mappedBy = "hdnv", fetch = FetchType.LAZY)
+	private Collection<HoaDonEntity> hoadon;
+
+	@OneToMany(mappedBy = "cpnv", fetch = FetchType.LAZY)
+	private Collection<ChiPhiEntity> chiPhi;
+
+	@OneToMany(mappedBy = "usernv", fetch = FetchType.LAZY)
+	private Collection<UserTBEntity> userTB;
 
 	public Long getMaNV() {
 		return maNV;
@@ -158,14 +152,6 @@ public class NhanVienEntity {
 		this.hoadon = hoadon;
 	}
 
-	public Collection<DatBanEntity> getDatBan() {
-		return datBan;
-	}
-
-	public void setDatBan(Collection<DatBanEntity> datBan) {
-		this.datBan = datBan;
-	}
-
 	public Collection<ChiPhiEntity> getChiPhi() {
 		return chiPhi;
 	}
@@ -184,7 +170,7 @@ public class NhanVienEntity {
 
 	public NhanVienEntity(Long maNV, String hoTen, Date ngaySinh, Boolean gioiTinh, Integer luong, String sdt,
 			String cmnd, String diaChi, Date ngayVaoLam, Boolean daNghi, Collection<HoaDonEntity> hoadon,
-			Collection<DatBanEntity> datBan, Collection<ChiPhiEntity> chiPhi, Collection<UserTBEntity> userTB) {
+			Collection<ChiPhiEntity> chiPhi, Collection<UserTBEntity> userTB) {
 		super();
 		this.maNV = maNV;
 		this.hoTen = hoTen;
@@ -197,11 +183,11 @@ public class NhanVienEntity {
 		this.ngayVaoLam = ngayVaoLam;
 		this.daNghi = daNghi;
 		this.hoadon = hoadon;
-		this.datBan = datBan;
+
 		this.chiPhi = chiPhi;
 		this.userTB = userTB;
 	}
-	
+
 	public NhanVienEntity() {
 		super();
 	}
