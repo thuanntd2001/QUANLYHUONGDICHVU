@@ -58,7 +58,7 @@ public class NhanVienEntity {
 	@OneToMany(mappedBy = "hdnv", fetch = FetchType.LAZY)
 	private Collection<HoaDonEntity> hoadon;
 
-	@OneToMany(mappedBy = "cpnv", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "nvTao", fetch = FetchType.LAZY)
 	private Collection<ChiPhiEntity> chiPhi;
 
 	@OneToMany(mappedBy = "usernv", fetch = FetchType.LAZY)
