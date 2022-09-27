@@ -4,14 +4,18 @@ public class BanDTO {
 	private int soGhe;
 	private Long id;
 	private Long loai;
-	public BanDTO(int soGhe, Long iD, Long loai) {
-		
-		this.soGhe = soGhe;
-		this.id = iD;
-		this.setLoai(loai);
-	}
+	private int tinhTrang;
+
 	public BanDTO() {
+		super();
 		// TODO Auto-generated constructor stub
+	}
+	public BanDTO(int soGhe, Long id, Long loai, int tinhTrang) {
+		super();
+		this.soGhe = soGhe;
+		this.id = id;
+		this.loai = loai;
+		this.tinhTrang = tinhTrang;
 	}
 	public Integer getSoGhe() {
 		return soGhe;
@@ -30,6 +34,12 @@ public class BanDTO {
 	}
 	public void setLoai(Long loaiD) {
 		this.loai = loaiD;
+	}
+	public int getTinhTrang() {
+		return tinhTrang;
+	}
+	public void setTinhTrang(int tinhTrang) {
+		this.tinhTrang = tinhTrang;
 	}
 
 	

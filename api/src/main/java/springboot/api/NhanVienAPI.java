@@ -30,6 +30,7 @@ public class NhanVienAPI {
 			item.setHoadon(null);
 			item.setUserTB(null);
 		}
+		
 		System.out.print(list.size());
 		return list;
 
