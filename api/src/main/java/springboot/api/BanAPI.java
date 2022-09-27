@@ -46,11 +46,11 @@ public class BanAPI {
 			save.setLoaiBan(loaibanrepo.findById(model.getLoai()).get());
 			save.setSoGhe(model.getSoGhe());
 			save.setTinhTrang(model.getTinhTrang());
-
-			check = repo.save(save);
+		
+			check = repo.saveAndFlush(save);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.print(model.getiD());
+			
 			
 			return "01";
 		}
