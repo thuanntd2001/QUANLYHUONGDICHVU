@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -102,7 +103,7 @@ public class NhanVienAPI {
 
 	}
 
-	@DeleteMapping(value = "/nhanvien")
+	@PatchMapping(value = "/nhanvien")
 	public String deleteNV(@RequestBody NhanVienDTO ids) {
 		Optional<NhanVienEntity> nvoption = repo.findById(ids.getMaNV());
 		if (nvoption.isEmpty()) {
