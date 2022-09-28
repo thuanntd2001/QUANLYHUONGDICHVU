@@ -10,44 +10,44 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.dto.ChucVuDTO;
-import springboot.entity.ChucVuEntity;
-import springboot.repository.ChucVuRepository;
+import springboot.dto.LoaiBanDTO;
+import springboot.entity.LoaiBanEntity;
+import springboot.repository.LoaiBanRepository;
 
 @RestController
 public class LoaiBanAPI {
 	@Autowired
-	ChucVuRepository repo;
+	LoaiBanRepository repo;
 
 
-	@GetMapping("/chucvu")
-	public List<ChucVuEntity> getChucVu() {
+	@GetMapping("/loaiban")
+	public List<LoaiBanEntity> getLoaiBan() {
 
-		 List<ChucVuEntity> list= repo.findAll();
-		 for (ChucVuEntity item:list)
+		 List<LoaiBanEntity> list= repo.findAll();
+		 for (LoaiBanEntity item:list)
 		 {
-			item.setUserTB(null);
+			item.setBan(null);
 		 }
 		 System.out.print(list.size());
 		return list;
 
 	}
 
-	@PostMapping(value="/chucvu")
-	public String create(@RequestBody ChucVuDTO model) {
+	@PostMapping(value="/loaiban")
+	public String create(@RequestBody LoaiBanDTO model) {
 
 		return "00";
 
 	}
 	
-	@PutMapping(value="/chucvu")
-	public String update(@RequestBody ChucVuDTO model) {
+	@PutMapping(value="/loaiban")
+	public String update(@RequestBody LoaiBanDTO model) {
 
 		return "00";
 
 	}
 	
-	@DeleteMapping(value="/chucvu")
+	@DeleteMapping(value="/loaiban")
 	public void delete(@RequestBody Long[] ids) {
 
 		

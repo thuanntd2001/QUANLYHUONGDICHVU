@@ -10,44 +10,44 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.dto.ChucVuDTO;
-import springboot.entity.ChucVuEntity;
-import springboot.repository.ChucVuRepository;
+import springboot.dto.LoaiThucUongDTO;
+import springboot.entity.LoaiThucUongEntity;
+import springboot.repository.LoaiThucUongRepository;
 
 @RestController
 public class LoaiThucUongAPI {
 	@Autowired
-	ChucVuRepository repo;
+	LoaiThucUongRepository repo;
 
 
-	@GetMapping("/chucvu")
-	public List<ChucVuEntity> getChucVu() {
+	@GetMapping("/loaithucuong")
+	public List<LoaiThucUongEntity> getLoaiThucUong() {
 
-		 List<ChucVuEntity> list= repo.findAll();
-		 for (ChucVuEntity item:list)
+		 List<LoaiThucUongEntity> list= repo.findAll();
+		 for (LoaiThucUongEntity item:list)
 		 {
-			item.setUserTB(null);
+			item.setThucDon(null);
 		 }
 		 System.out.print(list.size());
 		return list;
 
 	}
 
-	@PostMapping(value="/chucvu")
-	public String create(@RequestBody ChucVuDTO model) {
+	@PostMapping(value="/loaithucuong")
+	public String create(@RequestBody LoaiThucUongDTO model) {
 
 		return "00";
 
 	}
 	
-	@PutMapping(value="/chucvu")
-	public String update(@RequestBody ChucVuDTO model) {
+	@PutMapping(value="/loaithucuong")
+	public String update(@RequestBody LoaiThucUongDTO model) {
 
 		return "00";
 
 	}
 	
-	@DeleteMapping(value="/chucvu")
+	@DeleteMapping(value="/loaithucuong")
 	public void delete(@RequestBody Long[] ids) {
 
 		
