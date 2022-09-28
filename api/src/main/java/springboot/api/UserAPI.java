@@ -28,7 +28,7 @@ public class UserAPI {
 	@GetMapping("/user")
 	public List<UserTBEntity> getUser() {
 
-		List<UserTBEntity> list = repo.findAll();
+		List<UserTBEntity> list = repo.findAllActive();
 		for (UserTBEntity item : list) {
 			item.setUsernv(null);
 			item.setChucVu(null);

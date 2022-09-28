@@ -22,7 +22,7 @@ public class NhanVienAPI {
 
 	@GetMapping("/nhanvien")
 	public List<NhanVienEntity> getNV() {
-		List<NhanVienEntity> list = repo.findAll();
+		List<NhanVienEntity> list = repo.findAllActive();
 		for (NhanVienEntity item : list) {
 
 			item.setChiPhi(null);

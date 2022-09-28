@@ -25,7 +25,7 @@ public class BanAPI {
 
 	@GetMapping("/ban")
 	public List<BanEntity> getBan() {
-		List<BanEntity> list = repo.findAll();
+		List<BanEntity> list = repo.findAllActive();
 		for (BanEntity item : list) {
 
 			item.setHoaDon(null);
