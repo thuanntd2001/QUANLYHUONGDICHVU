@@ -1,6 +1,7 @@
 package springboot.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,38 +20,74 @@ public class LoaiThucUongAPI {
 	@Autowired
 	LoaiThucUongRepository repo;
 
-
 	@GetMapping("/loaithucuong")
 	public List<LoaiThucUongEntity> getLoaiThucUong() {
 
-		 List<LoaiThucUongEntity> list= repo.findAll();
-		 for (LoaiThucUongEntity item:list)
-		 {
+		List<LoaiThucUongEntity> list = repo.findAll();
+		for (LoaiThucUongEntity item : list) {
 			item.setThucDon(null);
-		 }
-		 System.out.print(list.size());
+		}
+		System.out.print(list.size());
 		return list;
 
 	}
 
-	@PostMapping(value="/loaithucuong")
+	@PostMapping(value = "/loaithucuong")
 	public String create(@RequestBody LoaiThucUongDTO model) {
 
-		return "00";
+		LoaiThucUongEntity save = new LoaiThucUongEntity();
+		LoaiThucUongEntity check = null;
+		try {
+			save.setDonVi(model.getDonVi());
+			save.setTenLoai(model.getTenLoai());
 
+			check = repo.save(save);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return "01";
+		}
+		if (check == null) {
+
+			return "02";
+		}
+		return "00";
 	}
-	
-	@PutMapping(value="/loaithucuong")
+
+	@PutMapping(value = "/loaithucuong")
 	public String update(@RequestBody LoaiThucUongDTO model) {
 
-		return "00";
+		Optional<LoaiThucUongEntity> option = repo.findById(model.getid());
+		if (option.isEmpty()) {
+
+			System.out.print("ko tồn tại");
+			return "404";
+		}
+
+		else {
+			System.out.print("tồn tại");
+			LoaiThucUongEntity save = option.get();
+			LoaiThucUongEntity check = null;
+			try {
+				save.setDonVi(model.getDonVi());
+
+				save.setTenLoai(model.getTenLoai());
+				check = repo.save(save);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "01";
+			}
+
+			if (check == null) {
+				return "02";
+			}
+			return "00";
+		}
 
 	}
-	
-	@DeleteMapping(value="/loaithucuong")
-	public void delete(@RequestBody Long[] ids) {
 
-		
+	@DeleteMapping(value = "/loaithucuong")
+	public void delete(@RequestBody Long[] ids) {
 
 	}
 }

@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.LoaiBanDTO;
-import springboot.dto.LoaiBanDTO;
-import springboot.entity.LoaiBanEntity;
 import springboot.entity.LoaiBanEntity;
 import springboot.repository.LoaiBanRepository;
 
