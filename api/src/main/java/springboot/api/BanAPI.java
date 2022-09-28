@@ -50,7 +50,7 @@ public class BanAPI {
 			check = repo.saveAndFlush(save);
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+			System.out.print(model.getLoai());
 			
 			return "01";
 		}
