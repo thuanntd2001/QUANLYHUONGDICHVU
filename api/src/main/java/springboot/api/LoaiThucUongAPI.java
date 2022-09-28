@@ -15,7 +15,7 @@ import springboot.entity.ChucVuEntity;
 import springboot.repository.ChucVuRepository;
 
 @RestController
-public class ChucVuAPI {
+public class LoaiThucUongAPI {
 	@Autowired
 	ChucVuRepository repo;
 

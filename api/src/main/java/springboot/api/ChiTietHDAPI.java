@@ -15,42 +15,6 @@ import springboot.entity.ChucVuEntity;
 import springboot.repository.ChucVuRepository;
 
 @RestController
-public class ChucVuAPI {
-	@Autowired
-	ChucVuRepository repo;
-
-
-	@GetMapping("/chucvu")
-	public List<ChucVuEntity> getChucVu() {
-
-		 List<ChucVuEntity> list= repo.findAll();
-		 for (ChucVuEntity item:list)
-		 {
-			item.setUserTB(null);
-		 }
-		 System.out.print(list.size());
-		return list;
-
-	}
-
-	@PostMapping(value="/chucvu")
-	public String create(@RequestBody ChucVuDTO model) {
-
-		return "00";
-
-	}
+public class ChiTietHDAPI {
 	
-	@PutMapping(value="/chucvu")
-	public String update(@RequestBody ChucVuDTO model) {
-
-		return "00";
-
-	}
-	
-	@DeleteMapping(value="/chucvu")
-	public void delete(@RequestBody Long[] ids) {
-
-		
-
-	}
 }
