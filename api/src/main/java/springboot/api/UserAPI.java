@@ -53,7 +53,7 @@ public class UserAPI {
 			save.setStatus(1);
 			save.setIcon(null);
 
-			check = repo.saveAndFlush(save);
+			check = repo.save(save);
 		} catch (Exception e) {
 			e.printStackTrace();
 

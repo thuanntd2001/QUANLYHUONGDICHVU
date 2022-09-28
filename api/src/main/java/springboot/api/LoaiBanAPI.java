@@ -1,6 +1,7 @@
 package springboot.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.LoaiBanDTO;
+import springboot.dto.LoaiBanDTO;
+import springboot.entity.LoaiBanEntity;
 import springboot.entity.LoaiBanEntity;
 import springboot.repository.LoaiBanRepository;
 
@@ -36,14 +39,54 @@ public class LoaiBanAPI {
 	@PostMapping(value="/loaiban")
 	public String create(@RequestBody LoaiBanDTO model) {
 
-		return "00";
+		LoaiBanEntity save = new LoaiBanEntity();
+		LoaiBanEntity check = null;
+		try {
+			save.setGiaDat(model.getGiaDat());
+			save.setTenLoai(model.getTenLoai());
 
+			check = repo.save(save);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return "01";
+		}
+		if (check == null) {
+
+			return "02";
+		}
+		return "00";
 	}
 	
 	@PutMapping(value="/loaiban")
 	public String update(@RequestBody LoaiBanDTO model) {
 
-		return "00";
+		Optional<LoaiBanEntity> option = repo.findById(model.getid());
+		if (option.isEmpty()) {
+
+			System.out.print("ko tồn tại");
+			return "404";
+		}
+
+		else {
+			System.out.print("tồn tại");
+			LoaiBanEntity save = option.get();
+			LoaiBanEntity check = null;
+			try {
+
+				save.setGiaDat(model.getGiaDat());
+				save.setTenLoai(model.getTenLoai());
+				check = repo.save(save);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "01";
+			}
+
+			if (check == null) {
+				return "02";
+			}
+			return "00";
+		}
 
 	}
 	

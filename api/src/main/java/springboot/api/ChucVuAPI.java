@@ -1,6 +1,7 @@
 package springboot.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,38 +20,75 @@ public class ChucVuAPI {
 	@Autowired
 	ChucVuRepository repo;
 
-
 	@GetMapping("/chucvu")
 	public List<ChucVuEntity> getChucVu() {
 
-		 List<ChucVuEntity> list= repo.findAll();
-		 for (ChucVuEntity item:list)
-		 {
+		List<ChucVuEntity> list = repo.findAll();
+		for (ChucVuEntity item : list) {
 			item.setUserTB(null);
-		 }
-		 System.out.print(list.size());
+		}
+		System.out.print(list.size());
 		return list;
 
 	}
 
-	@PostMapping(value="/chucvu")
+	@PostMapping(value = "/chucvu")
+
 	public String create(@RequestBody ChucVuDTO model) {
 
-		return "00";
+		ChucVuEntity save = new ChucVuEntity();
+		ChucVuEntity check = null;
+		try {
+			save.setUserTB(null);
+			save.setTenChucVu(model.getTenChucVu());
 
+			check = repo.save(save);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return "01";
+		}
+		if (check == null) {
+
+			return "02";
+		}
+		return "00";
 	}
+
 	
-	@PutMapping(value="/chucvu")
+
+	@PutMapping(value = "/chucvu")
 	public String update(@RequestBody ChucVuDTO model) {
 
-		return "00";
+		Optional<ChucVuEntity> option = repo.findById(model.getId());
+		if (option.isEmpty()) {
+
+			System.out.print("ko tồn tại");
+			return "404";
+		}
+
+		else {
+			System.out.print("tồn tại");
+			ChucVuEntity save = option.get();
+			ChucVuEntity check = null;
+			try {
+				save.setTenChucVu(model.getTenChucVu());
+				check = repo.save(save);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "01";
+			}
+
+			if (check == null) {
+				return "02";
+			}
+			return "00";
+		}
 
 	}
-	
-	@DeleteMapping(value="/chucvu")
-	public void delete(@RequestBody Long[] ids) {
 
-		
+	@DeleteMapping(value = "/chucvu")
+	public void delete(@RequestBody Long[] ids) {
 
 	}
 }
