@@ -20,21 +20,19 @@ public class LoaiBanAPI {
 	@Autowired
 	LoaiBanRepository repo;
 
-
 	@GetMapping("/loaiban")
 	public List<LoaiBanEntity> getLoaiBan() {
 
-		 List<LoaiBanEntity> list= repo.findAll();
-		 for (LoaiBanEntity item:list)
-		 {
+		List<LoaiBanEntity> list = repo.findAll();
+		for (LoaiBanEntity item : list) {
 			item.setBan(null);
-		 }
-		 System.out.print(list.size());
+		}
+		System.out.print(list.size());
 		return list;
 
 	}
 
-	@PostMapping(value="/loaiban")
+	@PostMapping(value = "/loaiban")
 	public String create(@RequestBody LoaiBanDTO model) {
 
 		LoaiBanEntity save = new LoaiBanEntity();
@@ -55,7 +53,7 @@ public class LoaiBanAPI {
 		}
 		return "00";
 	}
-	
+
 	@PutMapping(value="/loaiban")
 	public String update(@RequestBody LoaiBanDTO model) {
 
@@ -87,11 +85,31 @@ public class LoaiBanAPI {
 		}
 
 	}
-	
+
 	@DeleteMapping(value="/loaiban")
-	public void delete(@RequestBody Long[] ids) {
+	public String delete(@RequestBody Long ids) {
 
+		Optional<LoaiBanEntity> option = repo.findById(ids);
+		if (option.isEmpty()) {
+
+			System.out.print("ko tồn tại");
+			return "404";
+		}
+		else {
+			System.out.print("tồn tại");
 		
+			try {
 
+				repo.deleteById(ids);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "02";
+			}
+
+			
+			return "00";
+		}
 	}
+
+	
 }

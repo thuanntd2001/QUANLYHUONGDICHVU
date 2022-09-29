@@ -87,7 +87,24 @@ public class LoaiThucUongAPI {
 	}
 
 	@DeleteMapping(value = "/loaithucuong")
-	public void delete(@RequestBody Long[] ids) {
+	public String delete(@RequestBody String ids) {
+		Optional<LoaiThucUongEntity> option = repo.findById(ids);
+		if (option.isEmpty()) {
 
+			System.out.print("ko tồn tại");
+			return "404";
+		} else {
+			System.out.print("tồn tại");
+
+			try {
+
+				repo.deleteById(ids);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "02";
+			}
+
+			return "00";
+		}
 	}
 }

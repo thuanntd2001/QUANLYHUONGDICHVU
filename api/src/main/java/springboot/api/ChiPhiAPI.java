@@ -22,6 +22,7 @@ public class ChiPhiAPI {
 	ChiPhiRepository repo;
 	@Autowired
 	NhanVienRepository nvrepo;
+
 	@GetMapping("/chiphi")
 	public List<ChiPhiEntity> getUser() {
 
@@ -50,8 +51,6 @@ public class ChiPhiAPI {
 			save.setNhaCungCap(model.getNhaCungCap());
 			save.setSoLuong(model.getSoLuong());
 			save.setTenChiPhi(model.getTenChiPhi());
-			
-			
 
 			check = repo.save(save);
 		} catch (Exception e) {
@@ -107,7 +106,24 @@ public class ChiPhiAPI {
 	}
 
 	@DeleteMapping(value = "/chiphi")
-	public void deleteUser(@RequestBody Long[] ids) {
+	public String delete(@RequestBody Long ids) {
+		Optional<ChiPhiEntity> option = repo.findById(ids);
+		if (option.isEmpty()) {
 
+			System.out.print("ko tồn tại");
+			return "404";
+		} else {
+			System.out.print("tồn tại");
+
+			try {
+
+				repo.deleteById(ids);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "02";
+			}
+
+			return "00";
+		}
 	}
 }

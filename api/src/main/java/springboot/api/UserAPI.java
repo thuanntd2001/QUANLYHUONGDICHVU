@@ -21,10 +21,11 @@ import springboot.repository.UserTBRepository;
 public class UserAPI {
 	@Autowired
 	UserTBRepository repo;
-	@Autowired 
+	@Autowired
 	NhanVienRepository nvrepo;
-	@Autowired 
+	@Autowired
 	ChucVuRepository cvrepo;
+
 	@GetMapping("/user")
 	public List<UserTBEntity> getUser() {
 
@@ -104,7 +105,25 @@ public class UserAPI {
 	}
 
 	@DeleteMapping(value = "/user")
-	public void deleteUser(@RequestBody Long[] ids) {
+	public String deleteUser(@RequestBody String ids) {
+		Optional<UserTBEntity> option = repo.findById(ids);
+		if (option.isEmpty()) {
 
+			System.out.print("ko tồn tại");
+			return "404";
+		} else {
+			System.out.print("tồn tại");
+			UserTBEntity save = option.get();
+
+			try {
+				save.setStatus(0);
+				repo.save(save);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "02";
+			}
+
+			return "00";
+		}
 	}
 }
