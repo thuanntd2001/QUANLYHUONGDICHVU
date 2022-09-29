@@ -13,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.HoaDonDTO;
-import springboot.dto.HoaDonDTO;
-import springboot.entity.HoaDonEntity;
-import springboot.entity.HoaDonEntity;
 import springboot.entity.HoaDonEntity;
 import springboot.repository.BanRepository;
 import springboot.repository.HoaDonRepository;
@@ -36,7 +33,7 @@ public class HoaDonAPI {
 		for (HoaDonEntity item : list) {
 			item.setBan(null);
 			item.setChiTietHD(null);
-			item.setHdnv(null);
+			item.setNvThucHien(null);
 		}
 		System.out.print(list.size());
 		return list;
@@ -49,8 +46,8 @@ public class HoaDonAPI {
 		HoaDonEntity save = new HoaDonEntity();
 		HoaDonEntity check = null;
 		try {
-			save.setBan(brepo.getOne(model.getId()));
-			save.setHdnv(nvrepo.getOne(model.getNvThuchien()));
+			save.setBan(brepo.getOne(model.getBan()));
+			save.setNvThucHien(nvrepo.getOne(model.getNvThucHien()));
 			save.setNgayThucHien(new Date());
 			save.setTinhTrang(1);
 		
@@ -83,8 +80,8 @@ public class HoaDonAPI {
 			HoaDonEntity save = option.get();
 			HoaDonEntity check = null;
 			try {
-				save.setBan(brepo.getOne(model.getId()));
-				save.setHdnv(nvrepo.getOne(model.getNvThuchien()));
+				save.setBan(brepo.getOne(model.getBan()));
+				save.setNvThucHien(nvrepo.getOne(model.getNvThucHien()));
 				save.setNgayThucHien(new Date());
 				save.setTinhTrang(1);
 			

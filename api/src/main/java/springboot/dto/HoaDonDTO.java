@@ -5,14 +5,19 @@ import java.sql.Timestamp;
 public class HoaDonDTO {
 	private Long id;
 	private Timestamp ngayThucHien;
-	private Long nvThuchien;
+	private Long nvThucHien;
+	private Long ban;
 
-	public HoaDonDTO(Long id, Timestamp ngayThucHien, Long nvThuchien) {
+
+
+	public HoaDonDTO(Long id, Timestamp ngayThucHien, Long nvThucHien, Long ban) {
 		super();
-		this.setId(id);
+		this.id = id;
 		this.ngayThucHien = ngayThucHien;
-		this.nvThuchien = nvThuchien;
+		this.nvThucHien = nvThucHien;
+		this.ban = ban;
 	}
+
 	public HoaDonDTO() {}
 
 	public Timestamp getNgayThucHien() {
@@ -21,17 +26,23 @@ public class HoaDonDTO {
 	public void setNgayThucHien(Timestamp ngayThucHien) {
 		this.ngayThucHien = ngayThucHien;
 	}
-	public Long getNvThuchien() {
-		return nvThuchien;
+	public Long getNvThucHien() {
+		return nvThucHien;
 	}
-	public void setNvThuchien(Long nvThuchien) {
-		this.nvThuchien = nvThuchien;
+	public void setNvThucHien(Long nvThuchien) {
+		this.nvThucHien = nvThuchien;
 	}
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public Long getBan() {
+		return ban;
+	}
+	public void setBan(Long ban) {
+		this.ban = ban;
 	}
 
 	

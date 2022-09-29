@@ -42,9 +42,10 @@ public class ThucDonAPI {
 		ThucDonEntity save = new ThucDonEntity();
 		ThucDonEntity check = null;
 		try {
+			save.setId(model.getid());
 			save.setTen(model.getTen());
 			save.setGia(model.getGia());
-			save.setLoaiThucUong(lturepo.getOne(model.getLoai()));
+			save.setLoaiThucUong(lturepo.getOne(model.getLoaiThucUong()));
 			check = repo.save(save);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,9 +74,11 @@ public class ThucDonAPI {
 			ThucDonEntity save = option.get();
 			ThucDonEntity check = null;
 			try {
+				save.setId(model.getid());
+
 				save.setTen(model.getTen());
 				save.setGia(model.getGia());
-				save.setLoaiThucUong(lturepo.getOne(model.getLoai()));
+				save.setLoaiThucUong(lturepo.getOne(model.getLoaiThucUong()));
 				check = repo.save(save);
 			} catch (Exception e) {
 				e.printStackTrace();

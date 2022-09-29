@@ -55,7 +55,7 @@ public class NhanVienEntity {
 	@Column(name = "DANGHI")
 	private Boolean daNghi;
 
-	@OneToMany(mappedBy = "hdnv", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "nvThucHien", fetch = FetchType.LAZY)
 	private Collection<HoaDonEntity> hoadon;
 
 	@OneToMany(mappedBy = "nvTao", fetch = FetchType.LAZY)

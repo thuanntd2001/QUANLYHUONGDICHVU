@@ -41,6 +41,7 @@ public class LoaiThucUongAPI {
 		try {
 			save.setDonVi(model.getDonVi());
 			save.setTenLoai(model.getTenLoai());
+			save.setId(model.getid());
 
 			check = repo.save(save);
 		} catch (Exception e) {
@@ -71,6 +72,7 @@ public class LoaiThucUongAPI {
 			LoaiThucUongEntity check = null;
 			try {
 				save.setDonVi(model.getDonVi());
+				save.setId(model.getid());
 
 				save.setTenLoai(model.getTenLoai());
 				check = repo.save(save);

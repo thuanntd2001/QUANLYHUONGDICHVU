@@ -4,14 +4,14 @@ public class ThucDonDTO {
 	private Long id1;
 	private String id;
 	private String ten;
-	private String loai;
+	private String loaiThucUong;
 	private int gia;
 	public ThucDonDTO(Long id1, String id, String ten, String loai, int gia) {
 		super();
 		this.id1 = id1;
 		this.id = id;
 		this.ten = ten;
-		this.loai = loai;
+		this.setLoaiThucUong(loai);
 		this.gia = gia;
 	}
 	public ThucDonDTO() {}
@@ -33,17 +33,18 @@ public class ThucDonDTO {
 	public void setTen(String ten) {
 		this.ten = ten;
 	}
-	public String getLoai() {
-		return loai;
-	}
-	public void setLoai(String loai) {
-		this.loai = loai;
-	}
+
 	public int getGia() {
 		return gia;
 	}
 	public void setGia(int gia) {
 		this.gia = gia;
+	}
+	public String getLoaiThucUong() {
+		return loaiThucUong;
+	}
+	public void setLoaiThucUong(String loaiThucUong) {
+		this.loaiThucUong = loaiThucUong;
 	}
 	
 }
