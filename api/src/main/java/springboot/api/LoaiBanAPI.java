@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.LoaiBanDTO;
 import springboot.entity.LoaiBanEntity;
+import springboot.input.ObjDelLong;
 import springboot.repository.LoaiBanRepository;
 
 @RestController
@@ -87,9 +88,9 @@ public class LoaiBanAPI {
 	}
 
 	@DeleteMapping(value="/loaiban")
-	public String delete(@RequestBody Long ids) {
+	public String delete(@RequestBody ObjDelLong ids) {
 
-		Optional<LoaiBanEntity> option = repo.findById(ids);
+		Optional<LoaiBanEntity> option = repo.findById(ids.getId());
 		if (option.isEmpty()) {
 
 			System.out.print("ko tồn tại");
@@ -100,7 +101,7 @@ public class LoaiBanAPI {
 		
 			try {
 
-				repo.deleteById(ids);
+				repo.deleteById(ids.getId());
 			} catch (Exception e) {
 				e.printStackTrace();
 				return "02";

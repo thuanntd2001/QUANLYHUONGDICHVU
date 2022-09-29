@@ -5,32 +5,35 @@ import java.sql.Timestamp;
 public class HoaDonDTO {
 	private Long id;
 	private Timestamp ngayThucHien;
-	private Long nVThuchien;
-	public HoaDonDTO(Long id, Timestamp ngayThucHien, Long nVThuchien) {
+	private Long nvThuchien;
+
+	public HoaDonDTO(Long id, Timestamp ngayThucHien, Long nvThuchien) {
 		super();
-		this.id = id;
+		this.setId(id);
 		this.ngayThucHien = ngayThucHien;
-		this.nVThuchien = nVThuchien;
+		this.nvThuchien = nvThuchien;
 	}
 	public HoaDonDTO() {}
-	public Long getid() {
-		return id;
-	}
-	public void setid(Long id) {
-		this.id = id;
-	}
+
 	public Timestamp getNgayThucHien() {
 		return ngayThucHien;
 	}
 	public void setNgayThucHien(Timestamp ngayThucHien) {
 		this.ngayThucHien = ngayThucHien;
 	}
-	public Long getnVThuchien() {
-		return nVThuchien;
+	public Long getNvThuchien() {
+		return nvThuchien;
 	}
-	public void setnVThuchien(Long nVThuchien) {
-		this.nVThuchien = nVThuchien;
+	public void setNvThuchien(Long nvThuchien) {
+		this.nvThuchien = nvThuchien;
 	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	
 	
 }

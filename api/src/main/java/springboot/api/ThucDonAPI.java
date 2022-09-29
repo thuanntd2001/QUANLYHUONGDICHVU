@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.ThucDonDTO;
 import springboot.entity.ThucDonEntity;
+import springboot.input.ObjDelString;
 import springboot.repository.LoaiThucUongRepository;
 import springboot.repository.ThucDonRepository;
 
@@ -90,9 +91,9 @@ public class ThucDonAPI {
 	}
 
 	@DeleteMapping(value = "/thucdon")
-	public String delete(@RequestBody String ids) {
+	public String delete(@RequestBody ObjDelString ids) {
 
-		Optional<ThucDonEntity> option = repo.findById(ids);
+		Optional<ThucDonEntity> option = repo.findById(ids.getId());
 		if (option.isEmpty()) {
 
 			System.out.print("ko tồn tại");
@@ -102,7 +103,7 @@ public class ThucDonAPI {
 
 			try {
 
-				repo.deleteById(ids);
+				repo.deleteById(ids.getId());
 			} catch (Exception e) {
 				e.printStackTrace();
 				return "02";

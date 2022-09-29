@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.LoaiThucUongDTO;
 import springboot.entity.LoaiThucUongEntity;
+import springboot.input.ObjDelString;
 import springboot.repository.LoaiThucUongRepository;
 
 @RestController
@@ -87,8 +88,8 @@ public class LoaiThucUongAPI {
 	}
 
 	@DeleteMapping(value = "/loaithucuong")
-	public String delete(@RequestBody String ids) {
-		Optional<LoaiThucUongEntity> option = repo.findById(ids);
+	public String delete(@RequestBody ObjDelString ids) {
+		Optional<LoaiThucUongEntity> option = repo.findById(ids.getId());
 		if (option.isEmpty()) {
 
 			System.out.print("ko tồn tại");
@@ -98,7 +99,7 @@ public class LoaiThucUongAPI {
 
 			try {
 
-				repo.deleteById(ids);
+				repo.deleteById(ids.getId());
 			} catch (Exception e) {
 				e.printStackTrace();
 				return "02";

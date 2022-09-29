@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.ChucVuDTO;
 import springboot.entity.ChucVuEntity;
+import springboot.input.ObjDelLong;
 import springboot.repository.ChucVuRepository;
 
 @RestController
@@ -89,8 +90,8 @@ public class ChucVuAPI {
 
 	@DeleteMapping(value = "/chucvu")
 
-	public String delete(@RequestBody Long ids) {
-		Optional<ChucVuEntity> option = repo.findById(ids);
+	public String delete(@RequestBody ObjDelLong ids) {
+		Optional<ChucVuEntity> option = repo.findById(ids.getId());
 		if (option.isEmpty()) {
 
 			System.out.print("ko tồn tại");
@@ -101,7 +102,7 @@ public class ChucVuAPI {
 		
 			try {
 
-				repo.deleteById(ids);
+				repo.deleteById(ids.getId());
 			} catch (Exception e) {
 				e.printStackTrace();
 				return "02";

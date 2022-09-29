@@ -1,5 +1,6 @@
 package springboot.api;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.ChiPhiDTO;
 import springboot.entity.ChiPhiEntity;
+import springboot.input.ObjDelLong;
 import springboot.repository.ChiPhiRepository;
 import springboot.repository.NhanVienRepository;
 
@@ -47,7 +49,7 @@ public class ChiPhiAPI {
 			save.setGhiChu(model.getGhiChu());
 			save.setGiaMoiDV(model.getGiaDonVi());
 			save.setLoai(model.getLoai());
-			save.setNgayNhap(model.getNgayNhap());
+			save.setNgayNhap(new Date());
 			save.setNhaCungCap(model.getNhaCungCap());
 			save.setSoLuong(model.getSoLuong());
 			save.setTenChiPhi(model.getTenChiPhi());
@@ -87,7 +89,7 @@ public class ChiPhiAPI {
 				save.setGhiChu(model.getGhiChu());
 				save.setGiaMoiDV(model.getGiaDonVi());
 				save.setLoai(model.getLoai());
-				save.setNgayNhap(model.getNgayNhap());
+				save.setNgayNhap(new Date());
 				save.setNhaCungCap(model.getNhaCungCap());
 				save.setSoLuong(model.getSoLuong());
 				save.setTenChiPhi(model.getTenChiPhi());
@@ -106,8 +108,8 @@ public class ChiPhiAPI {
 	}
 
 	@DeleteMapping(value = "/chiphi")
-	public String delete(@RequestBody Long ids) {
-		Optional<ChiPhiEntity> option = repo.findById(ids);
+	public String delete(@RequestBody ObjDelLong ids) {
+		Optional<ChiPhiEntity> option = repo.findById(ids.getId());
 		if (option.isEmpty()) {
 
 			System.out.print("ko tồn tại");
@@ -117,7 +119,7 @@ public class ChiPhiAPI {
 
 			try {
 
-				repo.deleteById(ids);
+				repo.deleteById(ids.getId());
 			} catch (Exception e) {
 				e.printStackTrace();
 				return "02";
