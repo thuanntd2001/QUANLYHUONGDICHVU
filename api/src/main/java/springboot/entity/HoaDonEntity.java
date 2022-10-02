@@ -1,14 +1,13 @@
 package springboot.entity;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,7 +22,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "HOADON")
 public class HoaDonEntity {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "ID")
 	private Long id;
 
@@ -42,8 +42,19 @@ public class HoaDonEntity {
 
 	@ManyToOne
 	@JoinColumn(name = "NVTHUCHIEN")
-	private NhanVienEntity hdnv;
+	private NhanVienEntity nvThucHien;
 	
+
+	public NhanVienEntity getNvThucHien() {
+		return nvThucHien;
+	}
+
+	public void setNvThucHien(NhanVienEntity nvThucHien) {
+		this.nvThucHien = nvThucHien;
+	}
+
+
+
 
 	@Column(name = "TINHTRANG")
 	private Integer tinhTrang;
@@ -88,22 +99,17 @@ public class HoaDonEntity {
 		this.chiTietHD = chiTietHD;
 	}
 
-	public NhanVienEntity getHdnv() {
-		return hdnv;
-	}
 
-	public void setHdnv(NhanVienEntity hdnv) {
-		this.hdnv = hdnv;
-	}
+
 
 	public HoaDonEntity(Long id, Date ngayThucHien, BanEntity ban, Collection<ChiTietHDEntity> chiTietHD,
-			NhanVienEntity hdnv, Integer tinhTrang) {
+			NhanVienEntity nvThucHien, Integer tinhTrang) {
 		super();
 		this.id = id;
 		this.ngayThucHien = ngayThucHien;
 		this.ban = ban;
 		this.chiTietHD = chiTietHD;
-		this.hdnv = hdnv;
+		this.nvThucHien = nvThucHien;
 		this.tinhTrang = tinhTrang;
 	}
 

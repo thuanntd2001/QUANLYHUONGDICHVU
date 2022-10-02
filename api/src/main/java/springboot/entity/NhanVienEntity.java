@@ -55,10 +55,10 @@ public class NhanVienEntity {
 	@Column(name = "DANGHI")
 	private Boolean daNghi;
 
-	@OneToMany(mappedBy = "hdnv", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "nvThucHien", fetch = FetchType.LAZY)
 	private Collection<HoaDonEntity> hoadon;
 
-	@OneToMany(mappedBy = "cpnv", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "nvTao", fetch = FetchType.LAZY)
 	private Collection<ChiPhiEntity> chiPhi;
 
 	@OneToMany(mappedBy = "usernv", fetch = FetchType.LAZY)

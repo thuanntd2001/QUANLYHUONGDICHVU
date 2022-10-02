@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,12 +19,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="CHIPHI")
 public class ChiPhiEntity {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name="ID")
 	private Long id;
 	
-	@Column(name="TENNL")
-	private String tenNL;
+	@Column(name="TENCHIPHI")
+	private String tenChiPhi;
 	
 	@Column(name="NGAYNHAP")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -33,14 +35,14 @@ public class ChiPhiEntity {
 	@Column(name="SOLUONG")
 	private Integer soLuong;
 	
-	@Column(name="GIAMOIDV")
+	@Column(name="GIAMOIDONVI")
 	private Integer giaMoiDV;
 	
 	@Column(name="LOAI")
 	private String loai;
 	
-	@Column(name="DV")
-	private String dv;
+	@Column(name="DONVI")
+	private String donVi;
 	
 	@Column(name="NHACUNGCAP")
 	private String nhaCungCap;
@@ -51,108 +53,130 @@ public class ChiPhiEntity {
 	
 	@ManyToOne
 	@JoinColumn(name="NVTAO")
-	private NhanVienEntity cpnv;
+	private NhanVienEntity nvTao;
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getTenNL() {
-		return tenNL;
+
+	public String getTenChiPhi() {
+		return tenChiPhi;
 	}
 
-	public void setTenNL(String tenNL) {
-		this.tenNL = tenNL;
+
+	public void setTenChiPhi(String tenChiPhi) {
+		this.tenChiPhi = tenChiPhi;
 	}
+
 
 	public Date getNgayNhap() {
 		return ngayNhap;
 	}
 
+
 	public void setNgayNhap(Date ngayNhap) {
 		this.ngayNhap = ngayNhap;
 	}
+
 
 	public Integer getSoLuong() {
 		return soLuong;
 	}
 
+
 	public void setSoLuong(Integer soLuong) {
 		this.soLuong = soLuong;
 	}
+
 
 	public Integer getGiaMoiDV() {
 		return giaMoiDV;
 	}
 
+
 	public void setGiaMoiDV(Integer giaMoiDV) {
 		this.giaMoiDV = giaMoiDV;
 	}
+
 
 	public String getLoai() {
 		return loai;
 	}
 
+
 	public void setLoai(String loai) {
 		this.loai = loai;
 	}
 
-	public String getDv() {
-		return dv;
+
+	public String getDonVi() {
+		return donVi;
 	}
 
-	public void setDv(String dv) {
-		this.dv = dv;
+
+	public void setDonVi(String donVi) {
+		this.donVi = donVi;
 	}
+
 
 	public String getNhaCungCap() {
 		return nhaCungCap;
 	}
 
+
 	public void setNhaCungCap(String nhaCungCap) {
 		this.nhaCungCap = nhaCungCap;
 	}
 
+
 	public String getGhiChu() {
 		return ghiChu;
 	}
+
 
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
 
 
-	public NhanVienEntity getCpnv() {
-		return cpnv;
+	public NhanVienEntity getNvTao() {
+		return nvTao;
 	}
 
-	public void setCpnv(NhanVienEntity cpnv) {
-		this.cpnv = cpnv;
+
+	public void setNvTao(NhanVienEntity nvTao) {
+		this.nvTao = nvTao;
 	}
 
-	public ChiPhiEntity() {
-		super();
-	}
 
-	public ChiPhiEntity(Long id, String tenNL, Date ngayNhap, Integer soLuong, Integer giaMoiDV, String loai, String dv,
-			String nhaCungCap, String ghiChu, NhanVienEntity cpnv) {
+	public ChiPhiEntity(Long id, String tenChiPhi, Date ngayNhap, Integer soLuong, Integer giaMoiDV, String loai,
+			String donVi, String nhaCungCap, String ghiChu, NhanVienEntity nvTao) {
 		super();
 		this.id = id;
-		this.tenNL = tenNL;
+		this.tenChiPhi = tenChiPhi;
 		this.ngayNhap = ngayNhap;
 		this.soLuong = soLuong;
 		this.giaMoiDV = giaMoiDV;
 		this.loai = loai;
-		this.dv = dv;
+		this.donVi = donVi;
 		this.nhaCungCap = nhaCungCap;
 		this.ghiChu = ghiChu;
-		this.cpnv = cpnv;
+		this.nvTao = nvTao;
 	}
-	
+
+
+	public ChiPhiEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	
 	
 }

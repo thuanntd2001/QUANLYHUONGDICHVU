@@ -11,37 +11,36 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.dto.ChucVuDTO;
-import springboot.entity.ChucVuEntity;
+import springboot.dto.LoaiBanDTO;
+import springboot.entity.LoaiBanEntity;
 import springboot.input.ObjDelLong;
-import springboot.repository.ChucVuRepository;
+import springboot.repository.LoaiBanRepository;
 
 @RestController
-public class ChucVuAPI {
+public class LoaiBanAPI {
 	@Autowired
-	ChucVuRepository repo;
+	LoaiBanRepository repo;
 
-	@GetMapping("/chucvu")
-	public List<ChucVuEntity> getChucVu() {
+	@GetMapping("/loaiban")
+	public List<LoaiBanEntity> getLoaiBan() {
 
-		List<ChucVuEntity> list = repo.findAll();
-		for (ChucVuEntity item : list) {
-			item.setUserTB(null);
+		List<LoaiBanEntity> list = repo.findAll();
+		for (LoaiBanEntity item : list) {
+			item.setBan(null);
 		}
 		System.out.print(list.size());
 		return list;
 
 	}
 
-	@PostMapping(value = "/chucvu")
+	@PostMapping(value = "/loaiban")
+	public String create(@RequestBody LoaiBanDTO model) {
 
-	public String create(@RequestBody ChucVuDTO model) {
-
-		ChucVuEntity save = new ChucVuEntity();
-		ChucVuEntity check = null;
+		LoaiBanEntity save = new LoaiBanEntity();
+		LoaiBanEntity check = null;
 		try {
-			save.setUserTB(null);
-			save.setTenChucVu(model.getTenChucVu());
+			save.setGiaDat(model.getGiaDat());
+			save.setTenLoai(model.getTenLoai());
 
 			check = repo.save(save);
 		} catch (Exception e) {
@@ -56,12 +55,10 @@ public class ChucVuAPI {
 		return "00";
 	}
 
-	
+	@PutMapping(value="/loaiban")
+	public String update(@RequestBody LoaiBanDTO model) {
 
-	@PutMapping(value = "/chucvu")
-	public String update(@RequestBody ChucVuDTO model) {
-
-		Optional<ChucVuEntity> option = repo.findById(model.getId());
+		Optional<LoaiBanEntity> option = repo.findById(model.getid());
 		if (option.isEmpty()) {
 
 			System.out.print("ko tồn tại");
@@ -70,10 +67,12 @@ public class ChucVuAPI {
 
 		else {
 			System.out.print("tồn tại");
-			ChucVuEntity save = option.get();
-			ChucVuEntity check = null;
+			LoaiBanEntity save = option.get();
+			LoaiBanEntity check = null;
 			try {
-				save.setTenChucVu(model.getTenChucVu());
+
+				save.setGiaDat(model.getGiaDat());
+				save.setTenLoai(model.getTenLoai());
 				check = repo.save(save);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -88,10 +87,10 @@ public class ChucVuAPI {
 
 	}
 
-	@DeleteMapping(value = "/chucvu")
-
+	@DeleteMapping(value="/loaiban")
 	public String delete(@RequestBody ObjDelLong ids) {
-		Optional<ChucVuEntity> option = repo.findById(ids.getId());
+
+		Optional<LoaiBanEntity> option = repo.findById(ids.getId());
 		if (option.isEmpty()) {
 
 			System.out.print("ko tồn tại");
@@ -112,4 +111,6 @@ public class ChucVuAPI {
 			return "00";
 		}
 	}
+
+	
 }

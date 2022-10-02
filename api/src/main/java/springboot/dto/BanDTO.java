@@ -3,15 +3,19 @@ package springboot.dto;
 public class BanDTO {
 	private int soGhe;
 	private Long id;
-	private Long loai;
-	public BanDTO(int soGhe, Long iD, Long loai) {
-		
-		this.soGhe = soGhe;
-		this.id = iD;
-		this.setLoai(loai);
-	}
+	private Long loaiBan;
+	private int tinhTrang;
+
 	public BanDTO() {
+		super();
 		// TODO Auto-generated constructor stub
+	}
+	public BanDTO(int soGhe, Long id, Long loai, int tinhTrang) {
+		super();
+		this.soGhe = soGhe;
+		this.setId(id);
+		this.setLoaiBan(loai);
+		this.tinhTrang = tinhTrang;
 	}
 	public Integer getSoGhe() {
 		return soGhe;
@@ -19,18 +23,27 @@ public class BanDTO {
 	public void setSoGhe(int soGhe) {
 		this.soGhe = soGhe;
 	}
-	public Long getiD() {
+
+
+	public int getTinhTrang() {
+		return tinhTrang;
+	}
+	public void setTinhTrang(int tinhTrang) {
+		this.tinhTrang = tinhTrang;
+	}
+	public Long getLoaiBan() {
+		return loaiBan;
+	}
+	public void setLoaiBan(Long loaiBan) {
+		this.loaiBan = loaiBan;
+	}
+	public Long getId() {
 		return id;
 	}
-	public void setiD(Long iD) {
-		this.id = iD;
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public Long getLoai() {
-		return loai;
-	}
-	public void setLoai(Long loaiD) {
-		this.loai = loaiD;
-	}
+
 
 	
 	

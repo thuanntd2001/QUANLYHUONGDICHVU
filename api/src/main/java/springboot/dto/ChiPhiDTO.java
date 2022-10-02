@@ -4,111 +4,98 @@ import java.sql.Timestamp;
 
 public class ChiPhiDTO {
 	private Long id;
-	private String tenNL;
+	private String tenChiPhi;
 	private Timestamp ngayNhap;
 	private int soLuong;
-	private int giaMoidV;
+	private int giaDonVi;
 	private String loai;
-	private String dV;
+	private String donVi;
 	private String nhaCungCap;
 	private String ghiChu;
-	private Long nVTao;
-
-	public ChiPhiDTO(Long id, String tenNL, Timestamp ngayNhap, int soLuong, int giaMoidV, String loai, String dV,
-			String nhaCungCap, String ghiChu, Long nVTao) {
+	private Long nvTao;
+	
+	public ChiPhiDTO(Long id, String tenChiPhi, Timestamp ngayNhap, int soLuong, int giaDonVi, String loai,
+			String donVi, String nhaCungCap, String ghiChu, Long nvTao) {
 		super();
 		this.id = id;
-		this.tenNL = tenNL;
+		this.tenChiPhi = tenChiPhi;
 		this.ngayNhap = ngayNhap;
 		this.soLuong = soLuong;
-		this.giaMoidV = giaMoidV;
+		this.giaDonVi = giaDonVi;
 		this.loai = loai;
-		this.dV = dV;
+		this.donVi = donVi;
 		this.nhaCungCap = nhaCungCap;
 		this.ghiChu = ghiChu;
-		this.nVTao = nVTao;
+		this.nvTao = nvTao;
 	}
-
-	public ChiPhiDTO() {}
-
-	public Long getid() {
+	public ChiPhiDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Long getId() {
 		return id;
 	}
-
-	public void setid(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public String getTenNL() {
-		return tenNL;
+	public String getTenChiPhi() {
+		return tenChiPhi;
 	}
-
-	public void setTenNL(String tenNL) {
-		this.tenNL = tenNL;
+	public void setTenChiPhi(String tenChiPhi) {
+		this.tenChiPhi = tenChiPhi;
 	}
-
 	public Timestamp getNgayNhap() {
 		return ngayNhap;
 	}
-
 	public void setNgayNhap(Timestamp ngayNhap) {
 		this.ngayNhap = ngayNhap;
 	}
-
 	public int getSoLuong() {
 		return soLuong;
 	}
-
 	public void setSoLuong(int soLuong) {
 		this.soLuong = soLuong;
 	}
-
-	public int getGiaMoidV() {
-		return giaMoidV;
+	public int getGiaDonVi() {
+		return giaDonVi;
 	}
-
-	public void setGiaMoidV(int giaMoidV) {
-		this.giaMoidV = giaMoidV;
+	public void setGiaDonVi(int giaDonVi) {
+		this.giaDonVi = giaDonVi;
 	}
-
 	public String getLoai() {
 		return loai;
 	}
-
 	public void setLoai(String loai) {
 		this.loai = loai;
 	}
-
-	public String getdV() {
-		return dV;
+	public String getDonVi() {
+		return donVi;
 	}
-
-	public void setdV(String dV) {
-		this.dV = dV;
+	public void setDonVi(String donVi) {
+		this.donVi = donVi;
 	}
-
 	public String getNhaCungCap() {
 		return nhaCungCap;
 	}
-
 	public void setNhaCungCap(String nhaCungCap) {
 		this.nhaCungCap = nhaCungCap;
 	}
-
 	public String getGhiChu() {
 		return ghiChu;
 	}
-
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
-
-	public Long getnVTao() {
-		return nVTao;
+	public Long getNvTao() {
+		return nvTao;
+	}
+	public void setNvTao(Long nvTao) {
+		this.nvTao = nvTao;
 	}
 
-	public void setnVTao(Long nVTao) {
-		this.nVTao = nVTao;
-	}
+
+
+	
+
 	
 }

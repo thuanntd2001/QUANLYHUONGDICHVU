@@ -1,7 +1,7 @@
 package springboot.dto;
 
 public class ChucVuDTO {
-	private int id;
+	private long id;
 	private String tenChucVu;
 	public ChucVuDTO(int id, String tenChucVu) {
 		super();
@@ -9,10 +9,10 @@ public class ChucVuDTO {
 		this.tenChucVu = tenChucVu;
 	}
 	public ChucVuDTO() {}
-	public int getid() {
+	public long getId() {
 		return id;
 	}
-	public void setid(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getTenChucVu() {

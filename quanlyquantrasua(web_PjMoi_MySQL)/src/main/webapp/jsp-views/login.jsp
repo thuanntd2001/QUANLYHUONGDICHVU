@@ -44,9 +44,9 @@
 		<form action="" method="post">
 			<div class="card">
 				<div class="card-header">
-					<img style="height: 50px; width: 50px;"
+					<img style="height: 50px; width: 50px;text-align: center;"
 						src="<c:url value='/common/images/logo_highland.png'/>"
-						alt="highland"> Đăng nhập vào HIGHLAND
+						alt="highland"> Đăng nhập vào Phúc Long
 
 				</div>
 				<c:if test="${not empty message}">
