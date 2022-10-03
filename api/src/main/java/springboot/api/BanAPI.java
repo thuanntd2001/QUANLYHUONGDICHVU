@@ -4,15 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.BanDTO;
-import springboot.dto.NhanVienDTO;
 import springboot.entity.BanEntity;
 import springboot.repository.BanRepository;
 import springboot.repository.LoaiBanRepository;
@@ -26,32 +25,31 @@ public class BanAPI {
 
 	@GetMapping("/ban")
 	public List<BanEntity> getBan() {
-		 List<BanEntity> list=repo.findAll();
-		 for (BanEntity item:list)
-		 {
-		
-			 item.setHoaDon(null);
-			 item.setLoaiBan(null);
-		 }
-		 System.out.print(list.size());
+		List<BanEntity> list = repo.findAllActive();
+		for (BanEntity item : list) {
+
+			item.setHoaDon(null);
+			item.setLoaiBan(null);
+		}
+		System.out.print(list.size());
 		return list;
 	}
 
-	@PostMapping(value="/ban")
+	@PostMapping(value = "/ban")
 	public String create(@RequestBody BanDTO model) {
-		
+
 		BanEntity save = new BanEntity();
 		BanEntity check = null;
 		try {
-			save.setLoaiBan(loaibanrepo.findById(model.getLoai()).get());
+			save.setLoaiBan(loaibanrepo.findById(model.getLoaiBan()).get());
 			save.setSoGhe(model.getSoGhe());
 			save.setTinhTrang(model.getTinhTrang());
-		
+
 			check = repo.saveAndFlush(save);
 		} catch (Exception e) {
 			e.printStackTrace();
-			
-			
+			System.out.print(model.getLoaiBan());
+
 			return "01";
 		}
 		if (check == null) {
@@ -60,11 +58,11 @@ public class BanAPI {
 		}
 		return "00";
 	}
-	
-	@PutMapping(value="/ban")
+
+	@PutMapping(value = "/ban")
 	public String update(@RequestBody BanDTO model) {
 
-		Optional<BanEntity> option = repo.findById(model.getiD());
+		Optional<BanEntity> option = repo.findById(model.getId());
 		if (option.isEmpty()) {
 
 			System.out.print("ko tồn tại");
@@ -77,7 +75,7 @@ public class BanAPI {
 			BanEntity check = null;
 			try {
 
-				save.setLoaiBan(loaibanrepo.findById(model.getLoai()).get());
+				save.setLoaiBan(loaibanrepo.findById(model.getLoaiBan()).get());
 				save.setSoGhe(model.getSoGhe());
 				save.setTinhTrang(1);
 				check = repo.save(save);
@@ -93,18 +91,18 @@ public class BanAPI {
 		}
 
 	}
-	
-	@DeleteMapping(value="/ban")
+
+	@PatchMapping(value = "/ban")
 	public String delete(@RequestBody BanDTO ids) {
-		Optional<BanEntity> option = repo.findById(ids.getiD());
+		Optional<BanEntity> option = repo.findById(ids.getId());
 		if (option.isEmpty()) {
 
-			System.out.print("ko tồn tại");
+			System.out.print("ko tồn tại nv");
 			return "404";
 		}
 
 		else {
-			System.out.print("tồn tại");
+			System.out.print("tồn tại nv");
 			BanEntity save = option.get();
 			BanEntity check = null;
 			try {

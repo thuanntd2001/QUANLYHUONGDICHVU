@@ -3,7 +3,7 @@ package springboot.dto;
 public class BanDTO {
 	private int soGhe;
 	private Long id;
-	private Long loai;
+	private Long loaiBan;
 	private int tinhTrang;
 
 	public BanDTO() {
@@ -13,8 +13,8 @@ public class BanDTO {
 	public BanDTO(int soGhe, Long id, Long loai, int tinhTrang) {
 		super();
 		this.soGhe = soGhe;
-		this.id = id;
-		this.loai = loai;
+		this.setId(id);
+		this.setLoaiBan(loai);
 		this.tinhTrang = tinhTrang;
 	}
 	public Integer getSoGhe() {
@@ -23,24 +23,27 @@ public class BanDTO {
 	public void setSoGhe(int soGhe) {
 		this.soGhe = soGhe;
 	}
-	public Long getiD() {
-		return id;
-	}
-	public void setiD(Long iD) {
-		this.id = iD;
-	}
-	public Long getLoai() {
-		return loai;
-	}
-	public void setLoai(Long loaiD) {
-		this.loai = loaiD;
-	}
+
+
 	public int getTinhTrang() {
 		return tinhTrang;
 	}
 	public void setTinhTrang(int tinhTrang) {
 		this.tinhTrang = tinhTrang;
 	}
+	public Long getLoaiBan() {
+		return loaiBan;
+	}
+	public void setLoaiBan(Long loaiBan) {
+		this.loaiBan = loaiBan;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 
 	
 	

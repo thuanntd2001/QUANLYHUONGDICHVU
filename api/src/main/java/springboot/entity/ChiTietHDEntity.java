@@ -11,16 +11,32 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 class ChiTietHDPK implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ThucDonEntity thucDon;
 	private HoaDonEntity hoaDon;
 	public ChiTietHDPK(ThucDonEntity thucDon, HoaDonEntity hoaDon) {
 		super();
-		this.thucDon = thucDon;
-		this.hoaDon = hoaDon;
+		this.setThucDon(thucDon);
+		this.setHoaDon(hoaDon);
 	}
 	public ChiTietHDPK() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public ThucDonEntity getThucDon() {
+		return thucDon;
+	}
+	public void setThucDon(ThucDonEntity thucDon) {
+		this.thucDon = thucDon;
+	}
+	public HoaDonEntity getHoaDon() {
+		return hoaDon;
+	}
+	public void setHoaDon(HoaDonEntity hoaDon) {
+		this.hoaDon = hoaDon;
 	}
 	
     
