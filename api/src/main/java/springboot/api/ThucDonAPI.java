@@ -1,5 +1,6 @@
 package springboot.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.ThucDonDTO;
+import springboot.dto.ThucDonDTO;
+import springboot.entity.ThucDonEntity;
 import springboot.entity.ThucDonEntity;
 import springboot.input.ObjDelString;
 import springboot.repository.LoaiThucUongRepository;
@@ -24,16 +27,19 @@ public class ThucDonAPI {
 	@Autowired
 	LoaiThucUongRepository lturepo;
 	@GetMapping("/thucdon")
-	public List<ThucDonEntity> getThucDon() {
-
+	public List<ThucDonDTO> getThucDon() {
 		List<ThucDonEntity> list = repo.findAll();
+		List<ThucDonDTO> listDTO = new ArrayList<ThucDonDTO>();
 		for (ThucDonEntity item : list) {
-			item.setChiTietHD(null);
-			item.setLoaiThucUong(null);
+			ThucDonDTO e = new ThucDonDTO();
+			e.setGia(item.getGia());
+			e.setid(item.getId());
+			e.setLoaiThucUong(item.getLoaiThucUong().getTenLoai());
+			e.setTen(item.getTen());
+			listDTO.add(e);
 		}
 		System.out.print(list.size());
-		return list;
-
+		return listDTO;
 	}
 
 	@PostMapping(value = "/thucdon")

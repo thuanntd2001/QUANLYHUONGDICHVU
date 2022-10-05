@@ -1,5 +1,6 @@
 package springboot.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import springboot.dto.UserDTO;
 import springboot.dto.UserDTO;
 import springboot.entity.UserTBEntity;
 import springboot.repository.ChucVuRepository;
@@ -27,17 +29,23 @@ public class UserAPI {
 	ChucVuRepository cvrepo;
 
 	@GetMapping("/user")
-	public List<UserTBEntity> getUser() {
-
+	public List<UserDTO> getUser() {
 		List<UserTBEntity> list = repo.findAllActive();
+		List<UserDTO> listDTO = new ArrayList<UserDTO>();
 		for (UserTBEntity item : list) {
-			item.setUsernv(null);
-			item.setChucVu(null);
-
+			UserDTO e = new UserDTO();
+			e.setEmail(item.getEmail());
+			e.setIcon(item.getIcon());
+			e.setID(item.getUsernv().getMaNV());
+			e.setPasswd(item.getPasswd());
+			e.setRoleID(item.getChucVu().getId());
+			e.setStatus(item.getStatus());
+			e.setUserName(item.getUserName());
+	
+			listDTO.add(e);
 		}
 		System.out.print(list.size());
-		return list;
-
+		return listDTO;
 	}
 
 	@PostMapping(value = "/user")

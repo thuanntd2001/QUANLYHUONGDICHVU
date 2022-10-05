@@ -1,5 +1,6 @@
 package springboot.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.BanDTO;
+import springboot.dto.ChiTietHDDTO;
 import springboot.entity.BanEntity;
 import springboot.repository.BanRepository;
 import springboot.repository.LoaiBanRepository;
@@ -24,15 +26,20 @@ public class BanAPI {
 	LoaiBanRepository loaibanrepo;
 
 	@GetMapping("/ban")
-	public List<BanEntity> getBan() {
+	public List<BanDTO> getBan() {
 		List<BanEntity> list = repo.findAllActive();
+		List<BanDTO> listDTO = new ArrayList<BanDTO>();
 		for (BanEntity item : list) {
-
-			item.setHoaDon(null);
-			item.setLoaiBan(null);
+			BanDTO e = new BanDTO();
+			e.setId(item.getId());
+			e.setTenLoai(item.getLoaiBan().getTenLoai());
+			e.setLoaiBan(item.getLoaiBan().getId());
+			e.setSoGhe(item.getSoGhe());
+			e.setTinhTrang(item.getTinhTrang());
+			listDTO.add(e);
 		}
 		System.out.print(list.size());
-		return list;
+		return listDTO;
 	}
 
 	@PostMapping(value = "/ban")

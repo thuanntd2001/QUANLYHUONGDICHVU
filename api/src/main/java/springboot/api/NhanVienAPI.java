@@ -1,5 +1,6 @@
 package springboot.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,18 +22,26 @@ public class NhanVienAPI {
 	NhanVienRepository repo;
 
 	@GetMapping("/nhanvien")
-	public List<NhanVienEntity> getNV() {
+	public List<NhanVienDTO> getNhanVien() {
 		List<NhanVienEntity> list = repo.findAllActive();
+		List<NhanVienDTO> listDTO = new ArrayList<NhanVienDTO>();
 		for (NhanVienEntity item : list) {
-
-			item.setChiPhi(null);
-			item.setHoadon(null);
-			item.setUserTB(null);
+			NhanVienDTO e = new NhanVienDTO();
+			e.setMaNV(item.getMaNV());
+			e.setDiaChi(item.getDiaChi());
+			e.setGioiTinh(item.getGioiTinh());
+			e.setHoTen(item.getHoTen());
+			e.setLuong(item.getLuong());
+			e.setNgaySinh(item.getNgaySinh());
+			e.setNgayVaoLam(item.getNgayVaoLam());
+			e.setSdt(item.getSdt());
+			e.setCmnd(item.getCmnd());
+			
+			
+			listDTO.add(e);
 		}
-		
 		System.out.print(list.size());
-		return list;
-
+		return listDTO;
 	}
 
 	@PostMapping(value = "/nhanvien")
