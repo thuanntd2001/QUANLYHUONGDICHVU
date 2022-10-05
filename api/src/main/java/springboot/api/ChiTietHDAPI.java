@@ -2,7 +2,6 @@ package springboot.api;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.ChiTietHDDTO;
-import springboot.dto.HoaDonDTO;
 import springboot.entity.ChiTietHDEntity;
-import springboot.input.ObjDelLong;
+import springboot.entity.HoaDonEntity;
+import springboot.entity.ThucDonEntity;
 import springboot.repository.ChiTietHDRepository;
+import springboot.repository.HoaDonRepository;
 import springboot.repository.NhanVienRepository;
+import springboot.repository.ThucDonRepository;
 
 @RestController
 public class ChiTietHDAPI {
@@ -28,11 +29,16 @@ public class ChiTietHDAPI {
 	@Autowired
 	NhanVienRepository nvrepo;
 
+	@Autowired
+	HoaDonRepository hdrepo;
+	@Autowired
+	ThucDonRepository tdrepo;
+
 	@GetMapping("/chitiethd")
-	public List<ChiTietHDDTO> getUser( HttpServletRequest request) {
+	public List<ChiTietHDDTO> getUser(HttpServletRequest request) {
 		String idhd = request.getParameter("idhd");
 		long id;
-		int i=0;
+	
 		List<ChiTietHDDTO> cts = new ArrayList<ChiTietHDDTO>();
 		if (idhd == null)
 			return null;
@@ -44,13 +50,13 @@ public class ChiTietHDAPI {
 			}
 			List<ChiTietHDEntity> list = repo.findByHoaDonId(id);
 			for (ChiTietHDEntity item : list) {
-				ChiTietHDDTO e= new ChiTietHDDTO();
+				ChiTietHDDTO e = new ChiTietHDDTO();
 				e.setId(item.getId());
 				e.setMaHD(item.getHoaDon().getId());
 				e.setMaSP(item.getThucDon().getId());
 				e.setSoLuong(item.getSoLuong());
 				e.setTongTien(item.getTongTien());
-				i+=1;
+			
 				cts.add(e);
 			}
 			System.out.print(list.size());
@@ -63,9 +69,16 @@ public class ChiTietHDAPI {
 	@PostMapping(value = "/chitiethd")
 	public String create(@RequestBody ChiTietHDDTO model) {
 
+		ThucDonEntity td = tdrepo.findById(model.getMaSP()).get();
+		HoaDonEntity hd = hdrepo.findById(model.getMaHD()).get();
+
 		ChiTietHDEntity save = new ChiTietHDEntity();
 		ChiTietHDEntity check = null;
 		try {
+			save.setHoaDon(hd);
+			save.setThucDon(td);
+			save.setSoLuong(model.getSoLuong());
+			save.setTongTien(td.getGia() * model.getSoLuong());
 
 			check = repo.save(save);
 		} catch (Exception e) {
@@ -84,8 +97,8 @@ public class ChiTietHDAPI {
 	@PutMapping(value = "/chitiethd")
 	public String update(@RequestBody ChiTietHDDTO model) {
 
-		Optional<ChiTietHDEntity> option = repo.findById(model.getId());
-		if (option.isEmpty()) {
+		ChiTietHDEntity option = (repo.findByHoaDonIdAndThucDonId(model.getMaHD(), model.getMaSP()));
+		if (option == null) {
 
 			System.out.print("ko tồn tại");
 			return "404";
@@ -93,10 +106,15 @@ public class ChiTietHDAPI {
 
 		else {
 			System.out.print("tồn tại");
-			ChiTietHDEntity save = option.get();
+			ThucDonEntity td = tdrepo.findById(model.getMaSP()).get();
+			HoaDonEntity hd = hdrepo.findById(model.getMaHD()).get();
+			ChiTietHDEntity save = option;
 			ChiTietHDEntity check = null;
 			try {
-
+				save.setHoaDon(hd);
+				save.setThucDon(td);
+				save.setSoLuong(model.getSoLuong());
+				save.setTongTien(td.getGia() * model.getSoLuong());
 				check = repo.save(save);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -112,18 +130,28 @@ public class ChiTietHDAPI {
 	}
 
 	@DeleteMapping(value = "/chitiethd")
-	public String delete(@RequestBody ObjDelLong ids) {
-		Optional<ChiTietHDEntity> option = repo.findById(ids.getId());
-		if (option.isEmpty()) {
+	public String delete(@RequestBody ChiTietHDDTO model) {
+		ChiTietHDEntity option = (repo.findByHoaDonIdAndThucDonId(model.getMaHD(), model.getMaSP()));
+		long id=0;
+		if (option == null) {
 
 			System.out.print("ko tồn tại");
 			return "404";
-		} else {
+		}
+
+		else {
 			System.out.print("tồn tại");
+			try {
+
+				id = repo.getIdChiTietHD(model.getMaHD(), model.getMaSP());
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "01";
+			}
 
 			try {
 
-				repo.deleteById(ids.getId());
+				repo.deleteById(id);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return "02";
@@ -131,5 +159,6 @@ public class ChiTietHDAPI {
 
 			return "00";
 		}
+
 	}
 }

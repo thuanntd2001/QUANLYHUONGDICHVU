@@ -1,5 +1,6 @@
 package springboot.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -37,7 +38,7 @@ public class HoaDonEntity {
 	private BanEntity ban;
 
 	@OneToMany(mappedBy = "hoaDon", fetch = FetchType.LAZY)
-	private Collection<ChiTietHDEntity> chiTietHD;
+	private Collection<ChiTietHDEntity> chiTietHD= new ArrayList<ChiTietHDEntity>();
 
 
 	@ManyToOne
