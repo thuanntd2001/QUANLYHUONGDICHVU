@@ -1,72 +1,43 @@
 package springboot.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-class ChiTietHDPK implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private ThucDonEntity thucDon;
-	private HoaDonEntity hoaDon;
-	public ChiTietHDPK(ThucDonEntity thucDon, HoaDonEntity hoaDon) {
-		super();
-		this.setThucDon(thucDon);
-		this.setHoaDon(hoaDon);
-	}
-	public ChiTietHDPK() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public ThucDonEntity getThucDon() {
-		return thucDon;
-	}
-	public void setThucDon(ThucDonEntity thucDon) {
-		this.thucDon = thucDon;
-	}
-	public HoaDonEntity getHoaDon() {
-		return hoaDon;
-	}
-	public void setHoaDon(HoaDonEntity hoaDon) {
-		this.hoaDon = hoaDon;
-	}
-	
-    
-}
-
-
 @Entity
-@IdClass(ChiTietHDPK.class)
-@Table(name="CHITIETHD")
+@Table(name = "CHITIETHD")
 public class ChiTietHDEntity {
+	public Long getId() {
+		return id;
+	}
 
-	@Column(name="SOLUONG")
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	private Long id;
+
+	@Column(name = "SOLUONG")
 	private Integer soLuong;
-	
-	@Id
+
 	@ManyToOne
-	@JoinColumn(name="MASP")
+	@JoinColumn(name = "MASP")
 	private ThucDonEntity thucDon;
-	
-	@Id
+
 	@ManyToOne
-	@JoinColumn(name="MAHD")
+	@JoinColumn(name = "MAHD")
 	private HoaDonEntity hoaDon;
 
-	@Column(name="TONGTIEN")
+	@Column(name = "TONGTIEN")
 	private Integer tongTien;
-	
-	
-	
-
 
 	public Integer getSoLuong() {
 		return soLuong;
@@ -100,6 +71,4 @@ public class ChiTietHDEntity {
 		this.tongTien = tongTien;
 	}
 
-	
-	
 }
