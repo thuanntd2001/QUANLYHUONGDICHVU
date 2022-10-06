@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.BanDTO;
-import springboot.dto.ChiTietHDDTO;
 import springboot.entity.BanEntity;
 import springboot.repository.BanRepository;
 import springboot.repository.LoaiBanRepository;

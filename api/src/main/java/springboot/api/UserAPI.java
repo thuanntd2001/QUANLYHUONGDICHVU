@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.UserDTO;
-import springboot.dto.UserDTO;
 import springboot.entity.UserTBEntity;
 import springboot.repository.ChucVuRepository;
 import springboot.repository.NhanVienRepository;
