@@ -1,5 +1,6 @@
 package springboot.api;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.HoaDonDTO;
+import springboot.dto.HoaDonDTO;
+import springboot.entity.HoaDonEntity;
 import springboot.entity.HoaDonEntity;
 import springboot.repository.BanRepository;
 import springboot.repository.HoaDonRepository;
@@ -27,18 +30,25 @@ public class HoaDonAPI {
 	@Autowired
 	NhanVienRepository nvrepo;
 	@GetMapping("/hoadon")
-	public List<HoaDonEntity> getHoaDon() {
-
+	public List<HoaDonDTO> getHoaDon() {
 		List<HoaDonEntity> list = repo.findAll();
+		List<HoaDonDTO> listDTO = new ArrayList<HoaDonDTO>();
 		for (HoaDonEntity item : list) {
-			item.setBan(null);
-			item.setChiTietHD(null);
-			item.setNvThucHien(null);
+			HoaDonDTO e = new HoaDonDTO();
+			e.setId(item.getId());
+			e.setBan(item.getBan().getId());
+			e.setNgayThucHien(item.getNgayThucHien());
+			e.setNvThucHien(item.getNvThucHien().getMaNV());
+			
+			
+			
+			listDTO.add(e);
+			
 		}
 		System.out.print(list.size());
-		return list;
-
+		return listDTO;
 	}
+
 
 	@PostMapping(value = "/hoadon")
 	public String create(@RequestBody HoaDonDTO model) {

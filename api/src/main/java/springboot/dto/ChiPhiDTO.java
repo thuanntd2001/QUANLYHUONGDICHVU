@@ -1,11 +1,12 @@
 package springboot.dto;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class ChiPhiDTO {
 	private Long id;
 	private String tenChiPhi;
-	private Timestamp ngayNhap;
+	private Date ngayNhap;
 	private int soLuong;
 	private int giaDonVi;
 	private String loai;
@@ -44,11 +45,11 @@ public class ChiPhiDTO {
 	public void setTenChiPhi(String tenChiPhi) {
 		this.tenChiPhi = tenChiPhi;
 	}
-	public Timestamp getNgayNhap() {
+	public Date getNgayNhap() {
 		return ngayNhap;
 	}
-	public void setNgayNhap(Timestamp ngayNhap) {
-		this.ngayNhap = ngayNhap;
+	public void setNgayNhap(Date date) {
+		this.ngayNhap = date;
 	}
 	public int getSoLuong() {
 		return soLuong;

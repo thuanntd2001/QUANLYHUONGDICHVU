@@ -1,5 +1,6 @@
 package springboot.api;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.ChiPhiDTO;
+import springboot.dto.ChiPhiDTO;
+import springboot.entity.ChiPhiEntity;
 import springboot.entity.ChiPhiEntity;
 import springboot.input.ObjDelLong;
 import springboot.repository.ChiPhiRepository;
@@ -26,16 +29,27 @@ public class ChiPhiAPI {
 	NhanVienRepository nvrepo;
 
 	@GetMapping("/chiphi")
-	public List<ChiPhiEntity> getUser() {
-
+	public List<ChiPhiDTO> getChiPhi() {
 		List<ChiPhiEntity> list = repo.findAll();
+		List<ChiPhiDTO> listDTO = new ArrayList<ChiPhiDTO>();
 		for (ChiPhiEntity item : list) {
-			item.setNvTao(null);
-
+			ChiPhiDTO e = new ChiPhiDTO();
+			e.setId(item.getId());
+			e.setDonVi(item.getDonVi());
+			e.setGhiChu(item.getGhiChu());
+			e.setGiaDonVi(item.getGiaMoiDV());
+			e.setLoai(item.getLoai());
+			e.setNgayNhap(item.getNgayNhap());
+			e.setNhaCungCap(item.getNhaCungCap());
+			e.setNvTao(item.getNvTao().getMaNV());
+			e.setSoLuong(item.getSoLuong());
+			e.setTenChiPhi(item.getTenChiPhi());
+			
+			listDTO.add(e);
+			
 		}
 		System.out.print(list.size());
-		return list;
-
+		return listDTO;
 	}
 
 	@PostMapping(value = "/chiphi")

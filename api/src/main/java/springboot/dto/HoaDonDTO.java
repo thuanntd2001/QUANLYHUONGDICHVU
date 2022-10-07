@@ -1,31 +1,21 @@
 package springboot.dto;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class HoaDonDTO {
 	private Long id;
-	private Timestamp ngayThucHien;
+	private Date ngayThucHien;
 	private Long nvThucHien;
 	private Long ban;
 
 
 
-	public HoaDonDTO(Long id, Timestamp ngayThucHien, Long nvThucHien, Long ban) {
-		super();
-		this.id = id;
-		this.ngayThucHien = ngayThucHien;
-		this.nvThucHien = nvThucHien;
-		this.ban = ban;
-	}
+
 
 	public HoaDonDTO() {}
 
-	public Timestamp getNgayThucHien() {
-		return ngayThucHien;
-	}
-	public void setNgayThucHien(Timestamp ngayThucHien) {
-		this.ngayThucHien = ngayThucHien;
-	}
+
+
 	public Long getNvThucHien() {
 		return nvThucHien;
 	}
@@ -43,6 +33,18 @@ public class HoaDonDTO {
 	}
 	public void setBan(Long ban) {
 		this.ban = ban;
+	}
+
+
+
+	public Date getNgayThucHien() {
+		return ngayThucHien;
+	}
+
+
+
+	public void setNgayThucHien(Date ngayThucHien) {
+		this.ngayThucHien = ngayThucHien;
 	}
 
 	

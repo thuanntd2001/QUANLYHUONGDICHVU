@@ -4,6 +4,7 @@ public class BanDTO {
 	private int soGhe;
 	private Long id;
 	private Long loaiBan;
+	private String tenLoai;
 	private int tinhTrang;
 
 	public BanDTO() {
@@ -42,6 +43,12 @@ public class BanDTO {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public String getTenLoai() {
+		return tenLoai;
+	}
+	public void setTenLoai(String tenLoai) {
+		this.tenLoai = tenLoai;
 	}
 
 
