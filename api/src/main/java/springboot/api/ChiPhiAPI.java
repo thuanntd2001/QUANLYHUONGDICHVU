@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.ChiPhiDTO;
-import springboot.dto.ChiPhiDTO;
-import springboot.entity.ChiPhiEntity;
 import springboot.entity.ChiPhiEntity;
 import springboot.input.ObjDelLong;
 import springboot.repository.ChiPhiRepository;

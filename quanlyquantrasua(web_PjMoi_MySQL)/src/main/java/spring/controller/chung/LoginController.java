@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,11 +23,7 @@ public class LoginController extends HttpServlet{
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("message_vi",localeVi);
 
 	
-	public String hashPass(String matKhau) {
-		String hashpw = DigestUtils.md5Hex(matKhau);
-		return hashpw;
-	}
-	
+
 	@RequestMapping(value = "dang-nhap", method = RequestMethod.GET)
 	protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String action = request.getParameter("action");

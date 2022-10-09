@@ -1,7 +1,10 @@
 package springboot.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,15 +25,36 @@ public class LoaiThucUongAPI {
 	LoaiThucUongRepository repo;
 
 	@GetMapping("/loaithucuong")
-	public List<LoaiThucUongEntity> getLoaiThucUong() {
-
-		List<LoaiThucUongEntity> list = repo.findAll();
-		for (LoaiThucUongEntity item : list) {
-			item.setThucDon(null);
+	public List<LoaiThucUongEntity> getLoaiThucUong(HttpServletRequest request) {
+		String tenLoai = request.getParameter("tenloai");
+		String idLoai = request.getParameter("idloai");		
+	
+		if (tenLoai == null && idLoai == null) {
+			List<LoaiThucUongEntity> list = repo.findAll();
+			for (LoaiThucUongEntity item : list) {
+				item.setThucDon(null);
+			}
+			System.out.print(list.size());
+			return list;
 		}
-		System.out.print(list.size());
-		return list;
-
+		
+		
+		else if (tenLoai!=null){
+			List<LoaiThucUongEntity> list = repo.findByTenLoai(tenLoai);
+			for (LoaiThucUongEntity item : list) {
+				item.setThucDon(null);
+			}
+			System.out.print(list.size());
+			return list;
+		}
+		else if (idLoai!=null) {
+			List<LoaiThucUongEntity> list =new ArrayList<LoaiThucUongEntity>();
+			list.add(repo.findById(idLoai).get());
+			System.out.print(list.size());
+			return list;
+		}
+		
+		return null;
 	}
 
 	@PostMapping(value = "/loaithucuong")

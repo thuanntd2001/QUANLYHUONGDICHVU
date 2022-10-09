@@ -70,13 +70,6 @@
 							invalid</small> -->
 					</div>
 
-					<div class="form-group">
-						<div class="g-recaptcha"
-							data-sitekey="6Ld1TpAfAAAAAOR_gKzy4BMOirgICntMGSp-XR5B"></div>
-					</div>
-					<label class="mb-1">
-						<h6 class="mb-0 text-sm errors">${reCaptra}</h6>
-					</label> <input type="hidden" value="login" name="action" />
 
 					
 				</div>
