@@ -22,8 +22,8 @@ import spring.dto.ThucDonDTO;
 @Controller
 public class GoiMonController {
 
-	@Autowired
-	WebClient webClient;
+//	@Autowired
+//	WebClient webClient;
 	     
 	@Autowired
 	ServletContext application;
