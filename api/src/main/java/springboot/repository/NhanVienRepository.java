@@ -16,4 +16,5 @@ public interface NhanVienRepository extends JpaRepository<NhanVienEntity, Long>{
 			  value = "SELECT * FROM NHANVIEN item WHERE DANGHI = 0", 
 			  nativeQuery = true)
 	List<NhanVienEntity> findAllActive();
+
 }

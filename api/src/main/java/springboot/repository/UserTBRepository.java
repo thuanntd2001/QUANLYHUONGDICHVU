@@ -16,5 +16,6 @@ public interface UserTBRepository extends JpaRepository<UserTBEntity, String>{
 			  value = "SELECT * from USERTB WHERE Status= 1", 
 			  nativeQuery = true)
 	List<UserTBEntity> findAllActive();
+	UserTBEntity findByUserNameAndPasswd(String userName, String passwd);
 }
 
