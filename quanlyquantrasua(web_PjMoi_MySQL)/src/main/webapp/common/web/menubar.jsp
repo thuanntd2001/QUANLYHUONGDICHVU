@@ -11,9 +11,7 @@
 	</div>
 	<ul class="nav_list">
 
-		<li><a href="trang-chu.htm" class=""> <i class="fas fa-table"></i>
-				<span class="links_name">ĐẶT BÀN</span>
-		</a></li>
+
 		<li><a href="goi-mon.htm"> <i class="fas fa-cash-register"></i>
 				<span class="links_name">GỌI MÓN</span>
 		</a></li>
