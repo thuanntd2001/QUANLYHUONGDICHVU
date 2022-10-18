@@ -19,7 +19,7 @@ public class AdminUser {
 	@Autowired
 	ServletContext session;
 	
-	@RequestMapping(value = "admin-user", method = RequestMethod.GET)
+	@RequestMapping(value = "user", method = RequestMethod.GET)
 	public String index(ModelMap model, HttpServletRequest request) {
 		
 

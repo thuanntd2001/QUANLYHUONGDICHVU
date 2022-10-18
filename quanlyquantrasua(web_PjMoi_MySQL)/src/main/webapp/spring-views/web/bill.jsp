@@ -70,11 +70,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="hd" items="${pagedListHolder.pageList}">
+                        <c:forEach var="hd" items="${list}">
                         	<tr>
                             <th scope="row">${hd.id }</th>
                             <td>${hd.ngayThucHien}</td>
-                            <td>${hd.hdnv.hoTen}</td>
+                           <td>${hd.nvThucHien}</td>
 
                             <td>
                                 <div class="">
@@ -87,8 +87,7 @@
                         </c:forEach>
                     </tbody>
                 </table>
-                <tg:paging pagedLink="${pagedLink}"
-					pagedListHolder="${pagedListHolder}"></tg:paging>
+            
             </div>
 
         </div>
