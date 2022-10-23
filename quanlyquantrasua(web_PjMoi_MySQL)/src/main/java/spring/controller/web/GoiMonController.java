@@ -22,8 +22,7 @@ import spring.dto.ThucDonDTO;
 @Controller
 public class GoiMonController {
 	RestClient rc= new RestClient();
-	HttpUtil ut=new HttpUtil(rc.get("/thucdon"));
-	TypeReference<List<ThucDonDTO>> mapType = new TypeReference<List<ThucDonDTO>>() {};
+
 
 
 	     
@@ -35,7 +34,6 @@ public class GoiMonController {
 
 	@RequestMapping(value = "goi-mon", method = RequestMethod.GET)
 	public String createList(ModelMap model) {
-		System.out.println(rc.get("/thucdon"));
 
 
 		return "web/pay";
