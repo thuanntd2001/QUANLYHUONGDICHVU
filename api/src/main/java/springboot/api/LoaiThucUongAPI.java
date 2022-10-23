@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.LoaiThucUongDTO;
-import springboot.dto.ThucDonDTO;
 import springboot.entity.LoaiThucUongEntity;
 import springboot.input.ObjDelString;
 import springboot.repository.LoaiThucUongRepository;
@@ -26,7 +25,7 @@ public class LoaiThucUongAPI {
 	LoaiThucUongRepository repo;
 
 	@GetMapping("/loaithucuong")
-	public List<LoaiThucUongEntity> getLoaiThucUong(HttpServletRequest request) {
+	public List<LoaiThucUongDTO> getLoaiThucUong(HttpServletRequest request) {
 		String tenLoai = request.getParameter("tenloai");
 		String idLoai = request.getParameter("idloai");		
 	
@@ -42,24 +41,37 @@ public class LoaiThucUongAPI {
 			
 				listDTO.add(e);
 			}
-			System.out.print(list.size());
-			return list;
+			return listDTO;
 		}
 		
 		
 		else if (tenLoai!=null){
 			List<LoaiThucUongEntity> list = repo.findByTenLoai(tenLoai);
+			List<LoaiThucUongDTO> listDTO = new ArrayList<LoaiThucUongDTO>();
+
 			for (LoaiThucUongEntity item : list) {
-				item.setThucDon(null);
+				LoaiThucUongDTO e = new LoaiThucUongDTO();
+				e.setDonVi(item.getTenLoai());
+				e.setid(item.getId());
+				e.setTenLoai(item.getTenLoai());
+			
+				listDTO.add(e);
 			}
-			System.out.print(list.size());
-			return list;
+			return listDTO;
 		}
 		else if (idLoai!=null) {
 			List<LoaiThucUongEntity> list =new ArrayList<LoaiThucUongEntity>();
-			list.add(repo.findById(idLoai).get());
-			System.out.print(list.size());
-			return list;
+			List<LoaiThucUongDTO> listDTO = new ArrayList<LoaiThucUongDTO>();
+
+			for (LoaiThucUongEntity item : list) {
+				LoaiThucUongDTO e = new LoaiThucUongDTO();
+				e.setDonVi(item.getTenLoai());
+				e.setid(item.getId());
+				e.setTenLoai(item.getTenLoai());
+			
+				listDTO.add(e);
+			}
+			return listDTO;
 		}
 		
 		return null;

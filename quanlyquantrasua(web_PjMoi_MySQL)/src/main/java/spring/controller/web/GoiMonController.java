@@ -33,12 +33,11 @@ public class GoiMonController {
 		if (application.getAttribute("listBan") == null) {
 
 			List<BanDTO> listBan = Collector.getListAll("/ban", BanDTO.class);
+			application.setAttribute("loaiTUs", Collector.getListAll("/loaithucuong", LoaiThucUongDTO.class));
+
+			application.setAttribute("thucDons", Collector.getListAll("/thucdon", ThucDonDTO.class));
 
 			application.setAttribute("listBan", listBan);
-		}
-
-		// kt co list ban tong he thong ko co thi tao list nay tinh hoa don
-		if (application.getAttribute("banHoaDons") == null) {
 			List<BanHoaDonModel> listBHD = new ArrayList<BanHoaDonModel>();
 			List<Long> listIdsBan = new ArrayList<Long>();
 
@@ -53,13 +52,17 @@ public class GoiMonController {
 				 */ }
 			application.setAttribute("banHoaDons", listBHD);
 			application.setAttribute("banids", listIdsBan);
-			application.setAttribute("loaiTUs", Collector.getListAll("/loaithucuong", LoaiThucUongDTO.class));
-
-			application.setAttribute("thucDons", Collector.getListAll("/thucdon", ThucDonDTO.class));
 
 		}
+		List<BanDTO> listBan = (List<BanDTO>) application.getAttribute("listBan");
+		List<LoaiThucUongDTO> loaiTUs = (List<LoaiThucUongDTO>) application.getAttribute("loaiTUs");
+		List<ThucDonDTO> thucDons = (List<ThucDonDTO>) application.getAttribute("thucDons");
+
+		model.addAttribute("bans", listBan);
+		model.addAttribute("loaiTUs", loaiTUs);
+		model.addAttribute("thucDons", thucDons);
 
 		return "web/pay";
-	}// day la comment
+	}
 
 }
