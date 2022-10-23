@@ -5,20 +5,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-
 import spring.bean.Collector;
-import spring.config.restConfig.RestClient;
 import spring.dto.HoaDonDTO;
 
 
@@ -26,11 +19,16 @@ import spring.dto.HoaDonDTO;
 @Controller
 public class HoaDonController {
 
-	Collector<HoaDonDTO> colector=new Collector<HoaDonDTO>();
 	@RequestMapping(value = "hoa-don" , method = RequestMethod.GET)
 	public <E> String showMenu(ModelMap model,HttpServletRequest request) {
 
-		List<HoaDonDTO> list =colector.getListAll("/hoadon");
+		List<HoaDonDTO> list=null;
+		try {
+			list = Collector.getListAll("/hoadon",HoaDonDTO.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		model.addAttribute("list", list);
 		

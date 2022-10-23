@@ -1,6 +1,8 @@
 package spring.controller.admin;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +13,9 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import spring.bean.Collector;
+import spring.dto.NhanVienDTO;
 
 
 
@@ -23,7 +28,14 @@ public class QLNhanVienHome {
 	// CONTROLLER
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public <E> String index(HttpServletRequest request,ModelMap model){	
-
+		List<NhanVienDTO> list=null;
+		try {
+			list = Collector.getListAll("/nhanvien",NhanVienDTO.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		model.addAttribute("list", list);
 		return "admin/QLNV";
 	}
 	

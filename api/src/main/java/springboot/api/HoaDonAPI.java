@@ -29,7 +29,7 @@ public class HoaDonAPI {
 	NhanVienRepository nvrepo;
 	@GetMapping("/hoadon")
 	public List<HoaDonDTO> getHoaDon() {
-		List<HoaDonEntity> list = repo.findAll();
+		List<HoaDonEntity> list = repo.findByOrderByIdDesc();
 		List<HoaDonDTO> listDTO = new ArrayList<HoaDonDTO>();
 		for (HoaDonEntity item : list) {
 			HoaDonDTO e = new HoaDonDTO();

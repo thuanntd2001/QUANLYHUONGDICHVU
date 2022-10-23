@@ -1,32 +1,46 @@
 package spring.bean;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 
 import spring.config.restConfig.RestClient;
 
-public class Collector <T>{
-	private RestClient rc;
-	private TypeReference<List<T>> mapType ;
-	private ObjectMapper objectMapper;
-	public Collector() {
-		super();
-		 rc= new RestClient();
-		 mapType = new TypeReference<List<T>>() {};
-		 objectMapper = new ObjectMapper();
+public class Collector<T> {
+	private static RestClient rc = new RestClient();
+
+
+	private static ObjectMapper objectMapper = new ObjectMapper();
+
+	
+
+
+
+	public static <T> List<T> getListAll(String url, Class<T> elementClass) throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		List<T> list = null;
+		CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, elementClass);
+
+		list = objectMapper.readValue(rc.get(url), listType);
+
+		return list;
+
 	}
-	public List<T> getListAll(String url) {
-		List<T> list=null;
 
-        try {
-		 list = objectMapper.readValue(rc.get(url), mapType);
+	@SuppressWarnings("hiding")
+	public static <K> K postObj(String url, K pojo, Class<K> clazz) {
+		K obj = null;
 
-        } catch (JsonParseException e) {
+		try {
+			obj = objectMapper.readValue(rc.post(url, objectMapper.writeValueAsString(pojo)), clazz);
+			System.out.println(rc.post(url, objectMapper.writeValueAsString(pojo)));
+
+		} catch (JsonParseException e) {
 			System.out.print("loi json");
 
 			// TODO Auto-generated catch block
@@ -41,8 +55,8 @@ public class Collector <T>{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return list;
-		
+		return obj;
+
 	}
-	
+
 }

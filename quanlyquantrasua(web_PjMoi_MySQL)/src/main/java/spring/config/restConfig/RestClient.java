@@ -34,17 +34,18 @@ public class RestClient {
 	    return responseEntity.getBody();
 	  }
 
-//	  public void put(String uri, String json) {
-//	    HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
-//	    ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.PUT, requestEntity, null);
-//	    this.setStatus(responseEntity.getStatusCode());   
-//	  }
-//
-//	  public void delete(String uri) {
-//	    HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
-//	    ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.DELETE, requestEntity, null);
-//	    this.setStatus(responseEntity.getStatusCode());
-//	  }
+	  public String put(String uri, String json) {
+	    HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
+	    ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.PUT, requestEntity, String.class);
+	    this.setStatus(responseEntity.getStatusCode());   
+	    return responseEntity.getBody();
+	  }
+
+	  public void delete(String uri) {
+	    HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
+	    ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.DELETE, requestEntity, String.class);
+	    this.setStatus(responseEntity.getStatusCode());
+	  }
 
 	  public HttpStatus getStatus() {
 	    return status;

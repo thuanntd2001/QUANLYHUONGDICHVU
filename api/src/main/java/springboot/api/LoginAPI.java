@@ -21,7 +21,7 @@ public class LoginAPI {
 
 
 	@PostMapping(value = "/login")
-	public LoginDTO checkUserNameAndPass(@RequestBody UserDTO model) {
+	public LoginDTO checkUserNameAndPass(@RequestBody LoginDTO model) {
 
 	
 		UserTBEntity user = urepo.findByUserNameAndPasswd(model.getUserName(),model.getPasswd());

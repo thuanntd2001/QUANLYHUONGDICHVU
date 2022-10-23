@@ -10,22 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.client.RestTemplate;
 
 import com.quancafehighland.utils.FormUtil;
 import com.quancafehighland.utils.SessionUtil;
 
+import spring.bean.Collector;
 import spring.dto.LoginDTO;
 
 @Controller
 public class LoginController extends HttpServlet {
-	/**
-	 * 
-	 */
+
+
 	private static final long serialVersionUID = 1L;
 	Locale localeVi = new Locale("vi");
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("message_vi", localeVi);
@@ -62,17 +60,16 @@ public class LoginController extends HttpServlet {
 		if (action != null && action.equals("login")) {
 
 			LoginDTO model = FormUtil.toModel(LoginDTO.class, request);
-			//model = userService.findByUserNameAndPasswordAndStatus(model.getUserName(), hashPass(model.getPasswd()), 1);
+			model = Collector.postObj("/login",model,LoginDTO.class);
 
 			if (model != null) {
 
 				SessionUtil.getInstance().putValue(request, "USERMODEL", model);
-				//NhanVienModel nv = nhanVienService.findOne(model.getID());
-				SessionUtil.getInstance().putValue(request, "NHANVIEN", /*nv*/null);
+
 				if (model.getRoleID() == 1) {
 					response.sendRedirect(request.getContextPath() + "/admin-home/index.htm");
 				} else if (model.getRoleID() != null) {
-					response.sendRedirect(request.getContextPath() + "/trang-chu.htm");
+					response.sendRedirect(request.getContextPath() + "/goi-mon.htm");
 				}
 			} else {
 				response.sendRedirect(request.getContextPath()
