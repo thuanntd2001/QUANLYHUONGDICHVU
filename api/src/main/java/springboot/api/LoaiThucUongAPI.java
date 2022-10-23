@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.LoaiThucUongDTO;
+import springboot.dto.ThucDonDTO;
 import springboot.entity.LoaiThucUongEntity;
 import springboot.input.ObjDelString;
 import springboot.repository.LoaiThucUongRepository;
@@ -31,8 +32,15 @@ public class LoaiThucUongAPI {
 	
 		if (tenLoai == null && idLoai == null) {
 			List<LoaiThucUongEntity> list = repo.findAll();
+			List<LoaiThucUongDTO> listDTO = new ArrayList<LoaiThucUongDTO>();
+
 			for (LoaiThucUongEntity item : list) {
-				item.setThucDon(null);
+				LoaiThucUongDTO e = new LoaiThucUongDTO();
+				e.setDonVi(item.getTenLoai());
+				e.setid(item.getId());
+				e.setTenLoai(item.getTenLoai());
+			
+				listDTO.add(e);
 			}
 			System.out.print(list.size());
 			return list;
