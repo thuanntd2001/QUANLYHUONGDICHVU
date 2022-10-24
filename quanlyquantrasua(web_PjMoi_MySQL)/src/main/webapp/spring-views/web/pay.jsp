@@ -139,7 +139,7 @@
 											name="loaiTU">
 											<c:forEach items="${loaiTUs}" var="loai">
 
-												<option value="${loai.id}">${loai.tenLoai}</option>
+												<option value="${loai.tenLoai}">${loai.tenLoai}</option>
 											</c:forEach>
 
 										 </select> <label>Tên:</label> <select id="sel2" class="select-menu-small"

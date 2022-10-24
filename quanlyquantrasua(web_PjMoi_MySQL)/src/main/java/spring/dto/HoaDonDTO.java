@@ -1,13 +1,15 @@
 package spring.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class HoaDonDTO {
 	private Long id;
 	private Date ngayThucHien;
 	private Long nvThucHien;
 	private Long ban;
-
+	private List<ChiTietHDDTO> cthds=new ArrayList<ChiTietHDDTO>();
 
 
 
@@ -45,6 +47,18 @@ public class HoaDonDTO {
 
 	public void setNgayThucHien(Date ngayThucHien) {
 		this.ngayThucHien = ngayThucHien;
+	}
+
+
+
+	public List<ChiTietHDDTO> getCthds() {
+		return cthds;
+	}
+
+
+
+	public void setCthds(List<ChiTietHDDTO> cthds) {
+		this.cthds = cthds;
 	}
 
 	

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import spring.bean.BanHoaDonModel;
 import spring.bean.Collector;
 import spring.dto.BanDTO;
+import spring.dto.ChiTietHDDTO;
+import spring.dto.HoaDonDTO;
 import spring.dto.LoaiThucUongDTO;
 import spring.dto.ThucDonDTO;
 
@@ -54,8 +57,11 @@ public class GoiMonController {
 			application.setAttribute("banids", listIdsBan);
 
 		}
+		@SuppressWarnings("unchecked")
 		List<BanDTO> listBan = (List<BanDTO>) application.getAttribute("listBan");
+		@SuppressWarnings("unchecked")
 		List<LoaiThucUongDTO> loaiTUs = (List<LoaiThucUongDTO>) application.getAttribute("loaiTUs");
+		@SuppressWarnings("unchecked")
 		List<ThucDonDTO> thucDons = (List<ThucDonDTO>) application.getAttribute("thucDons");
 
 		model.addAttribute("bans", listBan);
@@ -65,4 +71,106 @@ public class GoiMonController {
 		return "web/pay";
 	}
 
+	@RequestMapping(value = "goi-mon", method = RequestMethod.POST)
+	public String order(ModelMap model, HttpServletRequest request) {
+		@SuppressWarnings("unchecked")
+		List<BanDTO> listBan = (List<BanDTO>) application.getAttribute("listBan");
+		@SuppressWarnings("unchecked")
+		List<BanHoaDonModel> listBHD = (List<BanHoaDonModel>) application.getAttribute("banHoaDons");
+		@SuppressWarnings("unchecked")
+		List<ThucDonDTO> thucDons = (List<ThucDonDTO>) application.getAttribute("thucDons");
+		@SuppressWarnings("unchecked")
+		List<LoaiThucUongDTO> loaiTUs = (List<LoaiThucUongDTO>) application.getAttribute("loaiTUs");
+
+		// lay data tu form
+		long ban = Long.parseLong(request.getParameter("Ban"));
+		session.setAttribute("idBanHT", ban);
+		String loai = (String) request.getParameter("loaiTU");
+		String thucDon = (String) request.getParameter("thucDon");
+		int sl = Integer.parseInt(request.getParameter("sl"));
+		if (sl <= 0)
+			sl = 1;
+		else if (sl > 50)
+			sl = 50;
+		// set view
+		model.addAttribute("bans", listBan);
+		model.addAttribute("loaiTUs", loaiTUs);
+		model.addAttribute("thucDons", thucDons);
+		// set ban co nguoi dung
+		if (Long.valueOf(ban) != null) {
+			listBan.get((int) findBan(ban, listBan)).setTinhTrang(1);
+		}
+		// set ban co nguoi dang chon chua goi
+		if (loai.equals("DC")) {
+			listBan.get((int) ban - 1).setTinhTrang(1);
+		}
+		// neu da goi set hoa don
+		else {
+			// nay goi lan dau thi tao hd, goi them thi chi cap vao hd co san
+			if (listBHD.get((int) findBanHD(ban, listBHD)).getHoaDon() == null) {
+				HoaDonDTO hoaDon = new HoaDonDTO();
+				listBHD.get((int) findBanHD(ban, listBHD)).setHoaDon(hoaDon);
+			}
+
+			BanHoaDonModel BHD = listBHD.get((int) findBanHD(ban, listBHD));
+			// neu khong ton tai mon do trong chi tiet tao chi tiet moi
+			long index = findCTHD_ThucDon(thucDon, BHD.getCthds());
+			
+			if (index == -1) {
+				ThucDonDTO td=thucDons.get((int) findTD(thucDon, thucDons));
+				ChiTietHDDTO chiTiet = new ChiTietHDDTO();
+				chiTiet.setMaHD(null);
+				chiTiet.setSoLuong(sl);
+				chiTiet.setMaSP(td.getid());
+				chiTiet.setTongTien(td.getGia() * sl);
+				BHD.getCthds().add(chiTiet);
+
+				System.out.println(chiTiet.getMaSP());
+			}
+			// nếu co thi cong sl vao
+			else {
+				int oldSL = BHD.getCthds().get((int) index).getSoLuong();
+				if (oldSL + sl <= 50)
+					BHD.getCthds().get((int) index).setSoLuong(oldSL + sl);
+				System.out.println(oldSL);
+				System.out.println(oldSL + sl);
+			}
+
+		}
+		/*
+		 * System.out.println(ban); System.out.println(loai); System.out.println(sl);
+		 * System.out.println(thucDon);
+		 */
+		/* listBHD.get((int)findBanHD(ban,listBHD)).xuat(); */
+		return "web/pay";
+
+	}
+	public long findBan(long id, List<BanDTO> list) {
+		for (int i = 0; i < list.size(); i++)
+			if (list.get(i).getId() == id)
+				return i;
+		return -1;
+	}
+	public long findBanHD(long id, List<BanHoaDonModel> list) {
+		for (int i = 0; i < list.size(); i++)
+			if (list.get(i).getIdBan() == id)
+				return i;
+		return -1;
+	}
+
+	public long findCTHD_ThucDon(String id, List<ChiTietHDDTO> list) {
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).getMaSP());
+			if (list.get(i).getMaSP().equals(id))
+				return i;
+		}
+
+		return -1;
+	}
+	public long findTD(String id, List<ThucDonDTO> list) {
+		for (int i = 0; i < list.size(); i++)
+			if (list.get(i).getid().equals(id))
+				return i;
+		return -1;
+	}
 }
