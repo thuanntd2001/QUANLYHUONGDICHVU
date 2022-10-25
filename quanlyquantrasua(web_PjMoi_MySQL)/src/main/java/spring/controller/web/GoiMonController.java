@@ -130,7 +130,7 @@ public class GoiMonController {
 			// nếu co thi cong sl vao
 			else {
 				int oldSL = BHD.getCthds().get((int) index).getSoLuong();
-				if (oldSL + sl <= 50)
+				if (oldSL + sl <= 999)
 					BHD.getCthds().get((int) index).setSoLuong(oldSL + sl);
 				System.out.println(oldSL);
 				System.out.println(oldSL + sl);
