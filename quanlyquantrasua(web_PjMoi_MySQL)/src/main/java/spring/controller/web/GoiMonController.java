@@ -98,7 +98,7 @@ public class GoiMonController {
 		model.addAttribute("thucDons", thucDons);
 		// set ban co nguoi dung
 		if (Long.valueOf(ban) != null) {
-			listBan.get((int) findBan(ban, listBan)).setTinhTrang(1);
+			listBan.get((int) BanHoaDonModel.findBan(ban, listBan)).setTinhTrang(1);
 		}
 		// set ban co nguoi dang chon chua goi
 		if (loai.equals("DC")) {
@@ -107,17 +107,17 @@ public class GoiMonController {
 		// neu da goi set hoa don
 		else {
 			// nay goi lan dau thi tao hd, goi them thi chi cap vao hd co san
-			if (listBHD.get((int) findBanHD(ban, listBHD)).getHoaDon() == null) {
+			if (listBHD.get((int) BanHoaDonModel.findBanHD(ban, listBHD)).getHoaDon() == null) {
 				HoaDonDTO hoaDon = new HoaDonDTO();
-				listBHD.get((int) findBanHD(ban, listBHD)).setHoaDon(hoaDon);
+				listBHD.get((int) BanHoaDonModel.findBanHD(ban, listBHD)).setHoaDon(hoaDon);
 			}
 
-			BanHoaDonModel BHD = listBHD.get((int) findBanHD(ban, listBHD));
+			BanHoaDonModel BHD = listBHD.get((int) BanHoaDonModel.findBanHD(ban, listBHD));
 			// neu khong ton tai mon do trong chi tiet tao chi tiet moi
-			long index = findCTHD_ThucDon(thucDon, BHD.getCthds());
+			long index = BanHoaDonModel.findCTHD_ThucDon(thucDon, BHD.getCthds());
 			
 			if (index == -1) {
-				ThucDonDTO td=thucDons.get((int) findTD(thucDon, thucDons));
+				ThucDonDTO td=thucDons.get((int) BanHoaDonModel.findTD(thucDon, thucDons));
 				ChiTietHDDTO chiTiet = new ChiTietHDDTO();
 				chiTiet.setMaHD(null);
 				chiTiet.setSoLuong(sl);
@@ -145,32 +145,5 @@ public class GoiMonController {
 		return "web/pay";
 
 	}
-	public long findBan(long id, List<BanDTO> list) {
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getId() == id)
-				return i;
-		return -1;
-	}
-	public long findBanHD(long id, List<BanHoaDonModel> list) {
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getIdBan() == id)
-				return i;
-		return -1;
-	}
 
-	public long findCTHD_ThucDon(String id, List<ChiTietHDDTO> list) {
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i).getMaSP());
-			if (list.get(i).getMaSP().equals(id))
-				return i;
-		}
-
-		return -1;
-	}
-	public long findTD(String id, List<ThucDonDTO> list) {
-		for (int i = 0; i < list.size(); i++)
-			if (list.get(i).getid().equals(id))
-				return i;
-		return -1;
-	}
 }
