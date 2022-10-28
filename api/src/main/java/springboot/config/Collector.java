@@ -38,6 +38,8 @@ public class Collector<T> {
 		K obj = null;
 
 		try {
+			System.out.println( objectMapper.writeValueAsString(pojo));
+
 			obj = objectMapper.readValue(rc.post(url, objectMapper.writeValueAsString(pojo)), clazz);
 			System.out.println(rc.post(url, objectMapper.writeValueAsString(pojo)));
 

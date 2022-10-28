@@ -35,7 +35,7 @@ public class ChiTietHDAPI {
 	ThucDonRepository tdrepo;
 
 	@GetMapping("/chitiethd")
-	public List<ChiTietHDDTO> getUser(HttpServletRequest request) {
+	public List<ChiTietHDDTO> getCTHD(HttpServletRequest request) {
 		String idhd = request.getParameter("idhd");
 		long id;
 	
