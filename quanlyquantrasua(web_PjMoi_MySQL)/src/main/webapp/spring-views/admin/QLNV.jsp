@@ -87,7 +87,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="nv" items="${pagedListHolder.pageList}">
+					<c:forEach var="nv" items="${list}">
 						<tr>
 							<td>${nv.maNV}</td>
 							<td>${nv.hoTen}</td>

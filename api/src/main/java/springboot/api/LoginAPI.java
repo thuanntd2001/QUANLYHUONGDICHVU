@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.LoginDTO;
-import springboot.dto.UserDTO;
 import springboot.entity.NhanVienEntity;
 import springboot.entity.UserTBEntity;
 import springboot.repository.NhanVienRepository;
@@ -21,7 +20,7 @@ public class LoginAPI {
 
 
 	@PostMapping(value = "/login")
-	public LoginDTO checkUserNameAndPass(@RequestBody UserDTO model) {
+	public LoginDTO checkUserNameAndPass(@RequestBody LoginDTO model) {
 
 	
 		UserTBEntity user = urepo.findByUserNameAndPasswd(model.getUserName(),model.getPasswd());

@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import springboot.dto.ChiTietHDDTO;
 import springboot.dto.HoaDonDTO;
 import springboot.entity.HoaDonEntity;
 import springboot.repository.BanRepository;
 import springboot.repository.HoaDonRepository;
 import springboot.repository.NhanVienRepository;
+import springboot.config.Collector;
 
 @RestController
 public class HoaDonAPI {
@@ -27,9 +29,10 @@ public class HoaDonAPI {
 	BanRepository brepo;
 	@Autowired
 	NhanVienRepository nvrepo;
+
 	@GetMapping("/hoadon")
 	public List<HoaDonDTO> getHoaDon() {
-		List<HoaDonEntity> list = repo.findAll();
+		List<HoaDonEntity> list = repo.findByOrderByIdDesc();
 		List<HoaDonDTO> listDTO = new ArrayList<HoaDonDTO>();
 		for (HoaDonEntity item : list) {
 			HoaDonDTO e = new HoaDonDTO();
@@ -37,16 +40,13 @@ public class HoaDonAPI {
 			e.setBan(item.getBan().getId());
 			e.setNgayThucHien(item.getNgayThucHien());
 			e.setNvThucHien(item.getNvThucHien().getMaNV());
-			
-			
-			
+
 			listDTO.add(e);
-			
+
 		}
 		System.out.print(list.size());
 		return listDTO;
 	}
-
 
 	@PostMapping(value = "/hoadon")
 	public String create(@RequestBody HoaDonDTO model) {
@@ -58,8 +58,7 @@ public class HoaDonAPI {
 			save.setNvThucHien(nvrepo.getOne(model.getNvThucHien()));
 			save.setNgayThucHien(new Date());
 			save.setTinhTrang(1);
-		
-			
+
 			check = repo.save(save);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -69,8 +68,13 @@ public class HoaDonAPI {
 		if (check == null) {
 
 			return "02";
+		} else {
+			for (ChiTietHDDTO item : model.getCthds()) {
+				item.setMaHD(check.getId());
+				Collector.postObj("/chitiethd", item, ChiTietHDDTO.class);
+			}
+			return "00";
 		}
-		return "00";
 	}
 
 	@PutMapping(value = "/hoadon")
@@ -92,7 +96,7 @@ public class HoaDonAPI {
 				save.setNvThucHien(nvrepo.getOne(model.getNvThucHien()));
 				save.setNgayThucHien(new Date());
 				save.setTinhTrang(1);
-			
+
 				check = repo.save(save);
 			} catch (Exception e) {
 				e.printStackTrace();

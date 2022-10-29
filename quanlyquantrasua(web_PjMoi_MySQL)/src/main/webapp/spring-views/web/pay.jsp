@@ -139,18 +139,18 @@
 											name="loaiTU">
 											<c:forEach items="${loaiTUs}" var="loai">
 
-												<option value="${loai.id}">${loai.tenLoai}</option>
+												<option value="${loai.tenLoai}">${loai.tenLoai}</option>
 											</c:forEach>
 
-										</select> <label>Tên:</label> <select id="sel2" class="select-menu-small"
+										 </select> <label>Tên:</label> <select id="sel2" class="select-menu-small"
 											name="thucDon">
 											<c:forEach items="${ thucDons}" var="TD">
 
-												<option data-option="${TD.loaiThucUong.id}" value="${TD.id}">${TD.ten}
+												<option data-option="${TD.loaiThucUong}" value="${TD.id}">${TD.ten}
 												</option>
 											</c:forEach>
 
-										</select>
+										</select> 
 										<div class="">
 											<label for="amount">Số lượng:</label> <input id="amount" type="number"
 												style="width: 46px;" name="sl" value="1">

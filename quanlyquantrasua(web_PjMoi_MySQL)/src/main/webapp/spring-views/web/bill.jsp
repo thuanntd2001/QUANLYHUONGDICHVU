@@ -47,7 +47,7 @@
                 
                <%--  <jsp:useBean id="pagedListHolder" scope="request"
 					type="org.springframework.beans.support.PagedListHolder" /> --%>
-				<c:url value="hoa-don.htm" var="pagedLink">
+				<%-- <c:url value="hoa-don.htm" var="pagedLink">
 					<c:param name="p" value="~" />
 				</c:url>
                 <form class="input-group" style="margin: 20px 0" method="post">
@@ -58,7 +58,7 @@
 					<button id="search-button" type="submit" class="btn btn-primary" name="btnsearch">
 						<i class="fas fa-search"></i>
 					</button>
-				</form>
+				</form> --%>
                 <table class="table table-striped datatable shadow-box bg-white">
                     <thead>
                         <tr>
@@ -70,11 +70,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="hd" items="${pagedListHolder.pageList}">
+                        <c:forEach var="hd" items="${list}">
                         	<tr>
                             <th scope="row">${hd.id }</th>
                             <td>${hd.ngayThucHien}</td>
-                            <td>${hd.hdnv.hoTen}</td>
+                           <td>${hd.nvThucHien}</td>
 
                             <td>
                                 <div class="">
@@ -87,8 +87,7 @@
                         </c:forEach>
                     </tbody>
                 </table>
-                <tg:paging pagedLink="${pagedLink}"
-					pagedListHolder="${pagedListHolder}"></tg:paging>
+            
             </div>
 
         </div>

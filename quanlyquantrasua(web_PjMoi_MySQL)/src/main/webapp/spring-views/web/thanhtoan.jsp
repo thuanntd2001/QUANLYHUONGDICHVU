@@ -141,7 +141,7 @@
 							<!-- MENU MON AN -->
 							<c:forEach items="${banHD.cthds }" var="cthd" varStatus="theCount">
 								<tr>
-									<td>${cthd.thucDon.loaiThucUong.tenLoai }</td>
+									<td>${cthd.thucDon.loaiThucUong }</td>
 									<td>${cthd.thucDon.ten }</td>
 									<td><input id="inp-4" type="number"
 										value="${cthd.soLuong }"
