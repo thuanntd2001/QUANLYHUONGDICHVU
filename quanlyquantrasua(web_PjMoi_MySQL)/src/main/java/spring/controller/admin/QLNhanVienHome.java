@@ -43,7 +43,9 @@ public class QLNhanVienHome {
 	@RequestMapping(value="form", method = RequestMethod.GET) 
     public String index_form(ModelMap model) {
 
-          return "admin/form/inputNV";
+//		String list = "cut";
+//		model.addAttribute("nv", list);
+        return "admin/form/inputNV";
     }
 	
 	

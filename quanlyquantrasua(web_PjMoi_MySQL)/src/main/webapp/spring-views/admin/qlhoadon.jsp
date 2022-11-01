@@ -43,11 +43,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="hd" items="${pagedListHolder.pageList}">
+					<c:forEach var="hd" items="${list}">
 						<tr>
 							<th scope="row">${hd.id}</th>
-							<td>${hd.hdnv.hoTen}</td>
-							<td>${hd.ban.id}</td>
+							<td>${hd.nvThucHien}</td>
+							<td>${hd.ban}</td>
 							<td>${hd.ngayThucHien}</td>
 						</tr>
 					</c:forEach>

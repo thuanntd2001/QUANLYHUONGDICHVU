@@ -65,17 +65,17 @@
 				<thead>
 					<tr>
 						<th scope="row">Tên Tài Khoản</th>						 
-						<th scope="row">Chức Vụ</th>
+						<th scope="row">Mật khẩu</th>
 						<th scope="row">Email</th>
 
 						<th scope="row"></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="tk" items="${pagedListHolder.pageList}">
+					<c:forEach var="tk" items="${list}">
 						<tr>
 							<td>${tk.userName}</td>
-							<td>${tk.chucVu.tenChucVu}</td>
+							<td>${tk.passwd}</td>
 							<td>${tk.email}</td>
 
 
@@ -88,7 +88,7 @@
 							
 								<td>
 								<!--  --> <c:choose>
-									<c:when test="${ tk.chucVu.id == 1}">
+									<c:when test="${ tk.roleID == 1}">
 										<button name="btnxoa1" type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#nadmin">
 											Đặt lại mật khẩu
@@ -122,7 +122,7 @@
 										</div>
 
 									</c:when>
-									<c:when test="${ tk.chucVu.id != 1}">
+									<c:when test="${ tk.roleID != 1}">
 
 										<button name="btnxoa" type="button" class="btn btn-primary"
 										data-toggle="modal" data-target="#n1-${tk.userName}">
@@ -167,7 +167,7 @@
 
 							<td>
 								<!--  --> <c:choose>
-									<c:when test="${ tk.chucVu.id == 1}">
+									<c:when test="${ tk.roleID == 1}">
 										<button name="btnxoa1" type="button" class="btn btn-primary"
 											data-toggle="modal" data-target="#nadmin">
 											SỬA
@@ -201,7 +201,7 @@
 										</div>
 
 									</c:when>
-									<c:when test="${ tk.chucVu.id != 1}">
+									<c:when test="${ tk.roleID != 1}">
 
 										<a
 											href="/CNPM/admin-home/formTaiKhoan.htm?linkEdit&userName=${tk.userName}">

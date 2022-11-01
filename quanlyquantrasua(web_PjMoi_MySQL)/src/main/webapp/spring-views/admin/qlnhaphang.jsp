@@ -62,20 +62,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="nh" items="${pagedListHolder.pageList}">
+					<c:forEach var="nh" items="${list}">
 						<tr>
 							<th scope="row">${nh.id}</th>
 
-							<td>${nh.tenNL}</td>
+							<td>${nh.tenChiPhi}</td>
 							<td>${nh.ngayNhap}</td>
 							<td>${nh.soLuong}</td>
-							<td>${nh.giaMoiDV}</td>
+							<td>${nh.giaDonVi}</td>
 
 							<td>${nh.loai}</td>
 							<td>${nh.nhaCungCap}</td>
-							<td>${nh.dv}</td>
+							<td>${nh.donVi}</td>
 
-							<td>${nh.cpnv.maNV}</td>
+							<td>${nh.nvTao}</td>
 							<td><a
 								href="/CNPM/admin-home/formNhapHang.htm?linkEdit&id=${nh.id}">
 									<button type="button" class="btn btn-secondary">SỬA</button>

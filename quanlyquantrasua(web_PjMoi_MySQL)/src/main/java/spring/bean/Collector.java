@@ -37,6 +37,7 @@ public class Collector<T> {
 
 	@SuppressWarnings("hiding")
 	public static <K> K postObj(String url, K pojo, Class<K> clazz) {
+		//(/nhanvien, DTOnhanvien, Dtonhanvien.class)
 		K obj = null;
 
 		try {

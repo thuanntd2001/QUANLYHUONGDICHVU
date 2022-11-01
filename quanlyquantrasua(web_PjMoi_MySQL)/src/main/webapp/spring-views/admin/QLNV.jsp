@@ -40,7 +40,7 @@
 
 				<div class="col-6">
 
-					<a href="/CNPM/admin-home/form.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
+					<a href="/dichvu/admin-home/form.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
 						<button style="width: 144px; height: 33px; margin-bottom: 5px;"
 							type="button" class="btn btn-primary">Thêm Nhân Viên</button>
 					</a>

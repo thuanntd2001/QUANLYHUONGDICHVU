@@ -49,17 +49,17 @@
 						<th scope="row">ID</th>
 						<th scope="row">Số Ghế</th>
 						<th scope="row">Loại Bàn</th>
-						<th scope="row">Giá Thành</th>
+						<th scope="row">Tình Trạng</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="b" items="${pagedListHolder.pageList}">
+					<c:forEach var="b" items="${list}">
 						<tr>
 							<th scope="row">${b.id}</th>
 							<td>${b.soGhe}</td>
-							<td>${b.loaiBan.tenLoai}</td>
-							<td>${b.loaiBan.giaDat}</td>
+							<td>${b.tenLoai}</td>
+							<td>${b.tinhTrang}</td>
 							<td><a href="/CNPM/admin-home/formBan.htm?linkEdit&id=${b.id}">
 											<button  type="button"
 												class="btn btn-primary" data-toggle="modal" 

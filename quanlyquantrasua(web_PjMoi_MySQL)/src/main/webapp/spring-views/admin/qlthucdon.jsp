@@ -51,11 +51,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach  var="th" items="${pagedListHolder.pageList}">
+                    <c:forEach  var="th" items="${list}">
                        
                      <tr>
                             <th scope="row">${th.id}</th>
-                            <td>${th.loaiThucUong.tenLoai}</td>
+                            <td>${th.loaiThucUong}</td>
                             <td>${th.ten}</td>
                             <td>${th.gia}</td>
                             <td><a href="/CNPM/admin-home/formThucDon.htm?linkEdit&id=${th.id}">
