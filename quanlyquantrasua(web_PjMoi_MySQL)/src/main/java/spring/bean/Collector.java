@@ -26,7 +26,7 @@ public class Collector<T> {
 		List<T> list = null;
 		CollectionType listType = objectMapper.getTypeFactory().constructCollectionType(ArrayList.class, elementClass);
 		String json=rc.get(url);
-		System.out.println(json);
+		//System.out.println(json);
 
 		list = objectMapper.readValue(rc.get(url), listType);
 		System.out.println();

@@ -22,6 +22,8 @@ public class BanHoaDonModel {
 	private int trangThaiCu = 0;
 	private long idBan = 0;
 	private List<ChiTietHDDTO> cthds = new ArrayList<ChiTietHDDTO>();
+	public List<ThucDonDTO> TDs = new ArrayList<ThucDonDTO>();
+
 	private HoaDonDTO hoaDon;
 
 	public List<ChiTietHDDTO> getCthds() {
@@ -105,10 +107,27 @@ public class BanHoaDonModel {
 
 	public static ThucDonDTO findTDDTO(String maSP, List<ThucDonDTO> thucDons) {
 		for (ThucDonDTO item : thucDons) {
-			if (item.getid().equals(maSP))
-				return item;
+			if (item.getid().equals(maSP)) {
+				ThucDonDTO item2 =new ThucDonDTO();
+				item2.setGia(item.getGia());
+				item2.setid(maSP);
+				item2.setTen(item.getTen());
+				item2.setLoaiThucUong(item.getLoaiThucUong());
+
+
+
+				return item2;
+				}
 		}
 		return null;
 
+	}
+
+	public List<ThucDonDTO> getTDs() {
+		return TDs;
+	}
+
+	public void setTDs(List<ThucDonDTO> tDs) {
+		TDs = tDs;
 	}
 }

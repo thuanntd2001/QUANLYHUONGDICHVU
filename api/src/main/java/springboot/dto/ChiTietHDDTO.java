@@ -1,5 +1,6 @@
 package springboot.dto;
 
+
 public class ChiTietHDDTO {
 	private Long id;
 
@@ -8,6 +9,7 @@ public class ChiTietHDDTO {
 	private int soLuong;
 	private int tongTien;
 
+	
 	public Long getMaHD() {
 		return maHD;
 	}
@@ -38,6 +40,7 @@ public class ChiTietHDDTO {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	
 
 }

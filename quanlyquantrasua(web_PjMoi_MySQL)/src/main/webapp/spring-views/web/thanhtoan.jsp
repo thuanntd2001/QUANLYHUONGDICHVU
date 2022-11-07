@@ -139,15 +139,15 @@
 						</thead>
 						<tbody>
 							<!-- MENU MON AN -->
-							<c:forEach items="${banHD.cthds }" var="cthd" varStatus="theCount">
+							<c:forEach items="${banHD.TDs }" var="cthd" varStatus="theCount">
 								<tr>
-									<td>${cthd.thucDon.loaiThucUong }</td>
-									<td>${cthd.thucDon.ten }</td>
+									<td>${cthd.loaiThucUong }</td>
+									<td>${cthd.ten }</td>
 									<td><input id="inp-4" type="number"
-										value="${cthd.soLuong }"
+										value="${cthd.sl }"
 										style="width: 64px; text-align: center;" disabled></td>
 
-									<td>${cthd.thucDon.gia }</td>
+									<td>${cthd.gia }</td>
 									<td class="d-flex justify-content-center align-items-center">
 
 

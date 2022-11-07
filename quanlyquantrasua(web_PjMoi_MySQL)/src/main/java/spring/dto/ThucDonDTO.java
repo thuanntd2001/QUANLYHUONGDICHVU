@@ -6,6 +6,7 @@ public class ThucDonDTO {
 	private String ten;
 	private String loaiThucUong;
 	private int gia;
+	public int sl=0;
 	public ThucDonDTO(Long id1, String id, String ten, String loai, int gia) {
 		super();
 		this.id1 = id1;
@@ -36,6 +37,9 @@ public class ThucDonDTO {
 
 	public int getGia() {
 		return gia;
+	}
+	public int getSl() {
+		return sl;
 	}
 	public void setGia(int gia) {
 		this.gia = gia;

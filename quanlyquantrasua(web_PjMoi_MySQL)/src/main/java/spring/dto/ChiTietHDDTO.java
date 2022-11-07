@@ -7,7 +7,7 @@ public class ChiTietHDDTO {
 	private String maSP;
 	private int soLuong;
 	private int tongTien;
-	private ThucDonDTO thucDon;
+	//private ThucDonDTO thucDon;
 
 	public Long getMaHD() {
 		return maHD;
@@ -39,12 +39,12 @@ public class ChiTietHDDTO {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public ThucDonDTO getThucDon() {
-		return thucDon;
-	}
-	public void setThucDon(ThucDonDTO thucDon) {
-		this.thucDon = thucDon;
-	}
+//	public ThucDonDTO getThucDon() {
+//		return thucDon;
+//	}
+//	public void setThucDon(ThucDonDTO thucDon) {
+//		this.thucDon = thucDon;
+//	}
 	
 
 }
