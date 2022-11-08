@@ -33,3 +33,4 @@ spring-config-hibernate.xml
 target/
 
 /.metadata/
+JPAConfig.java
