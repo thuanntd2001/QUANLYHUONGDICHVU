@@ -37,7 +37,7 @@ body {
 			<div class="form-row ">
 				<div class="col-8 form-group">
 					<label>Tên Nguyên Liệu</label> <br>
-					<form:input id="NL" path="tenNL" type="text" class="form-control"
+					<form:input id="NL" path="tenChiPhi" type="text" class="form-control"
 						placeholder="Sữa đặc, Sữa chua,...." />
 							<span class="form-message"></span>
 				</div>
@@ -52,7 +52,7 @@ body {
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label>Giá Mỗi Dịch Vụ</label> <br>
-					<form:input min="1000" max="100000000" id="giaMoiDV" path="giaMoiDV" type="number" />
+					<form:input min="1000" max="100000000" id="giaMoiDV" path="giaDonVi" type="number" />
 						<span class="form-message"></span>
 				</div>
 				<div class="form-group col-md-4">
@@ -68,7 +68,7 @@ body {
 				<div class="form-group col-md-4">
 					<div class="form-group col-md-6">
 						<label>Đơn vị</label> <br>
-						<form:select path="dv">
+						<form:select path="donVi">
 							<form:option value="CÁI"> CÁI</form:option>
 							<form:option value="NGƯỜI"> NGƯỜI</form:option>
 							<form:option value="KG"> KG</form:option>

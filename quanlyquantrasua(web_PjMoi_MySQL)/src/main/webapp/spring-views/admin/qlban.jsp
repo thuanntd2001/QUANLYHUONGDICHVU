@@ -21,7 +21,7 @@
 				LÍ BÀN</div>
 			<h4>${message}</h4>
 			<div>
-				<a href="/CNPM/admin-home/formBan.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
+				<a href="/dichvu/admin-home/formBan.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
 					<button style="width: 184px; height: 33px; margin-bottom: 5px;"
 						type="button" class="btn btn-primary">Thêm Bàn</button>
 				</a>

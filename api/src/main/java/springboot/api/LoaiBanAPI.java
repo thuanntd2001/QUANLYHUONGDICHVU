@@ -1,5 +1,6 @@
 package springboot.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,14 +23,22 @@ public class LoaiBanAPI {
 	LoaiBanRepository repo;
 
 	@GetMapping("/loaiban")
-	public List<LoaiBanEntity> getLoaiBan() {
-
+	public List<LoaiBanDTO> getLoaiBan() {
+		List<LoaiBanDTO> list1= new ArrayList<LoaiBanDTO>();
 		List<LoaiBanEntity> list = repo.findAll();
 		for (LoaiBanEntity item : list) {
 			item.setBan(null);
 		}
 		System.out.print(list.size());
-		return list;
+		//cao ky them vao sua ham get tu loaiBanEntity thanh LoaiBanDTO
+		for (LoaiBanEntity item : list) {
+			LoaiBanDTO b = new LoaiBanDTO();
+			b.setGiaDat(item.getGiaDat());
+			b.setid(item.getId());;
+			b.setTenLoai(item.getTenLoai());
+			list1.add(b);
+		}
+		return list1;
 
 	}
 
