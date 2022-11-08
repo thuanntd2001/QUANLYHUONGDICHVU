@@ -45,11 +45,7 @@
                     </div>
                 </div>
                 
-                <%-- <jsp:useBean id="pagedListHolder" scope="request"
-					type="org.springframework.beans.support.PagedListHolder" /> --%>
-				<c:url value="thuc-don.htm" var="pagedLink">
-					<c:param name="p" value="~" />
-				</c:url>
+         
                 <form class="input-group" style="margin: 20px 0" method="post">
 					<div>
 						<input id="search-input" type="search" name="searchInput"
@@ -69,10 +65,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="td" items="${pagedListHolder.pageList}">
+                        <c:forEach var="td" items="${list}">
 							<tr>
 								<th scope="row">${td.id}</th>
-								<td>${td.loaiThucUong.tenLoai}</td>
+								<td>${td.loaiThucUong}</td>
 								<td>${td.ten}</td>
 								<td>${td.gia} đồng</td>
 							</tr>
@@ -80,8 +76,7 @@
 
                     </tbody>
                 </table>
-                <tg:paging pagedLink="${pagedLink}"
-					pagedListHolder="${pagedListHolder}"></tg:paging>
+             
             </div>
 
         </div>

@@ -49,11 +49,7 @@
                     </a>
                 </div>
                 
-               <jsp:useBean id="pagedListHolder" scope="request"
-					type="org.springframework.beans.support.PagedListHolder" />
-				<c:url value="hoa-don/${idhd}.htm?linkView" var="pagedLink">
-					<c:param name="p" value="~" />
-				</c:url>
+               
                 
                 <table class="table table-striped datatable shadow-box">
 
@@ -68,22 +64,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="cthd" items="${pagedListHolder.pageList}">
+                        <c:forEach var="cthd" items="${chiTietHD}">
                         	<tr>
-                            <td>${cthd.hoaDon.id }</td>
+                            <%-- <td>${cthd.hoaDon.id }</td>
                             <td>${cthd.thucDon.id }</td>
                             <td>${cthd.thucDon.ten }</td>
                             <td>${cthd.thucDon.gia } đồng</td>
                             <td>${cthd.soLuong }</td>
-                            <td>${cthd.soLuong * cthd.thucDon.gia} đồng</td>
+                            <td>${cthd.soLuong * cthd.thucDon.gia} đồng</td> --%>
                         </tr>
                         </c:forEach>
 
                     </tbody>
                 </table>
                 <h3>Tổng Tiền:  ${tongTien} đồng</h3>
-                <tg:paging pagedLink="${pagedLink}"
-					pagedListHolder="${pagedListHolder}"></tg:paging>
+         
             </div>
 
         </div>
