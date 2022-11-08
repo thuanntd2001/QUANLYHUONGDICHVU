@@ -38,9 +38,10 @@ public class Collector<T> {
 		K obj = null;
 
 		try {
-			System.out.println( objectMapper.writeValueAsString(pojo));
+			String json= objectMapper.writeValueAsString(pojo);
+			System.out.println( json);
 
-			obj = objectMapper.readValue(rc.post(url, objectMapper.writeValueAsString(pojo)), clazz);
+			obj = objectMapper.readValue(rc.post(url, json), clazz);
 			System.out.println(rc.post(url, objectMapper.writeValueAsString(pojo)));
 
 		} catch (JsonParseException e) {
@@ -61,5 +62,34 @@ public class Collector<T> {
 		return obj;
 
 	}
+	
+	@SuppressWarnings("hiding")
+	public static <K> String postMess(String url, K pojo) {
+		String obj = null;
+
+		try {
+			System.out.println( "js: "+objectMapper.writeValueAsString(pojo));
+			obj = rc.post(url, objectMapper.writeValueAsString(pojo));
+			
+
+		} catch (JsonParseException e) {
+			System.out.print("loi json");
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			System.out.print("loi mapping");
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.print("chua bat api");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return obj;
+
+	}
+
 
 }

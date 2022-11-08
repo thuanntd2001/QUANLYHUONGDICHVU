@@ -35,13 +35,15 @@ public class Collector<T> {
 
 	}
 
-	@SuppressWarnings("hiding")
 	public static <K> K postObj(String url, K pojo, Class<K> clazz) {
-		//(/nhanvien, DTOnhanvien, Dtonhanvien.class)
 		K obj = null;
 
 		try {
-			obj = objectMapper.readValue(rc.post(url, objectMapper.writeValueAsString(pojo)), clazz);
+			String json= objectMapper.writeValueAsString(pojo);
+			System.out.println( json);
+
+			obj = objectMapper.readValue(rc.post(url, json), clazz);
+			System.out.println(rc.post(url, objectMapper.writeValueAsString(pojo)));
 
 		} catch (JsonParseException e) {
 			System.out.print("loi json");
@@ -61,6 +63,7 @@ public class Collector<T> {
 		return obj;
 
 	}
+	
 	@SuppressWarnings("hiding")
 	public static <K> String postMess(String url, K pojo) {
 		String obj = null;
