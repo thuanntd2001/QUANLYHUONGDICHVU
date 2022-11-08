@@ -94,14 +94,13 @@ public class ThanhToanController {
 		if (Long.valueOf(ban) != null) {
 			BanHoaDonModel BHD = listBHD.get((int) BanHoaDonModel.findBanHD(ban, listBHD));
 
-			if (BHD.TDs.size()<BHD.getCthds().size())
-			for (int i=0;i<BHD.getCthds().size();i++) {
-				ThucDonDTO td=BanHoaDonModel.findTDDTO(BHD.getCthds().get(i).getMaSP(), thucDons);
-				td.sl=BHD.getCthds().get(i).getSoLuong();
+			BHD.TDs = new ArrayList<ThucDonDTO>();
+			for (int i = 0; i < BHD.getCthds().size(); i++) {
+				ThucDonDTO td = BanHoaDonModel.findTDDTO(BHD.getCthds().get(i).getMaSP(), thucDons);
+				td.sl = BHD.getCthds().get(i).getSoLuong();
 				BHD.TDs.add(td);
 			}
-						
-			
+
 			model.addAttribute("banHD", BHD);
 			model.addAttribute("tongtien", BanHoaDonModel.tinhTong(BHD.getCthds()));
 		}
@@ -113,7 +112,6 @@ public class ThanhToanController {
 	public String pay(ModelMap model, HttpServletRequest request) {
 		@SuppressWarnings("unchecked")
 		List<BanDTO> listBan = (List<BanDTO>) application.getAttribute("listBan");
-
 
 		@SuppressWarnings("unchecked")
 		List<BanHoaDonModel> listBHD = (List<BanHoaDonModel>) application.getAttribute("banHoaDons");
@@ -151,8 +149,31 @@ public class ThanhToanController {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "thanh-toan", method = RequestMethod.POST, params = "print")
 	public String print(ModelMap model, HttpServletRequest request) {
+		List<BanDTO> listBan = (List<BanDTO>) application.getAttribute("listBan");
+		List<BanHoaDonModel> listBHD = (List<BanHoaDonModel>) application.getAttribute("banHoaDons");
+		// lay data tu form
+		long ban = Long.parseLong(request.getParameter("Ban"));
+		// tim ban có id hien tai trong ds banhd hien tai
+		BanHoaDonModel banHD = listBHD.get((int) BanHoaDonModel.findBanHD(ban, listBHD));
+
+		// set view
+		model.addAttribute("bans", listBan);
+
+		List<ChiTietHDDTO> cthds = banHD.getCthds();
+		List<ThucDonDTO> TDs = banHD.getTDs();
+
+		int tong = 0;
+		for (ChiTietHDDTO cthd : cthds) {
+			tong += cthd.getTongTien();
+		}
+
+		model.addAttribute("tongTien", tong);
+		model.addAttribute("cthds", cthds);
+		model.addAttribute("TDs", TDs);
+		listBHD.get((int) BanHoaDonModel.findBanHD(ban, listBHD)).xuat();
 
 		return "web/inhoadon";
 

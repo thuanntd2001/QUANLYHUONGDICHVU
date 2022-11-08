@@ -35,7 +35,7 @@
 				<div class="content">
 					<div class="title" style="text-align: center;">
 						Phúc Long Man Thiện<br /> HÓA ĐƠN THANH TOÁN <br />
-						-------oOo-------}<br /> Mã HD: ${cthd.hoaDon.id }<br />
+						-------oOo-------}<br /> <br />
 					</div>
 
 					<h3>CHI TIẾT HÓA ĐƠN</h3>
@@ -64,14 +64,14 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="cthd" items="${cthds}">
+							<c:forEach var="cthd" items="${TDs}">
 								<tr>
 
 
-									<td>${cthd.thucDon.ten }</td>
-									<td>${cthd.thucDon.gia }đồng</td>
-									<td>${cthd.soLuong }</td>
-									<td>${cthd.soLuong * cthd.thucDon.gia}đồng</td>
+									<td>${cthd.ten }</td>
+									<td>${cthd.gia } đồng</td>
+									<td>${cthd.sl }</td>
+									<td>${cthd.sl * cthd.gia}đồng</td>
 								</tr>
 							</c:forEach>
 
