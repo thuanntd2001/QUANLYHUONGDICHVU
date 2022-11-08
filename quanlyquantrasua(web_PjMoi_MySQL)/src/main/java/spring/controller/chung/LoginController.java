@@ -60,9 +60,13 @@ public class LoginController extends HttpServlet {
 		if (action != null && action.equals("login")) {
 
 			LoginDTO model = FormUtil.toModel(LoginDTO.class, request);
+			try {
 			model = Collector.postObj("/login",model,LoginDTO.class);
-
-			if (model != null) {
+			}catch(Exception e) {
+				response.sendRedirect(request.getContextPath()
+						+ "/dang-nhap.htm?action=login&message=username_password_invalid&alert=danger");
+			}
+			if (model.getMaNV() != null) {
 
 				SessionUtil.getInstance().putValue(request, "USERMODEL", model);
 
@@ -71,10 +75,7 @@ public class LoginController extends HttpServlet {
 				} else if (model.getRoleID() != null) {
 					response.sendRedirect(request.getContextPath() + "/goi-mon.htm");
 				}
-			} else {
-				response.sendRedirect(request.getContextPath()
-						+ "/dang-nhap.htm?action=login&message=username_password_invalid&alert=danger");
-			}
+			} 
 		}
 	}
 }

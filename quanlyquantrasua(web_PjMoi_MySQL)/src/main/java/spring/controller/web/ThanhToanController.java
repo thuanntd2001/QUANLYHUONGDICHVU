@@ -100,20 +100,7 @@ public class ThanhToanController {
 				td.sl=BHD.getCthds().get(i).getSoLuong();
 				BHD.TDs.add(td);
 			}
-			
-//			
-//			for (int i=0;i<BHD.TDs.size();i++) {
-//				System.out.println(BHD.TDs.get(i).getTen());
-//				System.out.println(BHD.TDs.get(i).getid());
-//				System.out.println(BHD.TDs.get(i).getLoaiThucUong());
-//				System.out.println(BHD.TDs.get(i).getGia());
-//				System.out.println(BHD.TDs.get(i).sl);
-//				System.out.println(BHD.TDs.size());
-//
-//			}
-				
-			
-			
+						
 			
 			model.addAttribute("banHD", BHD);
 			model.addAttribute("tongtien", BanHoaDonModel.tinhTong(BHD.getCthds()));
@@ -149,8 +136,8 @@ public class ThanhToanController {
 			HD.setNvThucHien(nv.getMaNV());
 
 			String flag = Collector.postMess("/hoadon", HD);
-
-			if (flag == "00") {
+			System.out.println(flag);
+			if (flag.equals("00")) {
 				banHD.setHoaDon(null);
 				banHD.setCthds(new ArrayList<ChiTietHDDTO>());
 				listBan.get((int) BanHoaDonModel.findBan(ban, listBan)).setTinhTrang(0);

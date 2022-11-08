@@ -69,11 +69,14 @@ public class HoaDonAPI {
 
 			return "02";
 		} else {
+			String flat="00";
 			for (ChiTietHDDTO item : model.getCthds()) {
 				item.setMaHD(check.getId());
-				Collector.postObj("/chitiethd", item, ChiTietHDDTO.class);
+				item.setId(0l);
+				flat= Collector.postMess("/chitiethd", item);
 			}
-			return "00";
+		
+			return flat;
 		}
 	}
 
