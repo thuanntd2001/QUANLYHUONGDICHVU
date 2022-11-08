@@ -182,6 +182,21 @@ public class ThanhToanController {
 	@RequestMapping(value = "thanh-toan", method = RequestMethod.POST, params = "xoa")
 	public String xoa(ModelMap model, HttpServletRequest request) {
 
+		long idMon= Long.parseLong(request.getParameter("id"));
+		List<BanHoaDonModel> listBHD = (List<BanHoaDonModel>) application.getAttribute("banHoaDons");
+		long idBHD=  (long) session.getAttribute("idBanHT");
+		long index= BanHoaDonModel.findBanHD(idBHD, listBHD );
+
+		BanHoaDonModel BHD=listBHD.get((int) index);
+		System.out.println("Xoa"+BHD.getCthds().get((int) idMon).getMaSP());
+		BHD.getCthds().remove((int)idMon);
+		//neu ko con mon nao sau khi xoa, set ban ve ko co mon dc goi
+		if (BHD.getCthds().isEmpty()) {
+			@SuppressWarnings("unchecked")
+			List<BanDTO> listBan = (List<BanDTO>) application.getAttribute("listBan");
+			listBan.get((int) BanHoaDonModel.findBan(idBHD,listBan)).setTinhTrang(0);
+			BHD.setHoaDon(null);
+		}
 		return "redirect:thanh-toan.htm";
 
 	}
