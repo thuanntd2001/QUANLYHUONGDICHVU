@@ -40,7 +40,7 @@
 				LÍ TÀI KHOẢN</div>
 			<h4>${message}</h4>
 			<div>
-				<a href="/CNPM/admin-home/formTaiKhoan.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
+				<a href="/dichvu/admin-home/formTaiKhoan.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
 					<button style="width: 144px; height: 33px; margin-bottom: 5px;"
 						type="button" class="btn btn-primary">Thêm Tài Khoản</button>
 				</a>

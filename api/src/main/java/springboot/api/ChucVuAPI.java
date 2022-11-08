@@ -1,5 +1,6 @@
 package springboot.api;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.dto.ChucVuDTO;
+import springboot.dto.HoaDonDTO;
 import springboot.entity.ChucVuEntity;
 import springboot.input.ObjDelLong;
 import springboot.repository.ChucVuRepository;
@@ -22,14 +24,17 @@ public class ChucVuAPI {
 	ChucVuRepository repo;
 
 	@GetMapping("/chucvu")
-	public List<ChucVuEntity> getChucVu() {
-
+	public List<ChucVuDTO> getChucVu() {
+		List<ChucVuDTO> listDTO = new ArrayList<ChucVuDTO>();
 		List<ChucVuEntity> list = repo.findAll();
 		for (ChucVuEntity item : list) {
-			item.setUserTB(null);
+			ChucVuDTO d = new ChucVuDTO();
+			d.setId(item.getId());
+			d.setTenChucVu(item.getTenChucVu());
+			listDTO.add(d);
 		}
 		System.out.print(list.size());
-		return list;
+		return listDTO;
 
 	}
 

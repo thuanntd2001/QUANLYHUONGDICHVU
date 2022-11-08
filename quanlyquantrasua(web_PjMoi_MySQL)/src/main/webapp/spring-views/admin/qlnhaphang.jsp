@@ -20,7 +20,7 @@
 
 			<h4>${message}</h4>
 			<div>
-				<a href="/CNPM/admin-home/formNhapHang.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
+				<a href="/dichvu/admin-home/formNhapHang.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
 					<button style="width: 184px; height: 33px; margin-bottom: 5px;"
 						type="button" class="btn btn-primary">Thêm Đơn Nhập Hàng</button>
 				</a>
@@ -54,7 +54,7 @@
 						<th scope="row">Giá DV</th>
 						<th scope="row">Loại Hàng</th>
 						<th scope="row">Nhà Cung Cấp</th>
-						<th scope="row">Dịch Vụ</th>
+						<th scope="row">Đơn vị</th>
 
 						<th scope="row">NV Tạo</th>
 						<th></th>

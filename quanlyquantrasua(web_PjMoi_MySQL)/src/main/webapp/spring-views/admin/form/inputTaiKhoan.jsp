@@ -53,6 +53,11 @@ body {
 					required="true" type="number" class="form-control" /> <span
 					class="form-message"></span>
 			</div>
+			<div class="form-group col-md-4">
+					<label>Mật khẩu</label> <br>
+					<form:input id="passwd" path="passwd" type="text" />
+					<span class="form-message"></span>
+				</div>
 			<div class="form-row">
 		
 				

@@ -19,7 +19,7 @@
             <div class="header-content d-flex justify-content-center">QUẢN LÍ THỰC ĐƠN</div>
                <h4>${message}</h4>
 			<div>
-				<a href="/CNPM/admin-home/formThucDon.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
+				<a href="/dichvu/admin-home/formThucDon.htm"> <!-- 	<button type="button" class="btn btn-warning">Thêm</button> -->
 					<button style="width: 184px; height: 33px; margin-bottom: 5px;"
 						type="button" class="btn btn-primary">Thêm Thực Đơn</button>
 				</a>
