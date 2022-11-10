@@ -38,7 +38,7 @@
 											class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 											<img src="files/${sessionScope.USERMODEL.icon}" alt="Profile"
 												class="rounded-circle">
-											<h2>${user.usernv.hoTen }</h2>
+											<h2>${user.hoTen }</h2>
 											<h3>${user.userName }</h3>
 										</form:form>
 									</div>
@@ -55,10 +55,7 @@
 														data-bs-target="#profile-overview">Thông Tin</button>
 												</li>
 
-												<li class="nav-item">
-													<button class="nav-link" data-bs-toggle="tab"
-														data-bs-target="#profile-edit">Sửa Thông Tin</button>
-												</li>
+										
 
 												<li class="nav-item">
 													<button class="nav-link" data-bs-toggle="tab"
@@ -265,7 +262,7 @@ UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶ�
 
 												</div> --%>
 
-												<%-- <div class="tab-pane fade pt-3" id="profile-change-password">
+												 <div class="tab-pane fade pt-3" id="profile-change-password">
 													<!-- Change Password Form -->
 													<form:form modelAttribute="changePW" action="user.htm"
 														method="post">
@@ -316,7 +313,7 @@ UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶ�
 													<!-- End Change Password Form -->
 
 
-												</div> --%>
+												</div> 
 												<!-- ICON Tabs -->
 												<div class="tab-pane fade pt-3" id="avata-edit">
 													<label> ${message1} </label>
@@ -342,7 +339,7 @@ UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶ�
 													</form>
 												</div>
 											</div>
-											<!-- End ICON Tabs -->
+											
 
 										</div>
 									</div>
