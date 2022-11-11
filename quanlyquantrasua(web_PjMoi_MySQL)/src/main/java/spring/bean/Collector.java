@@ -91,5 +91,34 @@ public class Collector<T> {
 		return obj;
 
 	}
+	@SuppressWarnings("hiding")
+	public static <K> String putMess(String url, K pojo) {
+		String obj = null;
+
+		try {
+			System.out.println( "js: "+objectMapper.writeValueAsString(pojo));
+			obj = rc.put(url, objectMapper.writeValueAsString(pojo));
+			
+
+		} catch (JsonParseException e) {
+			System.out.print("loi json");
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			System.out.print("loi mapping");
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.print("chua bat api");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return obj;
+
+	}
+	
+
 
 }

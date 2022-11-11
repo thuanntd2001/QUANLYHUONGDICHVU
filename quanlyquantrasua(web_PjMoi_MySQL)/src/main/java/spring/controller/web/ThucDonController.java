@@ -1,11 +1,17 @@
 package spring.controller.web;
 
+import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import spring.bean.Collector;
+import spring.dto.ThucDonDTO;
 
 
 
@@ -15,9 +21,10 @@ public class ThucDonController {
 
 
 	@RequestMapping(value = "thuc-don", method = RequestMethod.GET)
-	public <E> String showMenu(ModelMap model, HttpServletRequest request) {
+	public String showMenu(ModelMap model, HttpServletRequest request) throws IOException {
 		
-	
+		List<ThucDonDTO> list = Collector.getListAll("/thucdon",ThucDonDTO.class);
+		model.addAttribute("list", list);
 		return "web/menu";
 	}
 

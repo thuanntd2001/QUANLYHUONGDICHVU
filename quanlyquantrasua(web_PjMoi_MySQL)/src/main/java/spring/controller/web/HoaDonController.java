@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import spring.bean.Collector;
+import spring.dto.ChiTietHDDTO;
 import spring.dto.HoaDonDTO;
 
 
@@ -49,12 +50,15 @@ public class HoaDonController {
 	
 	@RequestMapping(value = "hoa-don/{id}.htm", params = "linkView")
 	public <E> String xemChiTietHD(HttpServletRequest request, ModelMap model,
-			@PathVariable("id") Long id) {
+			@PathVariable("id") Long id) throws IOException {
 
 		
-		/*List<ChiTietHDEntity> chiTietHD = this.getChiTietHD(id);
-		model.addAttribute("chiTietHD", chiTietHD);*/
+		List<ChiTietHDDTO> chiTietHD = Collector.getListAll("/chitiethd?idhd="+Long.toString(id),ChiTietHDDTO.class);
+		model.addAttribute("chiTietHD", chiTietHD);
 		int tong=0;
+		for (ChiTietHDDTO cthd : chiTietHD) {
+			tong += cthd.getTongTien();
+		}
 
 		model.addAttribute("tongTien",tong);
 		model.addAttribute("idhd",id);
