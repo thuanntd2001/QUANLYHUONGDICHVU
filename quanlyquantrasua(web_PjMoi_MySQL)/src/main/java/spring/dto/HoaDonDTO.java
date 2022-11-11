@@ -10,7 +10,7 @@ public class HoaDonDTO {
 	private Long nvThucHien;
 	private Long ban;
 	private List<ChiTietHDDTO> cthds=new ArrayList<ChiTietHDDTO>();
-
+	private int tongTien;
 
 
 
@@ -59,6 +59,18 @@ public class HoaDonDTO {
 
 	public void setCthds(List<ChiTietHDDTO> cthds) {
 		this.cthds = cthds;
+	}
+
+
+
+	public int getTongTien() {
+		return tongTien;
+	}
+
+
+
+	public void setTongTien(int tongTien) {
+		this.tongTien = tongTien;
 	}
 
 	

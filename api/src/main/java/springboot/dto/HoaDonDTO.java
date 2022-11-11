@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import springboot.entity.ChiTietHDEntity;
 import springboot.entity.HoaDonEntity;
 
 public class HoaDonDTO {
@@ -12,7 +13,7 @@ public class HoaDonDTO {
 	private Long nvThucHien;
 	private Long ban;
 	private List<ChiTietHDDTO> cthds=new ArrayList<ChiTietHDDTO>();
-
+	private int tongTien;
 
 
 
@@ -24,6 +25,10 @@ public class HoaDonDTO {
 		this.setBan(item.getBan().getId());
 		this.setNgayThucHien(item.getNgayThucHien());
 		this.setNvThucHien(item.getNvThucHien().getMaNV());
+		this.tongTien=0;
+		for (ChiTietHDEntity e:item.getChiTietHD() ) {
+			this.tongTien += e.getTongTien();
+		}
 	}
 
 	public Long getNvThucHien() {
@@ -67,6 +72,14 @@ public class HoaDonDTO {
 
 	public void setCthds(List<ChiTietHDDTO> cthds) {
 		this.cthds = cthds;
+	}
+
+	public int getTongTien() {
+		return tongTien;
+	}
+
+	public void setTongTien(int tongTien) {
+		this.tongTien = tongTien;
 	}
 
 	

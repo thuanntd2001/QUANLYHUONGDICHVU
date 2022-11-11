@@ -40,11 +40,19 @@ public class RestClient {
 	    this.setStatus(responseEntity.getStatusCode());   
 	    return responseEntity.getBody();
 	  }
+	  
+	  public String patch(String uri, String json) {
+		    HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
+		    ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.PATCH, requestEntity, String.class);
+		    this.setStatus(responseEntity.getStatusCode());   
+		    return responseEntity.getBody();
+		  }
 
-	  public void delete(String uri) {
-	    HttpEntity<String> requestEntity = new HttpEntity<String>("", headers);
+	  public String delete(String uri, String json) {
+	    HttpEntity<String> requestEntity = new HttpEntity<String>(json, headers);
 	    ResponseEntity<String> responseEntity = rest.exchange(server + uri, HttpMethod.DELETE, requestEntity, String.class);
 	    this.setStatus(responseEntity.getStatusCode());
+	    return responseEntity.getBody();
 	  }
 
 	  public HttpStatus getStatus() {

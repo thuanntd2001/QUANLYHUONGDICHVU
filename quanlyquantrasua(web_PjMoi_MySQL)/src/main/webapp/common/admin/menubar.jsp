@@ -40,7 +40,7 @@
 				class="fas fa-hand-holding-usd"></i><span class="links_name">THỐNG
 					KÊ</span>
 		</a></li>
-		<li><a href="/CNPM/dang-nhap.htm?action=logout"> <i
+		<li><a href="/dichvu/dang-nhap.htm?action=logout"> <i
 				class="fas fa-sign-out-alt"></i> <span class="links_name">ĐĂNG
 					XUẤT</span>
 		</a></li>

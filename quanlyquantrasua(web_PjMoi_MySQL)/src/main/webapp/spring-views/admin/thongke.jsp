@@ -248,10 +248,10 @@
 										<c:forEach var="hd" items="${hoaDon}">
 											<tr>
 												<th scope="row">${hd.id}</th>
-												<td>${hd.hdnv.hoTen}</td>
-												<td>${hd.ban.id }</td>
+												<td>${hd.nvThucHien}</td>
+												<td>${hd.ban }</td>
 												<td>${hd.ngayThucHien }</td>
-												<td>${tongHD.get(hoaDon.indexOf(hd))} đồng</td>
+												<td>${hd.tongTien} đồng</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -287,7 +287,7 @@
 										<c:forEach var="bcp" items="${bangChiPhi}">
 											<tr>
 												<th scope="row">${bcp.id}</th>
-												<td>${bcp.tenNL}</td>
+												<td>${bcp.tenChiPhi}</td>
 												<td>${bcp.ngayNhap}</td>
 												<td>${bcp.soLuong}</td>
 												<td>${bcp.giaMoiDV}</td>
@@ -295,7 +295,7 @@
 												<td>${bcp.nhaCungCap}</td>
 												<td>${bcp.dv}</td>
 												<td>${bcp.ghiChu}</td>
-												<td>${bcp.cpnv.maNV}</td>
+												<td>${bcp.nvTao}</td>
 											</tr>
 										</c:forEach>
 									</tbody>

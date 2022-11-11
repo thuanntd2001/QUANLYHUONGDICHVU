@@ -35,7 +35,7 @@ public class Collector<T> {
 
 	}
 
-	public static <K> K postObj(String url, K pojo, Class<K> clazz) {
+	public static <K,T> K postObj(String url, T pojo, Class<K> clazz) {
 		K obj = null;
 
 		try {
