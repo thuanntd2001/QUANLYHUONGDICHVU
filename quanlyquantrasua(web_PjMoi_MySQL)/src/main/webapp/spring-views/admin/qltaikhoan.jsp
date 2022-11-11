@@ -148,7 +148,7 @@
 													data-dismiss="modal">Thoát</button>
 												<!-- nut xoa -->
 												<a
-													href="/CNPM/admin-home/admin-taikhoan.htm?linkReset&userName=${tk.userName}"<%--
+													href="/dichvu/admin-home/admin-taikhoan.htm?linkReset&userName=${tk.userName}"<%--
 																		href="/CNPM/admin-home/index.htm?linkDelete&id=${nv.maNV}"
 																		--%>>
 													<button name="btnXOA" id="#exampleModal2" type="button"
@@ -204,7 +204,7 @@
 									<c:when test="${ tk.roleID != 1}">
 
 										<a
-											href="/CNPM/admin-home/formTaiKhoan.htm?linkEdit&userName=${tk.userName}">
+											href="/dichvu/admin-home/formTaiKhoan.htm?linkEdit&userName=${tk.userName}">
 											<button type="button" class="btn btn-primary">SỬA</button>
 										</a>
 									</c:when>
@@ -244,7 +244,7 @@
 													data-dismiss="modal">Thoát</button>
 												<!-- nut xoa -->
 												<a
-													href="/CNPM/admin-home/admin-taikhoan.htm?linkDelete&userName=${tk.userName}"<%--
+													href="/dichvu/admin-home/admin-taikhoan.htm?linkDelete&userName=${tk.userName}"<%--
 																		href="/CNPM/admin-home/index.htm?linkDelete&id=${nv.maNV}"
 																		--%>>
 													<button name="btnXOA" id="#exampleModal2" type="button"

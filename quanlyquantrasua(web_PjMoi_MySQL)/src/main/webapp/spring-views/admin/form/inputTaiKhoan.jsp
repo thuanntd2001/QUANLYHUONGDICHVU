@@ -48,9 +48,9 @@ body {
 				</div>
 			</div>
 			<div class="form-group"> 
-				<label>Mã Nhân Viên</label><br> <input id="manv" ${doc}
-					value="${maNV}" name="manv" min="1" pattern="^[0-9]{1,10}$"
-					required="true" type="number" class="form-control" /> <span
+				<label>Mã Nhân Viên</label><br> 
+				<form:input id="ID" path="ID" type="text"/>
+				<span
 					class="form-message"></span>
 			</div>
 			<div class="form-group col-md-4">

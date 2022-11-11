@@ -77,7 +77,7 @@
 
 							<td>${nh.nvTao}</td>
 							<td><a
-								href="/CNPM/admin-home/formNhapHang.htm?linkEdit&id=${nh.id}">
+								href="/dichvu/admin-home/formNhapHang.htm?linkEdit&id=${nh.id}">
 									<button type="button" class="btn btn-secondary">SỬA</button>
 							</a></td>
 

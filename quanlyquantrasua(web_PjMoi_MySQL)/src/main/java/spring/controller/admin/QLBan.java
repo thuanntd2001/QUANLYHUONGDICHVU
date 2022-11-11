@@ -119,5 +119,79 @@ public class QLBan {
 		return "admin/qlban";
 	}
  
+	public BanDTO getBan (long id) {
+		List<BanDTO> list = null;
+		try {
+			list = Collector.getListAll("/ban", BanDTO.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BanDTO ss = new BanDTO();
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getId() == id)
+				ss = list.get(i);
+		}
+		
+		return ss;
+	}
+	
+	@RequestMapping(value = "formBan", params = "linkEdit" )
+	public String editBan_showform (@ModelAttribute("b") BanDTO b, ModelMap model) {
+		
+		long id = b.getId();
+		long s = this.getBan(id).getLoaiBan();
+		model.addAttribute("idLoai", s);
+		model.addAttribute("loaibans",getLoaiBans());	
+		model.addAttribute("soGhe1",this.getBan(id).getSoGhe());	
+		
+		model.addAttribute("btnupdate","true");
+		return "admin/form/inputBan1";
+	}
+
+	@RequestMapping(value = "formBan", params = "btnupdate" , method = RequestMethod.POST )
+	public <E> String edit_QLBan(HttpServletRequest requets, ModelMap model 
+			) {
+
+		String id1 =requets.getParameter("id");
+		long idB = Long.parseLong(id1);
+		
+		String id = requets.getParameter("loaiBan"); 
+		long idLB = Integer.parseInt(id);
+		String a = requets.getParameter("soGhe");
+		int soghe = Integer.parseInt(a);
+		
+		BanDTO tmp = getBan(idB);
+		
+		
+		tmp.setSoGhe(soghe);
+		tmp.setTinhTrang(0);
+		tmp.setLoaiBan(idLB);
+		tmp.setTenLoai(null);
+		Integer temp = this.updateBan(tmp);
+		if( temp != 0) {
+			model.addAttribute("message", "Cập nhật thành công");
+			
+		}
+		else {
+			model.addAttribute("message", "Cập nhật không thành công");
+			
+		}
+		
+	
+		
+		return "admin/qlban";
+	}
+	
+	
+	public Integer updateBan(BanDTO b) {
+		String flag = Collector.putMess("/ban", b);
+		System.out.println(flag);
+		if (flag.equals("00")){
+			return 1;
+		} else
+			return 0;
+	}
+	
 
 }

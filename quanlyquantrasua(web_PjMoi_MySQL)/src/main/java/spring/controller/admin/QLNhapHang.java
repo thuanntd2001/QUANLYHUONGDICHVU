@@ -99,6 +99,95 @@ public class QLNhapHang {
 		
 		return "admin/qlnhaphang";
 	}
+	long temp = 0;
+	@RequestMapping(value = "formNhapHang", params = "linkEdit")
+	public String editNhapHang_showform(HttpServletRequest request, ModelMap model) {
+		String id1 = request.getParameter("id");
+		long id = Long.parseLong(id1);
+		temp = id;
+		List<ChiPhiDTO> nhanvien = this.getDonNhapHangs();
+		//model.addAttribute("pagedListHolder", nhanvien);
+		ChiPhiDTO chiphi = this.getDonNhapHang(id);
+		//Timestamp ngaynhap = (Timestamp) chiphi.getNgayNhap();
+		//String ngaynhap1 = ngaynhap.toLocalDateTime().toString();
+		//model.addAttribute("ngaynhaphang", ngaynhap1);
+		model.addAttribute("nh", chiphi);
 
+		model.addAttribute("btnupdate", "true");
+		return "admin/form/inputNhapHang";
+	}
+	
+	public List<ChiPhiDTO> getDonNhapHangs() {
+		List<ChiPhiDTO> list = null;
+		try {
+			list = Collector.getListAll("/chiphi", ChiPhiDTO.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	public ChiPhiDTO getDonNhapHang(long id) {
+		List<ChiPhiDTO> list = null;
+		try {
+			list = Collector.getListAll("/chiphi", ChiPhiDTO.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ChiPhiDTO ss = new ChiPhiDTO();
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getId() == id)
+				ss = list.get(i);
+		}
+		
+		return ss;
+	}
+	
+	@RequestMapping(value = "formNhapHang", params = "btnupdate", method = RequestMethod.POST)
+	public <E> String edit_NhapHang(HttpServletRequest requets, ModelMap model, @ModelAttribute("nh") ChiPhiDTO nh) {
+		/*
+		 * UserModel user1 = (UserModel) SessionUtil.getInstance().getValue(requets,
+		 * "USERMODEL"); nh.setCpnv(user1.getUsernv());
+		 */
+		ChiPhiDTO cp = new ChiPhiDTO();
+		cp = getDonNhapHang(temp);
+		nh.setNgayNhap(cp.getNgayNhap());
+		nh.setNvTao(cp.getNvTao());
+		if(nh.getDonVi().startsWith("C")){
+			nh.setDonVi("Cai");
+		}else if (nh.getDonVi().startsWith("N")) {
+			nh.setDonVi("Nguoi");
+		}else if (nh.getDonVi().startsWith("KG")) {
+			nh.setDonVi("KG");
+		}
+		else {
+			nh.setDonVi("Khac");
+		}
+		List<String> listError = checkInfo(nh);
+		Integer temp = this.updateNH(nh);
+		if (temp != 0) {
+			model.addAttribute("message", "Cập nhật thành công");
+
+		} else {
+			model.addAttribute("message", "Cập nhật không thành công! "+listError);
+
+		}
+
+		// model.addAttribute("bans", list);
+		return "admin/qlnhaphang";
+	}
+
+	public Integer updateNH(ChiPhiDTO nh) {
+		String flag = Collector.putMess("/chiphi", nh);
+		System.out.println(flag);
+		if (flag.equals("00")){
+			return 1;
+		} else
+			return 0;
+	}
+	
 	
 }

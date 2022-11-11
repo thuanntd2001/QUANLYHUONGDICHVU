@@ -58,7 +58,7 @@
                             <td>${th.loaiThucUong}</td>
                             <td>${th.ten}</td>
                             <td>${th.gia}</td>
-                            <td><a href="/CNPM/admin-home/formThucDon.htm?linkEdit&id=${th.id}">
+                            <td><a href="/dichvu/admin-home/formThucDon.htm?linkEdit&id=${th.id}">
 											<button type="button"
 												class="btn btn-primary" data-toggle="modal" 
 												data-whatever="@mdo">SỬA</button>
