@@ -93,10 +93,10 @@ public class UserAPI {
 				save.setUserName(model.getUserName());
 				save.setPasswd(model.getPasswd());
 				save.setUsernv(nvrepo.getOne(model.getID()));
-				save.setChucVu(cvrepo.getOne(model.getID()));
+				save.setChucVu(cvrepo.getOne(model.getRoleID()));
 				save.setEmail(model.getEmail());
 				save.setStatus(1);
-				save.setIcon(null);
+				save.setIcon(model.getIcon());
 				check = repo.save(save);
 			} catch (Exception e) {
 				e.printStackTrace();
