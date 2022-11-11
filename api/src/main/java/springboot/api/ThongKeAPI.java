@@ -1,5 +1,8 @@
 package springboot.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import springboot.dto.ChiPhiDTO;
 import springboot.dto.DateDTO;
+import springboot.dto.HoaDonDTO;
 import springboot.dto.ThongKeDTO;
+import springboot.entity.ChiPhiEntity;
+import springboot.entity.HoaDonEntity;
 import springboot.repository.ChiPhiRepository;
 import springboot.repository.HoaDonRepository;
 
@@ -22,24 +29,65 @@ public class ThongKeAPI {
 	@PostMapping(value = "/thongke")
 	public ThongKeDTO thongKe(HttpServletRequest request,@RequestBody DateDTO model) {
 		String flaglist = request.getParameter("flaglist");
-
+		List<ChiPhiEntity> findCPEntity=null;
+		List<HoaDonEntity> findHDEntity=null;
+		List<ChiPhiDTO> cpDto= new ArrayList<ChiPhiDTO>();
+		List<HoaDonDTO> hdDto=new ArrayList<HoaDonDTO>();
 		ThongKeDTO e = new ThongKeDTO();
 		if (flaglist != null) {
 			if (model.getNgay()==-1) {
 				if (model.getThang() == -1)
 				{
-					e.setChiPhis(cprepo.getChiPhiNam(model.getNam()));
-					e.setHoaDons(hdrepo.getHoaDonNam(model.getNam()));
+					findCPEntity=cprepo.getChiPhiNam(model.getNam());
+					findHDEntity=hdrepo.getHoaDonNam(model.getNam());
+
+					
 				} else {
-					e.setChiPhis(cprepo.getChiPhiThang(model.getNam(),model.getThang()));
-					e.setHoaDons(hdrepo.getHoaDonThang(model.getNam(),model.getThang()));
+					findCPEntity=cprepo.getChiPhiThang(model.getThang(),model.getNam());
+					findHDEntity=hdrepo.getHoaDonThang(model.getThang(),model.getNam());
+					
+					
 				}
 			} else {
-				e.setChiPhis(cprepo.getChiPhiNgay(model.getNam(),model.getThang(),model.getNgay()));
-				e.setHoaDons(hdrepo.getHoaDonNgay(model.getNam(),model.getThang(),model.getNgay()));
+				findCPEntity=cprepo.getChiPhiNgay(model.getNgay(),model.getThang(),model.getNam());
+				findHDEntity=hdrepo.getHoaDonNgay(model.getNgay(),model.getThang(),model.getNam());
+				
+			
+			}
+			for (ChiPhiEntity item: findCPEntity) {
+				cpDto.add(new ChiPhiDTO(item));
+			}
+			for (HoaDonEntity item: findHDEntity) {
+				hdDto.add(new HoaDonDTO(item));
+			}
+			
+			e.setChiPhis(cpDto);
+			e.setHoaDons(hdDto);
+		}
+		
+		else {
+			if (model.getNgay()==-1) {
+				if (model.getThang() == -1)
+				{
+					e.setChiPhi(cprepo.tongChiPhiNam(model.getNam()));
+					e.setDoanhThu(hdrepo.doanhThuNam(model.getNam()));
+					e.setLoiNhuan(e.getDoanhThu()-e.getChiPhi());
+					e.setSoHoaDon(hdrepo.soHoaDonNam(model.getNam()));
+				
+				} else {
+					e.setChiPhi(cprepo.tongChiPhiThang(model.getThang(),model.getNam()));
+					e.setDoanhThu(hdrepo.doanhThuThang(model.getThang(),model.getNam()));
+					e.setLoiNhuan(e.getDoanhThu()-e.getChiPhi());
+					e.setSoHoaDon(hdrepo.soHoaDonThang(model.getThang(),model.getNam()));
+				}
+			} else {
+				e.setChiPhi(cprepo.tongChiPhiNam(model.getNam()));
+				e.setDoanhThu(hdrepo.doanhThuNam(model.getNam()));
+				e.setLoiNhuan(e.getDoanhThu()-e.getChiPhi());
+				e.setSoHoaDon(hdrepo.soHoaDonNam(model.getNam()));
 			}
 		}
-
+		
 		return e;
 	}
 }

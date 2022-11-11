@@ -3,6 +3,8 @@ package springboot.dto;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import springboot.entity.ChiPhiEntity;
+
 public class ChiPhiDTO {
 	private Long id;
 	private String tenChiPhi;
@@ -32,6 +34,18 @@ public class ChiPhiDTO {
 	public ChiPhiDTO() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public ChiPhiDTO(ChiPhiEntity item) {
+		this.setId(item.getId());
+		this.setDonVi(item.getDonVi());
+		this.setGhiChu(item.getGhiChu());
+		this.setGiaDonVi(item.getGiaMoiDV());
+		this.setLoai(item.getLoai());
+		this.setNgayNhap(item.getNgayNhap());
+		this.setNhaCungCap(item.getNhaCungCap());
+		this.setNvTao(item.getNvTao().getMaNV());
+		this.setSoLuong(item.getSoLuong());
+		this.setTenChiPhi(item.getTenChiPhi());
 	}
 	public Long getId() {
 		return id;

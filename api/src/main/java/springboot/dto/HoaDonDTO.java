@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import springboot.entity.HoaDonEntity;
+
 public class HoaDonDTO {
 	private Long id;
 	private Date ngayThucHien;
@@ -16,7 +18,13 @@ public class HoaDonDTO {
 
 	public HoaDonDTO() {}
 
-
+	public HoaDonDTO(HoaDonEntity item) {
+		
+		this.setId(item.getId());
+		this.setBan(item.getBan().getId());
+		this.setNgayThucHien(item.getNgayThucHien());
+		this.setNvThucHien(item.getNvThucHien().getMaNV());
+	}
 
 	public Long getNvThucHien() {
 		return nvThucHien;

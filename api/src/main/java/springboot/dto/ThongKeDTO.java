@@ -10,9 +10,9 @@ public class ThongKeDTO {
 	private int doanhThu;
 	private int chiPhi;
 	private int loiNhuan;
-	private List<HoaDonEntity> HoaDons;
-	private List<ChiPhiEntity> chiPhis;
-	private int tongHD;
+	private List<HoaDonDTO> HoaDons;
+	private List<ChiPhiDTO> chiPhis;
+
 	
 	public int getSoHoaDon() {
 		return soHoaDon;
@@ -22,6 +22,18 @@ public class ThongKeDTO {
 	}
 	public int getDoanhThu() {
 		return doanhThu;
+	}
+	public List<HoaDonDTO> getHoaDons() {
+		return HoaDons;
+	}
+	public void setHoaDons(List<HoaDonDTO> hoaDons) {
+		HoaDons = hoaDons;
+	}
+	public List<ChiPhiDTO> getChiPhis() {
+		return chiPhis;
+	}
+	public void setChiPhis(List<ChiPhiDTO> chiPhis) {
+		this.chiPhis = chiPhis;
 	}
 	public void setDoanhThu(int doanhThu) {
 		this.doanhThu = doanhThu;
@@ -38,23 +50,5 @@ public class ThongKeDTO {
 	public void setLoiNhuan(int loiNhuan) {
 		this.loiNhuan = loiNhuan;
 	}
-	public List<HoaDonEntity> getHoaDons() {
-		return HoaDons;
-	}
-	public void setHoaDons(List<HoaDonEntity> hoaDons) {
-		HoaDons = hoaDons;
-	}
-	public List<ChiPhiEntity> getChiPhis() {
-		return chiPhis;
-	}
-	public void setChiPhis(List<ChiPhiEntity> list) {
-		this.chiPhis = list;
-	}
-	public int getTongHD() {
-		return tongHD;
-	}
-	public void setTongHD(int tongHD) {
-		this.tongHD = tongHD;
-	}
-	
+
 }
