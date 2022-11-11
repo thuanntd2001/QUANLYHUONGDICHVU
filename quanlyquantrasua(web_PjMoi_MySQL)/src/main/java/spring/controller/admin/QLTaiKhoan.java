@@ -143,17 +143,17 @@ public class QLTaiKhoan {
 		} else if (check == 2) {
 			error = "email không được trùng!!!";
 		} else {
-			String maNVtmp = request.getParameter("manv");
-
-			Integer maNV = Integer.parseInt(maNVtmp);
+//			String maNVtmp = request.getParameter("manv");
+//
+//			Integer maNV = Integer.parseInt(maNVtmp);
 			String tmp = request.getParameter("chucvu").trim();
 			Integer idChucVU = Integer.parseInt(tmp);
-			if(CheckMaNhanVien(maNV)==false) {
-				System.out.println(maNV);
+			if(CheckMaNhanVien(tk.getID())==false) {
+				//System.out.println(maNV);
 				error = "không tồn tại nhân viên";
 			}else {
 				
-			tk.setID((long)maNV);
+			tk.setID(tk.getID());
 			tk.setRoleID((long)idChucVU);
 
 			//tk.setPasswd(request.getParameter("mk"));
@@ -171,6 +171,74 @@ public class QLTaiKhoan {
 		return "admin/qltaikhoan";
 	}
 
+	public UserDTO getTaiKhoan(String username) {
+		List<UserDTO> list = null;
+		try {
+			list = Collector.getListAll("/user", UserDTO.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		UserDTO ss = new UserDTO();
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getUserName().equals(username))
+				ss = list.get(i);
+		}
+		
+		return ss;
+	}
 	
+	
+	
+	@RequestMapping(value = "formTaiKhoan", params = "linkEdit")
+	public String editTK_showform(HttpServletRequest request, ModelMap model, @ModelAttribute("tk") UserDTO tk) {
+
+		model.addAttribute("tk", this.getTaiKhoan(tk.getUserName()));
+		//model.addAttribute("maNV", tk.getID());
+		model.addAttribute("chucvus", this.getChucVus());
+		model.addAttribute("idCV", this.getTaiKhoan(tk.getUserName()).getRoleID());
+		
+		model.addAttribute("fixmanv", "true");// không đc sủa mã username
+		model.addAttribute("doc", "readonly");// không được sửa mã nhân viên
+		model.addAttribute("btnupdate", "true");
+		return "admin/form/inputTaiKhoan";
+	}
+
+	
+
+	@RequestMapping(value = "formTaiKhoan", params = "btnupdate", method = RequestMethod.POST)
+	public <E> String editTK(HttpServletRequest requets, ModelMap model, @ModelAttribute("tk") UserDTO tk) {
+
+		Integer temp = 0;
+
+		
+		String tmp = requets.getParameter("chucvu");
+		Integer idChucVU = Integer.parseInt(tmp);
+		tk.setPasswd(tk.getPasswd());
+		tk.setID(tk.getID());
+		tk.setRoleID((long)idChucVU);
+		tk.setStatus(1);
+		tk.setIcon("1");
+		
+		temp = this.updateTK(tk);
+
+		if (temp != 0) {
+			model.addAttribute("message", "Cập nhật thành công");
+		} else {
+			model.addAttribute("message", "Cập nhật không thành công");
+
+		}
+		
+		return "admin/qltaikhoan";
+	}
+
+	public Integer updateTK(UserDTO tk) {
+		String flag = Collector.putMess("/user", tk);
+		System.out.println(flag);
+		if (flag.equals("00")){
+			return 1;
+		} else
+			return 0;
+	}
 	
 }

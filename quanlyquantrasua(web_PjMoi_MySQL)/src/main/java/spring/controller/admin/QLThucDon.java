@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import spring.bean.Collector;
+import spring.dto.ChiPhiDTO;
 import spring.dto.HoaDonDTO;
 import spring.dto.LoaiThucUongDTO;
 import spring.dto.ThucDonDTO;
@@ -134,4 +135,76 @@ public class QLThucDon {
 		return "admin/qlthucdon";
 	}
 
+	public ThucDonDTO getTD (String id) {
+		List<ThucDonDTO> list = null;
+		try {
+			list = Collector.getListAll("/thucdon", ThucDonDTO.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ThucDonDTO ss = new ThucDonDTO();
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getid().equals(id))
+				ss = list.get(i);
+		}
+		
+		return ss;
+	}
+	
+	@RequestMapping(value = "formThucDon", params = "linkEdit" )
+	public String editTD_showform (HttpServletRequest request, ModelMap model,@ModelAttribute("td") ThucDonDTO td) {
+		
+		String idTD = td.getid();
+		model.addAttribute("loaithucuongs",this.getLoaiThucUongs());
+		String x = this.getTD(idTD).getLoaiThucUong();
+		model.addAttribute("idloaiTU", td.getLoaiThucUong());
+		
+		String ten = this.getTD(idTD).getTen();
+		model.addAttribute("ten",ten);
+		model.addAttribute("gia",this.getTD(idTD).getGia());
+
+		/*model.addAttribute("td",td);*/
+		model.addAttribute("btnupdate","true");
+		model.addAttribute("read","true");
+		return "admin/form/inputThucDon";
+	}
+
+	@RequestMapping(value = "formThucDon", params = "btnupdate" , method = RequestMethod.POST )
+	public <E> String editTD(HttpServletRequest requets, ModelMap model, 
+			@ModelAttribute("td") ThucDonDTO td) {
+		String idLoaiTU =requets.getParameter("loaithucuong");	
+		td.setLoaiThucUong(idLoaiTU);
+		
+		
+		String tmp =requets.getParameter("gia");
+		Integer giaTD = Integer.parseInt(tmp);
+		String tenTD =requets.getParameter("ten");
+		//td.setid1((long)1);
+		td.setGia(giaTD);
+		td.setTen(tenTD);
+		Integer temp = this.updateTD(td);
+		if( temp != 0) {
+			model.addAttribute("message", "Cập nhật thành công");	
+		}
+		else {
+			model.addAttribute("message", "Cập nhật không thành công");
+
+		}
+		
+		return "admin/qlthucdon";
+	}
+	
+	
+	
+	public Integer updateTD(ThucDonDTO td) {
+		String flag = Collector.putMess("/thucdon", td);
+		System.out.println(flag);
+		if (flag.equals("00")){
+			return 1;
+		} else
+			return 0;
+	}
+	
+	
 }

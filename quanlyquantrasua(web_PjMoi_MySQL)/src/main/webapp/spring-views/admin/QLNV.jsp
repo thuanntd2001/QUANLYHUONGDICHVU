@@ -110,7 +110,7 @@
 							<td>${nv.diaChi}</td>
 							<td>${nv.ngayVaoLam}</td>
 							<td><a
-								href="/CNPM/admin-home/form.htm?linkEdit&id=${nv.maNV}">
+								href="/dichvu/admin-home/form.htm?linkEdit&id=${nv.maNV}">
 									<button type="button" class="btn btn-secondary">SỬA</button>
 							</a></td>
 

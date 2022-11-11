@@ -60,7 +60,7 @@
 							<td>${b.soGhe}</td>
 							<td>${b.tenLoai}</td>
 							<td>${b.tinhTrang}</td>
-							<td><a href="/CNPM/admin-home/formBan.htm?linkEdit&id=${b.id}">
+							<td><a href="/dichvu/admin-home/formBan.htm?linkEdit&id=${b.id}">
 											<button  type="button"
 												class="btn btn-primary" data-toggle="modal" 
 												data-whatever="@mdo">SỬA</button>
@@ -91,7 +91,7 @@
 													<div class="modal-footer">
 													
 													<a
-														href="/CNPM/admin-home/admin-qlban.htm?linkDelete&id=${b.id}"<%--
+														href="/dichvu/admin-home/admin-qlban.htm?linkDelete&id=${b.id}"<%--
 																		href="/CNPM/admin-home/index.htm?linkDelete&id=${nv.maNV}"
 																		--%>>
 														<button name="btnXOA" type="button"
