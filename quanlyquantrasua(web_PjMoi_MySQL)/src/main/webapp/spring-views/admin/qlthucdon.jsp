@@ -64,45 +64,13 @@
 												data-whatever="@mdo">SỬA</button>
 										</a></td>
                             <td>
-                                <div  class="row">
-                                  
-                                        <!-- <a href="">XÓA</a> -->
-                                        <!-- Button trigger modal -->
-                                        <button  type="button" class="btn btn-warning"
-                                            data-toggle="modal" data-target="#-n${th.id}">
-                                          <i class="ti-trash"></i>
-                                        </button>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="-n${th.id}" tabindex="-1" role="dialog"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">!!!</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        Bạn có chắc muốn xóa
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Thoát</button>
-                                                        	<a
-														href="/CNPM/admin-home/admin-qlthucdon.htm?linkDelete&id=${th.id}"<%--
+                                <a
+														href="/dichvu/admin-home/admin-qlthucdon.htm?linkDelete&id=${th.id}"<%--
 																		href="/CNPM/admin-home/index.htm?linkDelete&id=${nv.maNV}"
 																		--%>>
 														<button name="btnXOA1" type="button"
 															class="btn btn-warning">Xóa</button>
 													</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                             </td>
 
                         </tr>

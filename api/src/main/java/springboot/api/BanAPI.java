@@ -54,7 +54,7 @@ public class BanAPI {
 			check = repo.saveAndFlush(save);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.print(model.getLoaiBan());
+			//System.out.print(model.getLoaiBan());
 
 			return "01";
 		}
@@ -83,7 +83,7 @@ public class BanAPI {
 
 				save.setLoaiBan(loaibanrepo.findById(model.getLoaiBan()).get());
 				save.setSoGhe(model.getSoGhe());
-				save.setTinhTrang(1);
+				save.setTinhTrang(model.getTinhTrang());
 				check = repo.save(save);
 			} catch (Exception e) {
 				e.printStackTrace();

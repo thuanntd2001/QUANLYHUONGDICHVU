@@ -115,45 +115,16 @@
 							</a></td>
 
 							<!-- del -->
-
 							<td>
-
-								<div class="row">
-									<button name="btnxoa" type="button" class="btn btn-warning"
-										data-toggle="modal" data-target="#n-${nv.maNV}">
-										<i class="ti-trash"></i>
-									</button>
-
-								</div> <!-- Modal -->
-								<div class="modal fade" id="n-${nv.maNV}" tabindex="-1"
-									role="dialog" aria-labelledby="exampleModalLabel"
-									aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">!!!</h5>
-												<button type="button" class="close" data-dismiss="modal"
-													aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-												</button>
-											</div>
-											<div class="modal-body">Bạn có chắc muốn xóa</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary"
-													data-dismiss="modal">Thoát</button>
-												<!-- nut xoa -->
-												<a
-													href="/CNPM/admin-home/index.htm?linkDelete&id=${nv.maNV}"<%--
+							<a
+													href="/dichvu/admin-home/index.htm?linkDelete&id=${nv.maNV}"<%--
 																		href="/CNPM/admin-home/index.htm?linkDelete&id=${nv.maNV}"
 																		--%>>
 													<button name="btnXOA" id="#exampleModal2" type="button"
 														class="btn btn-warning">Xóa</button>
 												</a>
-											</div>
-										</div>
-									</div>
-								</div>
 							</td>
+							
 
 							<!-- end del  -->
 							<td></td>

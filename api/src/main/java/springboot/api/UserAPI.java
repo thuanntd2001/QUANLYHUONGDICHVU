@@ -95,7 +95,7 @@ public class UserAPI {
 				save.setUsernv(nvrepo.getOne(model.getID()));
 				save.setChucVu(cvrepo.getOne(model.getRoleID()));
 				save.setEmail(model.getEmail());
-				save.setStatus(1);
+				save.setStatus(model.getStatus());
 				save.setIcon(model.getIcon());
 				check = repo.save(save);
 			} catch (Exception e) {
