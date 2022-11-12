@@ -87,6 +87,7 @@ public class QLTaiKhoan {
 	}
 
 	
+	
 	public int CheckUserName_Email(String username, String email) { // check xem email và username đã có hay chưa
 		List<UserDTO> list = getTaiKhoans();
 		int n = list.size();
@@ -130,8 +131,30 @@ public class QLTaiKhoan {
 		return false;
 	}
 	
+
+	
+	public UserDTO getTaiKhoan(long manv) {
+		List<UserDTO> list = null;
+		try {
+			list = Collector.getListAll("/user", UserDTO.class);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		UserDTO ss = new UserDTO();
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getID() == manv)
+				ss = list.get(i);
+				break;
+		}
+		
+		return ss;
+	}
+	
 	@RequestMapping(value = "formTaiKhoan", params = "Insert", method = RequestMethod.POST)
 	public <E> String addTaiKhoan(HttpServletRequest request, ModelMap model, @ModelAttribute("tk") UserDTO tk) {
+		
+		
 		String error = "";
 		Integer temp = 0;
 		int check = CheckUserName_Email(tk.getUserName(), tk.getEmail());
@@ -155,7 +178,7 @@ public class QLTaiKhoan {
 				
 			tk.setID(tk.getID());
 			tk.setRoleID((long)idChucVU);
-
+			tk.setStatus(1);
 			//tk.setPasswd(request.getParameter("mk"));
 			temp = this.insertTaiKhoan(tk);
 			 }
@@ -241,4 +264,44 @@ public class QLTaiKhoan {
 			return 0;
 	}
 	
+	public Boolean checkAdmin(String username) {
+		List<UserDTO> list = getTaiKhoans();
+		int n = list.size();
+		UserDTO tmp;
+		for (int i = 0; i < n; i++) {
+			tmp = this.getTaiKhoan(list.get(i).getUserName());
+
+			if (tmp.getRoleID() == 1 && tmp.getUserName().equals(username)) {
+				return true;
+
+			}
+		}
+
+		return false;
+	}
+	
+	@RequestMapping(value = "admin-taikhoan", params = "linkDelete", method = RequestMethod.GET)
+	public <E> String deleteNV(HttpServletRequest requests, ModelMap model, @ModelAttribute("tk") UserDTO tk) {
+
+		String error = "";
+		Integer temp = 0;
+
+		String userName = tk.getUserName();
+
+		System.out.println(userName);
+		if (checkAdmin(userName)) {
+			error = ", không thể xóa tài khoản admin";
+		} else {
+			UserDTO tmp = this.getTaiKhoan(userName);
+			tmp.setStatus(0);
+			temp = this.updateTK(tmp);
+		}
+		if (temp != 0) {
+			model.addAttribute("message", "Xóa thành công");
+		} else {
+			model.addAttribute("message", "Xóa k thành công" + error);
+		}
+		return "admin/qltaikhoan";
+
+	}
 }

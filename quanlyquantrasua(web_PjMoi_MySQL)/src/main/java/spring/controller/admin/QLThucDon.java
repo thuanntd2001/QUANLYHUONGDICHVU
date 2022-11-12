@@ -206,5 +206,25 @@ public class QLThucDon {
 			return 0;
 	}
 	
-	
+	@RequestMapping(value = "admin-qlthucdon", params = "linkDelete")
+	public <E> String deleteDonNhapHang (HttpServletRequest request, ModelMap model, @ModelAttribute("td") ThucDonDTO td) {
+		
+		Integer temp = this.deleteThucDon(td);
+		if(temp != 0) {
+			model.addAttribute("message","Delete thành công");
+		}
+		else {
+			model.addAttribute("message", "Delete không thành công ! Thực đơn đã có trong hóa đơn");
+		}
+		
+		return "admin/qlthucdon";
+	}
+	public Integer deleteThucDon (ThucDonDTO td) {
+		String flag = Collector.delMess("/thucdon", td);
+		System.out.println(flag);
+		if (flag.equals("00")) {
+			return 1;
+		} else
+			return 0;
+	}
 }

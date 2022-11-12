@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css"
 	href=<c:url value="/template/web/simple-datatables/style.css"/>>
 </head>
-<body>
+<body> 
 
 	<jsp:include page="/common/admin/header.jsp" />
 	<jsp:include page="/common/admin/menubar.jsp" />
@@ -290,10 +290,10 @@
 												<td>${bcp.tenChiPhi}</td>
 												<td>${bcp.ngayNhap}</td>
 												<td>${bcp.soLuong}</td>
-												<td>${bcp.giaMoiDV}</td>
+												<td>${bcp.giaDonVi}</td>
 												<td>${bcp.loai}</td>
 												<td>${bcp.nhaCungCap}</td>
-												<td>${bcp.dv}</td>
+												<td>${bcp.donVi}</td>
 												<td>${bcp.ghiChu}</td>
 												<td>${bcp.nvTao}</td>
 											</tr>

@@ -189,5 +189,29 @@ public class QLNhapHang {
 			return 0;
 	}
 	
+	@RequestMapping(value = "admin-nhaphang", params = "linkDelete")
+	public <E> String deleteDonNhapHang(HttpServletRequest request, ModelMap model,
+			@ModelAttribute("nh") ChiPhiDTO nh) {
+		String id1 = request.getParameter("id");
+		long id = Long.parseLong(id1);
+		Integer temp = this.deleteDonNhapHang(this.getDonNhapHang(id));
+
+		if (temp != 0) {
+			model.addAttribute("message", "Xóa thành công");
+		} else {
+			model.addAttribute("message", "Xóa không thành công");
+		}
+		
+		return "admin/qlnhaphang";
+	}
+
+	public Integer deleteDonNhapHang(ChiPhiDTO user) {
+		String flag = Collector.delMess("/chiphi", user);
+		System.out.println(flag);
+		if (flag.equals("00")) {
+			return 1;
+		} else
+			return 0;
+	}
 	
 }

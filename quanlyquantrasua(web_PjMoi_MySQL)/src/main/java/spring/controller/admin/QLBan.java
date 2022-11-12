@@ -105,7 +105,7 @@ public class QLBan {
 		int soghe = Integer.parseInt(a);
 		
 		ban.setSoGhe(soghe);
-		ban.setTinhTrang(0);
+		ban.setTinhTrang(1);
 		ban.setLoaiBan((long)id1);
 		List<String> listError = checkInfo(ban);
 		Integer temp1 = this.InsertBan(ban);
@@ -165,7 +165,7 @@ public class QLBan {
 		
 		
 		tmp.setSoGhe(soghe);
-		tmp.setTinhTrang(0);
+		tmp.setTinhTrang(1);
 		tmp.setLoaiBan(idLB);
 		tmp.setTenLoai(null);
 		Integer temp = this.updateBan(tmp);
@@ -193,5 +193,34 @@ public class QLBan {
 			return 0;
 	}
 	
+	@RequestMapping(value = "admin-qlban", params = "linkDelete")
+	public <E> String deleteDonNhapHang (HttpServletRequest request, ModelMap model, @ModelAttribute("b") BanDTO b) {
+		String id1 =request.getParameter("id");
+		long idB = Long.parseLong(id1);
+		
+
+		BanDTO tmp = getBan(idB);
+		tmp.setTinhTrang(0);
+		tmp.setTenLoai(null);
+		Integer temp = this.deleteBan(tmp);
+		//System.out.println(getBan(id).ge);
+		
+		if(temp != 0) {
+			model.addAttribute("message","Xóa thành công");
+		}
+		else {
+			model.addAttribute("message", "Xóa không thành công! Bàn đã có người đặt");
+		}
+		
+		return "admin/qlban";
+	}
+	public Integer deleteBan (BanDTO b) {
+		String flag = Collector.putMess("/ban", b);
+		System.out.println(flag);
+		if (flag.equals("00")) {
+			return 1;
+		} else
+			return 0;
+	}
 
 }

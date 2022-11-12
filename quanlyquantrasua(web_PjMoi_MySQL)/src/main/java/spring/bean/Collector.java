@@ -120,5 +120,60 @@ public class Collector<T> {
 	}
 	
 
+	@SuppressWarnings("hiding")
+	public static <K> String delMess(String url, K pojo) {
+		String obj = null;
+
+		try {
+			System.out.println( "js: "+objectMapper.writeValueAsString(pojo));
+			obj = rc.delete(url, objectMapper.writeValueAsString(pojo));
+			
+
+		} catch (JsonParseException e) {
+			System.out.print("loi json");
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			System.out.print("loi mapping");
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.print("chua bat api");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return obj;
+
+	}
+	
+	@SuppressWarnings("hiding")
+	public static <K> String patchMess(String url, K pojo) {
+		String obj = null;
+
+		try {
+			System.out.println( "js: "+objectMapper.writeValueAsString(pojo));
+			obj = rc.patch(url, objectMapper.writeValueAsString(pojo));
+			
+
+		} catch (JsonParseException e) {
+			System.out.print("loi json");
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			System.out.print("loi mapping");
+
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.print("chua bat api");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return obj;
+
+	}
 
 }

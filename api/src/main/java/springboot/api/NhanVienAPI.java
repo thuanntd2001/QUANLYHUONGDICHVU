@@ -98,6 +98,7 @@ public class NhanVienAPI {
 				save.setLuong(model.getLuong());
 				save.setNgayVaoLam(model.getNgayVaoLam());
 				save.setSdt(model.getSdt());
+				save.setDaNghi(model.getDaNghi());
 				check = repo.save(save);
 			} catch (Exception e) {
 				e.printStackTrace();
