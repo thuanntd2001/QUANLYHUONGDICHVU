@@ -70,7 +70,12 @@ public class UserController {
 				session.setAttribute("message1", "Cập nhật password không thành công");
 			}
 		}
+		LoginDTO user1 = (LoginDTO) SessionUtil.getInstance().getValue(request, "USERMODEL");
 
+		if (user1.getRoleID()==1) {
+			return "redirect:/dichvu/admin-home/admin-user.htm";
+		}
+		
 		return "redirect:user.htm";
 	}
 

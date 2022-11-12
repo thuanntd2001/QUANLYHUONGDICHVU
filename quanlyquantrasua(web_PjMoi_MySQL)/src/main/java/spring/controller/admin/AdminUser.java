@@ -35,7 +35,7 @@ public class AdminUser {
 		return "admin/user";
 	}
 	
-	@RequestMapping(value = "admin-user", params = "btnChangePw", method = RequestMethod.POST)
+	@RequestMapping(value = "user", params = "btnChangePw", method = RequestMethod.POST)
 	public String changePassword(HttpServletRequest request, ModelMap model,
 			@ModelAttribute("password") Password password, BindingResult er) {
 		// validation
@@ -71,7 +71,7 @@ public class AdminUser {
 			}
 		}
 
-		return "redirect:/dichvu/admin-home/admin-user.htm";
+		return "redirect:/admin-home/admin-user.htm";
 	}
 
 	public Integer changePW(HttpServletRequest request,String password,
