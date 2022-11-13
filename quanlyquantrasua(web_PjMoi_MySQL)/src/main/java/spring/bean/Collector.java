@@ -41,9 +41,11 @@ public class Collector<T> {
 		try {
 			String json= objectMapper.writeValueAsString(pojo);
 			System.out.println( json);
-
-			obj = objectMapper.readValue(rc.post(url, json), clazz);
-			System.out.println(rc.post(url, objectMapper.writeValueAsString(pojo)));
+			String jsonResponse=rc.post(url, json);
+			
+			obj = objectMapper.readValue(jsonResponse, clazz);
+			
+			System.out.println(jsonResponse);
 
 		} catch (JsonParseException e) {
 			System.out.print("loi json");

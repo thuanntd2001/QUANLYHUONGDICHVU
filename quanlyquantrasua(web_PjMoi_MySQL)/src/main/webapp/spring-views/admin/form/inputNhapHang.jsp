@@ -69,10 +69,10 @@ body {
 					<div class="form-group col-md-6">
 						<label>Đơn vị</label> <br>
 						<form:select path="donVi">
-							<form:option value="CÁI"> CÁI</form:option>
-							<form:option value="NGƯỜI"> NGƯỜI</form:option>
+							<form:option value="CAI"> CÁI</form:option>
+							<form:option value="NGUOI"> NGƯỜI</form:option>
 							<form:option value="KG"> KG</form:option>
-							<form:option value="KHÁC"> Khác </form:option>
+							<form:option value="KHAC"> Khác </form:option>
 						</form:select>
 
 					</div>
@@ -97,15 +97,7 @@ body {
 
 			</div>
 
-			<div class="form-row">
 
-					<div class="form-group col-md-6">
-						<label>Ngày Nhập</label> <br> <input  name="ngaynhaphang"
-							type="datetime-local" id="set-date" value="${ngaynhaphang}" />
-							<span class="form-message"></span>
-					</div>
-
-				</div>
 		
 
 			<div class="card-footer">

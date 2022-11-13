@@ -15,6 +15,7 @@ public interface ChiPhiRepository extends JpaRepository<ChiPhiEntity, Long>{
 	@Query(value = "SELECT sum(soLuong*giaMoiDV) FROM ChiPhiEntity WHERE "
 			+ "YEAR(ngayNhap) = ?1", nativeQuery = false)
 	int tongChiPhiNam(Integer nam);
+	
 	@Query(value = "SELECT sum(soLuong*giaMoiDV) FROM ChiPhiEntity WHERE "
 			+ "MONTH(ngayNhap) = ?1 AND YEAR(ngayNhap) = ?2", nativeQuery = false)
 	

@@ -34,60 +34,75 @@ public class ThongKeAPI {
 		List<ChiPhiDTO> cpDto= new ArrayList<ChiPhiDTO>();
 		List<HoaDonDTO> hdDto=new ArrayList<HoaDonDTO>();
 		ThongKeDTO e = new ThongKeDTO();
-		if (flaglist != null) {
-			if (model.getNgay()==-1) {
-				if (model.getThang() == -1)
-				{
-					findCPEntity=cprepo.getChiPhiNam(model.getNam());
-					findHDEntity=hdrepo.getHoaDonNam(model.getNam());
+		System.out.println(model.getNam());
 
-					
+		System.out.println(model.getThang());
+		System.out.println(model.getNgay());
+		try {
+			if (flaglist != null) {
+				if (model.getNgay()==-1) {
+					if (model.getThang() == -1)
+					{
+						findCPEntity=cprepo.getChiPhiNam(model.getNam());
+						findHDEntity=hdrepo.getHoaDonNam(model.getNam());
+
+						
+					} else {
+						findCPEntity=cprepo.getChiPhiThang(model.getThang(),model.getNam());
+						findHDEntity=hdrepo.getHoaDonThang(model.getThang(),model.getNam());
+						
+						
+					}
 				} else {
-					findCPEntity=cprepo.getChiPhiThang(model.getThang(),model.getNam());
-					findHDEntity=hdrepo.getHoaDonThang(model.getThang(),model.getNam());
+					findCPEntity=cprepo.getChiPhiNgay(model.getNgay(),model.getThang(),model.getNam());
+					findHDEntity=hdrepo.getHoaDonNgay(model.getNgay(),model.getThang(),model.getNam());
 					
-					
+				
 				}
-			} else {
-				findCPEntity=cprepo.getChiPhiNgay(model.getNgay(),model.getThang(),model.getNam());
-				findHDEntity=hdrepo.getHoaDonNgay(model.getNgay(),model.getThang(),model.getNam());
+				for (ChiPhiEntity item: findCPEntity) {
+					cpDto.add(new ChiPhiDTO(item));
+				}
+				for (HoaDonEntity item: findHDEntity) {
+					hdDto.add(new HoaDonDTO(item));
+				}
 				
-			
-			}
-			for (ChiPhiEntity item: findCPEntity) {
-				cpDto.add(new ChiPhiDTO(item));
-			}
-			for (HoaDonEntity item: findHDEntity) {
-				hdDto.add(new HoaDonDTO(item));
+				e.setChiPhis(cpDto);
+				e.setHoaDons(hdDto);
 			}
 			
-			e.setChiPhis(cpDto);
-			e.setHoaDons(hdDto);
-		}
-		
-		else {
-			if (model.getNgay()==-1) {
-				if (model.getThang() == -1)
-				{
-					e.setChiPhi(cprepo.tongChiPhiNam(model.getNam()));
-					e.setDoanhThu(hdrepo.doanhThuNam(model.getNam()));
-					e.setLoiNhuan(e.getDoanhThu()-e.getChiPhi());
-					e.setSoHoaDon(hdrepo.soHoaDonNam(model.getNam()));
-				
+			else {
+				if (model.getNgay()==-1) {
+					if (model.getThang() == -1)
+					{
+						e.setChiPhi(cprepo.tongChiPhiNam(model.getNam()));
+						e.setDoanhThu(hdrepo.doanhThuNam(model.getNam()));
+						e.setLoiNhuan(e.getDoanhThu()-e.getChiPhi());
+						e.setSoHoaDon(hdrepo.soHoaDonNam(model.getNam()));
+					
+					} else {
+						e.setChiPhi(cprepo.tongChiPhiThang(model.getThang(),model.getNam()));
+						e.setDoanhThu(hdrepo.doanhThuThang(model.getThang(),model.getNam()));
+						e.setLoiNhuan(e.getDoanhThu()-e.getChiPhi());
+						e.setSoHoaDon(hdrepo.soHoaDonThang(model.getThang(),model.getNam()));
+					}
 				} else {
-					e.setChiPhi(cprepo.tongChiPhiThang(model.getThang(),model.getNam()));
-					e.setDoanhThu(hdrepo.doanhThuThang(model.getThang(),model.getNam()));
+//					System.out.println(cprepo.tongChiPhiNgay(model.getNgay(),model.getThang(),model.getNam()));
+
+					e.setChiPhi(cprepo.tongChiPhiNgay(model.getNgay(),model.getThang(),model.getNam()));
+					e.setDoanhThu(hdrepo.doanhThuNgay(model.getNgay(),model.getThang(),model.getNam()));
 					e.setLoiNhuan(e.getDoanhThu()-e.getChiPhi());
-					e.setSoHoaDon(hdrepo.soHoaDonThang(model.getThang(),model.getNam()));
+					e.setSoHoaDon(hdrepo.soHoaDonNgay(model.getNgay(),model.getThang(),model.getNam()));
 				}
-			} else {
-				e.setChiPhi(cprepo.tongChiPhiNam(model.getNam()));
-				e.setDoanhThu(hdrepo.doanhThuNam(model.getNam()));
-				e.setLoiNhuan(e.getDoanhThu()-e.getChiPhi());
-				e.setSoHoaDon(hdrepo.soHoaDonNam(model.getNam()));
 			}
-		}
-		
-		return e;
+			
+			return e;
+			
+		}catch(
+
+	Exception ex)
+	{
+		return new ThongKeDTO();
 	}
+}
+
 }
